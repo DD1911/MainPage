@@ -1,0 +1,34 @@
+# Exponentialschreibweise & Rundungsfehler
+
+# Exponentialschreibweise.
+# Mit e|E.
+# Es entsteht immer ein Float.
+# Der Dezimaltrenner wird um die Anzahl nach dem e nach rechts verschoben.
+
+print(2e6)                      #2_000_000.0
+print(2 * 10.0 ** 6)            #2_000_000.0
+print(2 * 1_000_000.0)          #2_000_000.0
+
+print(1234567.0 ** 3)           #1.8816723022905623e+18
+# 1881672302290562300
+print(1881672302290562300.0)    #1.8816723022905623e+18
+
+
+#Negativer Exponent
+#Den dezimaltrenner entsprechend nach Links verschieben.
+print(321e-6)                   #0.000321
+#0.000321
+
+print(0.0000321)                #3.21e-05
+print(3.21 / 10.0 ** 5)         #3.21e-05
+print(3.21 / 100000.0)          #3.21e-05
+
+#Rundungsfehler bei Floats
+#Ein allgemeines Computer-Thema.
+
+print(1.1 + 2.2)                #3.3000000000000003
+print(round(1.1 + 2.2))         #3.3
+
+print(0.1 * 3 -0.3)             #5.551115123125783e-17
+# 0.000000000000000005551115123125783
+print(round(0.1 * 3 -0.3))      #0
