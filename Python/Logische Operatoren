@@ -1,0 +1,32 @@
+#Logischeoperatoren
+
+#Werden auch Boolesche Operatoren genannt.
+#Genau wie der Boolean nach dem Mathematiker Herrn Boole.
+
+#and - or -not
+
+#and (UND)
+#In allen andern Sprachen sonst oft &&
+print(2 > 1 and 3 < 4)                  #True
+#Ist streng: wird nur True, wenn beide Seiten/Werte/Operanden True sind.
+print(True and True)                    #True
+print(True and False)                   #False
+print(False and True)                   #False
+print(False and False)                  #False
+
+#or (und/oder)
+#In allen anderen Sprachen sonst oft ||
+#Ist lässig: ist True, sobald mindestens eine seite True ist.
+print(True and True)                    #True
+print(True and False)                   #True
+print(False and True)                   #True
+print(False and False)                  #False
+
+#not (NICHT)
+#In allen anderen Sprachen sonst oft !
+#Wie auch in Python beim Ungleich !=
+print(not True)
+print(not False)
+zahl1 = 7
+print(not(zahl1 == 7))                  #False
+print(zahl1 != 7)                       #False
