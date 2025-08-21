@@ -1,0 +1,74 @@
+#Indexing & Slicing
+
+#Indexing.
+#In eckigen Klammern den Index des Zeichens angaben.
+#Auch hier die Indexe null-basiert.
+str1 = 'Hello World'
+print(str1[0])                      #H
+print(str1[1])                      #e
+print(str1[2])                      #l
+print(str1[3])                      #l
+print(str1[4])                      #o
+print(str1[5])                      # ' '
+print(str1[6])                      #W
+
+
+#Slicing
+#Slice auf Deutsch Scheibe/stück.
+#Slicing - das in scheiben schneiden, scheibieren.
+str1 = 'Hello Wolrd'
+#Per Teilbereichoprator.
+#Wie bei range() ist der ANFANG inklusiv und das ENDE exklusiv.
+print(str1[1:3])                    #el
+
+str2 = '0123456789'
+print(str2[3:7])                    #3456
+
+# 0 ist die ereste Stelle, ABER der 0te index.
+# 1 ist die ereste Stelle, ABER der 1te index.
+print(str2[0])                      #0
+print(str2[1])                      #1
+print(str2[2])                      #2
+
+str1 = 'Hello World'
+print(str1[0:4])                    #Hell
+#Null als Anfang ist Standard und kann weggelassen werden.
+print(str1[:4])                     #Hell
+
+#Bis zum Ende schneiden.
+#Wenn die zweite zahll (ENDE), wird bis zum Ende geschnitten.
+print(str1[6:])                     #World
+print(str1[9:])                     #ld
+
+#Negative Indexe
+#Zählweise greht von hinten/rechts los mit -1
+str1 = 'Hello World'
+print(str1[-1])                     #d
+print(str1[-4:-1])                  #orl
+print(str1[-5:])                    #World
+
+#Jeder Index hat zwei Namen: einen positiven und einen negativen:
+print(str1[6:])                      #World
+print(str1[-5:])                     #World
+
+
+#Schrittweise
+# [Anfang, ENDE, SCHRITTWEITE]
+str1 = 'Hello World'
+print(str1[1:10:2])                 #el ol
+print(str1[:10:2])                  #HlWr
+print(str1[::2])                    #HloWrd
+
+
+#Negative Schrittweite
+#Der erste Wert muss weiter rechts liegen, damit er sinnvoll von rechts nach links laufen kann.
+print(str1[10:1:-2])                #drWol
+
+#Einen String einfach umdrehen.
+print(str1[::-1])                   #dlroW olleH
+
+#Slicing bei Listen
+liste1 =[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(liste1[::-1])                 #[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+print(liste1[::2])                 #[0, 2, 4, 6, 8]
+print(liste1[3:7])                 #[3, 4, 5, 6]
