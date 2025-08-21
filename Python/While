@@ -37,3 +37,19 @@ while 1 < 5:
     print(i, end='')                    #0 1 2 3
     i += 1                              #Wenn diese Zeile fehlt, entsteht direkt eine Endlosschleife
 print()
+
+
+# Alternative ohne continue
+
+for i in range(1, 10):
+    if i != 7:
+        print(i, end=' ')  # 1 2 3 4 5 6 8 9
+print()
+
+# while ist eher die genaue Umsetzung vom PAP
+i = 1
+while i < 10:
+    if i != 7:
+        print(i, end=' ')  # 1 2 3 4 5 6 8 9
+    i += 1
+
