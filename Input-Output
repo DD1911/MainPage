@@ -1,0 +1,51 @@
+#Eingabe/Ausgabe
+
+#Ausgabe
+
+#print()
+#print() kann eine kommaseparierte Liste von Werten Übernehmen
+print(1, 2, 3, 4)                   #1 2 3 4
+print('Hello', 'World')             #Hello World
+
+#Sparator
+#Standart Separator ist das Leerzeichen: sep='-'
+#Erscheint zwischen den übergebenen Argumenten
+#Argumente sind werte, die einer Funktion übergeben werden.
+#sep darf nur einmalig auftauchen und muss am Ende stehen.
+print(1, 2, 3, sep='-')             #1-2-3
+print(1, 2, 3, sep=',')             #1,2,3
+print(1, 2, 3, sep='x')             #1x2x3
+
+#Ende
+#Das Standart Ende ist ein Zeilenumbruch: end='\n'
+#end dar nur einmalig auftauchen und muss am Ende der Liste von Argumenten stehen.
+print(1, end='---')
+print(2)                            #1---2
+print(3)                            #3
+
+print(1, end='\n')                  #1 (Zeilenumbruch)
+print(2)                            #2
+print(3)                            #3
+
+
+
+#Eingabe
+
+#input()
+#Stoppt die Ausführung des Programms und wartet auf eine Eingabe in der Konsole.
+#input() gibt zusätzlich den eingegebenen Wert als String zurück.
+name = input('Bitte deinen Namen eingeben!\n')
+#name = 'Daniel'
+print('Hallo', name+'!')
+#
+#input() gibt zusätzlich den eingegebenen Wert als String zurück:
+#Jede User-Eingabe in "allen" Programmiersprachen kommen als String an.
+#String ist der einzige Datentyp, der alle Tasten der Tastatur abbilden kann.
+print(type(name))                   # <class 'str'>
+
+
+
+
+
+
+
