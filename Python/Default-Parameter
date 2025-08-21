@@ -1,0 +1,26 @@
+# Default-Parameter mit Standard-Wert.
+# Allen Parameter, die keinen Default-Wert haben,
+# muss weiterhin ein Argument übergeben werden.
+def addiere(zahl1, zahl2=1):
+    ergebnis = zahl1 + zahl2
+    return ergebnis
+
+print(addiere(3, 4))  # 7
+print(addiere(17))                # 18
+# print(addiere())  # TypeError: addiere() missing 1 required positional argument: 'zahl1'
+
+# Es kann beliebig viele Default-Parameter geben.
+def multipliziere(zahl1, zahl2=1, zahl3=1):
+    ergebnis = zahl1 * zahl2 * zahl3
+    return ergebnis
+
+print(multipliziere(3, 4, 5))  # 60
+print(multipliziere(3, 4))           # 12
+print(multipliziere(3))                          # 3
+
+# Die Default-Parameter MÜSSEN am Ende der Parameter-Liste stehen.
+# def multipliziere2(zahl1=1, zahl2):
+#     return zahl1 * zahl2
+# SyntaxError: parameter without a default follows parameter with a default
+# multipliziere2(4)
+
