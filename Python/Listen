@@ -1,0 +1,84 @@
+#Listen
+
+#Ein neuer Datentyp
+#Kann mehrere Werte beinhalten.
+#Entspricht in anderen Programmiersprachen meist dem nummerischen Array
+
+#Eckig Klammern zum Erzeugen einer Liste.
+liste1 = [1, 3, 5, 7]
+print(liste1)                               #[1, 3, 5, 7]
+print(type(liste1))                         #<class 'list'>
+
+#Indexing
+#Listen sind null-basiert. Geht bei 0 los
+
+print(liste1[0])                            #1
+print(liste1[1])                            #3
+print(liste1[2])                            #5
+print(liste1[3])                            #7
+
+#Bestehende werte verändern:
+liste1[0] = 11
+print(liste1)                               #[11, 3, 5, 7]
+
+#Listen können Werte verschiedener Datentypen beinhalten.
+liste2 = [1, 2.2, 'Hello', True, [1, 2]]
+print(liste2)                               #[1, 2.2, 'Hello', True, [1, 2]]
+
+
+#append()
+#Deutsch: anhängen
+#Eine Methode des Listen Objekts.
+#Nächster Schritt in Richtung OOP (Objekt-orientierte-Programmierung)
+#Methoden werden mit dem Punkt an ein Objekt angehängt,
+#und beziehen sich immer auf genau das Objekt.
+
+liste3 = [1, 3, 5, 7]
+print(liste3)                               #[1, 3, 5, 7]
+liste3.append(17)                           #17 hinzufügen
+print(liste3)                               #[1, 3, 5, 7, 17]
+
+#So könnten es auch ohne OOP aussehen:
+#z.B. in PHP durch append(liste3, 17)
+
+
+#Begriffe der OOP (Objekt-orientierte-Programmierung)
+#liste3 ist das Objekt
+#append() ist die Methode (des Objekts)
+#list ist die Klasse.
+
+
+#pop()
+#Der letzte wert wird zurückgegeben
+#und wird aus der liste entfernt.
+liste4 = [1, 3, 5, 7]
+zahl1 = liste4.pop()
+print(zahl1)
+print(liste4)                       #[1, 3, 5]
+
+#Hier wird der zurückgegebene Wert nicht weiterverarbeitet.
+liste4.pop()
+print(liste4)
+
+#list()
+#Python-eigene Funktion
+#erzeugt eine Liste aus einer Sequenz.
+print(list(range(5)))               #[0, 1, 2, 3, 4]
+print(list('Hello'))                #['H', 'e', 'l', 'l', 'o']
+
+#Runde Klammern hinter einem Bezeichner zeigen an, dass etwas Ausführbares passiert
+#durch eine Funktion oder eine Methode.
+#z.B. :Print(), liste1.append(17), liste1.pop()
+
+#Liste ist auch eine Sequenz.
+#Und da die for-in-schleife durch alle Sequenzen laufen/iterieren kann,
+#geht dies auch bei der Liste.
+for i in [1, 3, 5, 7, 9, 11, 15, 17, 19]:
+    print(i + 1, end=' ')           #2 4 6 8 10 12 16 18 20
+print()
+
+# sort()
+liste5 = [6, 4, 2, 9, 11, 13]
+liste5.sort()
+print(liste5)                       #[2, 4, 6, 9, 11, 13]
+
