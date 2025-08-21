@@ -1,0 +1,62 @@
+# Python-Package installieren
+
+# Python Package Index (PyPI).
+# Ein Index ist der Ort, wo die Pakete der Software gelagert und indiziert sind.
+# https://pypi.org
+
+# Ein Paket suchen:
+# https://pypi.org/project/emoji/
+
+# pip
+# pip ist der Python Paket-Manager.
+# Der Paket-Manager ist die Software, um auf den Index zuzugreifen.
+# pip steht für: pip installs packages
+# Rekursives Akronym
+# Das erste rekursives Akronym:
+# GNU steht für: GNU is not UNIX
+
+# Die Version von pip checken:
+# > pip -V
+
+# Alle installierten Pakete anzeigen
+# > pip list
+
+# Ein Paket installieren
+# > pip install emoji
+
+import emoji
+
+print(emoji.emojize('Python is :thumbs_up:'))  # Python is 👍
+
+# Das Paket faker.
+# Zum Erzeugen von Fake-Data
+# https://pypi.org/project/Faker/
+
+# > pip install faker
+
+from faker import Faker
+
+# Ein Objekt der Faker-Klasse erzeugen.
+faker = Faker()
+
+# Die name()-Methode gibt einen zufälligen Namen zurück.
+print(faker.name())  # z.B. David Haynes
+
+# Ein deutsches Faker-Objekt erstellen
+faker_de = Faker(['de_DE'])
+
+print(faker_de.name())  # z.B. Irmtraud Ortmann
+
+# Eine deutsche Adresse erzeugen lassen.
+print(faker_de.address())
+# Mirjam-Höfig-Gasse 9
+# 71926 Uffenheim
+
+#
+print(faker_de.sentence())  # Also beim fallen Buch kann.
+
+print(faker.sentence())  # News series avoid mean wind certainly art.
+
+
+
+
