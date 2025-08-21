@@ -1,0 +1,19 @@
+#Schlüsselwörter
+#Keywords
+
+import keyword
+print(keyword.kwlist)
+
+
+#Mehrzeiliger kommentar mit drei Anführungszeichen
+#In quasi allen anderen Sprachen: /* Kommentar */
+'''
+['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif',
+'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or',
+'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
+'''
+
+#Stand 02.07.2025: False, True, and, or, not, continue, break, if, elif, else, for, while, import, from
+
+#Dürfen nicht als Bezeichner verwendet werden.
+#import = 'Fisch'       # SyntaxError: invalid syntax
