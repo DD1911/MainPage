@@ -1,0 +1,26 @@
+# Zahlen formatieren
+
+# format()-Methode
+
+# {:d} - digit -> Integer
+print('---' + '{:5d}'.format(77) + '---')    # ---   77---
+print('---' + '{:5d}'.format(7777) + '---')  # --- 7777---
+
+# Ausrichtung
+# Linksbündig durch <
+print('---' + '{:<5d}'.format(77) + '---')  # ---77   ---
+# Zentriert durch ^
+print('---' + '{:^5d}'.format(7) + '---')   # ---  7  ---
+
+# {:f} - float
+print('Vier Nachkommastellen: {:.4f}'.format(1/6))  # Vier Nachkommastellen: 0.1667
+print('Währungsformat: {:.2f}'.format(1/6))         # Währungsformat: 0.17
+
+# Format-String.
+# Wurde erst in Python 3.6 (2016) eingeführt.
+# Wer heute Python neu lernt, sollte den Format-String benutzen.
+print(f'Währungsformat: {1/6:.2f}')  # Währungsformat: 0.17
+
+# Zentrieren per Format-String
+print('---' + f'{7:^5d}' + '---')   # ---  7  ---
+
