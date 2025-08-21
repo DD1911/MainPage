@@ -1,0 +1,107 @@
+# Dictionary
+
+# Verwandt mit der Liste
+# Unterschied zur Liste ist, dass der Index/Key ein "beliebiger" Datentyp sein kann.
+# Liste ist in PHP das nummerische Array.
+# Dictionary ist in PHP assoziative Array.
+# Bei der Liste spricht man vom Index und beim Dictionary vom Key.
+
+# Ein Dictionary beinhaltet beliebig viele Schlüssel (key) / Wert (value) Paare.
+
+# Ein Dictionary wird mit geschweiften Klammer (curly brackets) erzeugt.
+person1 = {'vorname': 'Daniel', 'nachname': 'Dmitrovski', 'alter': 29}
+print(person1)  # {'vorname': 'Daniel', 'nachname': 'Dmitrovski', 'alter': }
+
+# Einzelne Werte auslesen, indem man den Key in ECKIGEN Klammern angibt.
+print(person1['vorname'])   # Daniel
+print(person1['nachname'])  # Dmitrovski
+print(person1['alter'])     # 29
+print(person1)              # {'vorname': 'Daniel', 'nachname': 'Dmitrovski', 'alter': 29}
+
+# pop(key)
+person1 = {'vorname': 'Daniel', 'nachname': 'Dmitrovski', 'alter':29}
+vorname1 = person1.pop('vorname')
+print(vorname1)  # Daniel
+print(person1)   # {'nachname': 'Dmitrovski', 'alter': 29}
+
+# Das Verändern eines Dictionarys läuft wie bei einer Liste:
+person2 = {'vorname': 'Hans', 'nachname': 'Dmitrovski', 'alter':29}
+print(person2)  # {'vorname': 'Daniel', 'nachname': 'Dmitrovski', 'alter': 29}
+person2['vorname'] = 'Hans'
+print(person2)  # {'vorname': 'Hans', 'nachname': 'Dmitrovski', 'alter': 29}
+
+# Dictionary (Wörterbuch)
+dict1 = {'Apfel': 'apple', 'Birne': 'pear'}
+
+
+# Dictionaries durchlaufen
+
+# Beim Iterieren eines Dictionaries bekommt man die Keys
+person1 = {'vorname': 'Daniel', 'nachname': 'Dmitrovski', 'alter': 29}
+print(list(person1))  # ['vorname', 'nachname', 'alter']
+
+for key in person1:
+    print(key, end=' ')  # vorname nachname alter
+print()
+
+# keys()-Methode
+# Wird oft benutzt, um für den Menschen deutlich zu machen, dass die Keys iteriert werden.
+person1 = {'vorname': 'Daniel', 'nachname': 'Dmitrovski', 'alter': 29}
+print(person1.keys())  # dict_keys(['vorname', 'nachname', 'alter'])
+
+for key in person1.keys():
+    print(key, end=' ')  # vorname nachname alter
+print()
+
+
+# values()-Methode
+for key in person1.values():
+    print(key, end=' ')  #
+print()
+
+for key in person1.keys():
+    print(key + ': ' + str(person1[key]))
+        # vorname: Daniel
+        # nachname: Dmitrovski
+        # alter: 29
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
