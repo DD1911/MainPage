@@ -1,0 +1,54 @@
+
+# *** Rekursion ***
+
+# Eine Alternative From einer Schleife.
+
+# Eine rekursive Funktion ist eine Funktion, die sich selber wieder aufruft.
+
+# Um Rekursion zu verstehen, muss man zuerst Rekursion verstehen.
+
+# Klassisches Beispiel: Fakultät
+def fac_schleife(n):
+    res = 1
+    while n > 1:
+        res = res * n
+        n = n - 1
+    return res
+
+print(fac_schleife(5))  # 120 (5 * 4 * 3 * 2 * 1)
+
+def fac_rekursiv(n):
+    if n <= 1:
+        return 1
+    return n * fac_rekursiv(n - 1)
+
+print(fac_rekursiv(5))  # 120 (5 * 4 * 3 * 2 * 1)
+
+# Im Haupt-return:
+# 5 * fac_rekursiv(4)
+# 5 * 4 * fac_rekursiv(3)
+# 5 * 4 * 3 * fac_rekursiv(2)
+# 5 * 4 * 3 * 2 * fac_rekursiv(1)
+# 5 * 4 * 3 * 2 * 1
+# 120
+
+# RecursionError
+def f(n):
+    return 1 + f(n)
+# f(1)  # [Previous line repeated 996 more times] - RecursionError
+
+# Rekursionslimit ist standardmäßig in Python bei 1000
+import sys
+print(sys.getrecursionlimit())  # 1000
+
+# Rekursionslimithochsetzen
+sys.setrecursionlimit(10_000)
+print(sys.getrecursionlimit())  # 10000
+
+def f2(n):
+    return 1 + f2(n)
+# f2(1)  # [Previous line repeated 9996 more times] - RecursionError
+
+
+
+
