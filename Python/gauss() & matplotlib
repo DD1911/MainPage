@@ -1,0 +1,35 @@
+# gauss() & matplotlib
+
+# random.gauss()
+# Normalverteilung, Glockenkurve, Gauss'sche Glocke
+from random import gauss
+e = 100  # Erwartungswert
+st = 50  # Standardabweichung
+print(gauss(e, st))
+
+# matplotlib in der Konsole installieren
+# > pip install matplotlib
+
+# Ein Paket-Manager (wie pip) löst Abhängigkeiten auf.
+# Heisst er installiert automatisch auch alle Paket, die von matplotlib gebraucht werden.
+
+# Details zu einem Paket anzeigen lassen.
+# > pip show matplotlib
+
+# Fast ganz unten bei "Requires:" sind die Pakete aufgelistet,
+# die mitinstalliert werden müssen.
+
+import matplotlib.pyplot as pyplot
+
+nums = []
+for _ in range(10_000):
+    nums.append(gauss(e, st))
+
+# print(nums)
+print(min(nums), max(nums))  # -106.05434120371152 286.6626775292723
+
+# Das Histogramm erzeugen lassen.
+pyplot.hist(nums, bins=5000)
+
+# Das Histogramm anzeigen lassen.
+pyplot.show()
