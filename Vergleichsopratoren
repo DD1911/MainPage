@@ -1,0 +1,22 @@
+#Vergleichsopratoren
+
+#Werden auch Relational Operatoren genannt.
+#Ein Vergleich wird immer zu einem Boolean ausgewertet.
+#(Ein Vergleich evaluiert immer zu einem Boolean.)
+#Zwei gleichheitszeichen, da einer schon für die zuweisung benutzt wird. (xy == xy)
+
+#Gleich-Operator per ==
+print(7 == 8)                   # False
+print(7 == 7)                   # True
+
+#Ungleich-Operator per !=
+print(7 != 8)                   #True
+print(7 != 7)                   #False
+
+#Größer: >
+#Kleiner: <
+#Größer gleich: >=
+#Kleiner gleich: <=
+print(7 < 8)                    #True
+print(8 < 7)                    #False
+
