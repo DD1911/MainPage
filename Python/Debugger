@@ -1,0 +1,20 @@
+#Debugger
+
+# Bug ist der Käfer/die Motte, der sich früher auf Computer-Lochkarten gesetzt hat.
+#https://de.wikipedia.org/wiki/Grace_Hopper#/media/Datei:First_Computer_Bug, 1945.jpg
+
+#Breakpoint setzen.
+#In PyCharm auf eine Zeilennummer klicken.
+#Rechtsklick in den Quellcode und Debug 'dateiname.py'
+
+x = 1
+y = 2
+z = 3
+
+for i in range(10):
+    x = x + 1
+    y = y + x
+    z = z * y + x
+
+print(x, y, z) # 11 67 72705376753249
+
