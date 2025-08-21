@@ -1,0 +1,65 @@
+# Funktionsdefinition
+# Schlüsselwort def (von define, definieren)
+def meine_erste_funktion():
+    print('Hello World')
+    # print('Hallo Welt')
+
+# Funktionsaufruf
+meine_erste_funktion()  # Hello World
+
+# Funktionsbezeichner.
+# Erlaubte Zeichen wie beim Variablenbezeichner:
+# Buchstaben, Ziffern, Unterstrich, aber Ziffern nicht am Anfang.
+# Sprechende Bezeichner:
+# Der Bezeichner sollte eine Handlungsaufforderung (Imperativ) sein
+# oder den Rückgabewert beschreiben.
+
+# Vorteil: Man kann Funktionen mehrmals ausführen
+meine_erste_funktion()  # Hello World
+meine_erste_funktion()  # Hello World
+meine_erste_funktion()  # Hello World
+
+# Parameter in den runden Klammern bei der Funktionsdefinition.
+# Ein Parameter ist eine lokale Variable innerhalb der Funktion.
+def gib_aus(text):
+    print(text)
+
+# Argument
+gib_aus('Hello')  # Hello
+gib_aus(777)      # 777
+
+# Mehrere Parameter per kommaseparierter Liste.
+def addiere(zahl1, zahl2):
+    ergebnis = zahl1 + zahl2
+    print(ergebnis)
+
+# Mehrere Argumente dementsprechend per kommaseparierter Liste.
+# Selber nur folgendes schreiben: 3, 4
+# Den Rest (zahl1: zahl2:) macht PyCharm automatisch.
+addiere(3, 4)    # 7
+addiere(23, 42)  # 65
+
+# Die Anzahl von Parametern und Argumenten muss zueinander passen.
+# addiere(9)  # TypeError: addiere() missing 1 required positional argument: 'zahl2'
+# addiere(1, 2, 3)  # TypeError: addiere() takes 2 positional arguments but 3 were given
+
+# Rückgabewert.
+# Per Schlüsselwort return.
+# Im Normalfall hat jede Funktion ein return
+# und der Wert wird an die Stelle des Funktionsaufrufs zurückgegeben.
+# Dadurch kann man flexibler im nächsten Schritt entscheiden,
+# was im nächsten Schritt mit dem Wert passieren soll. Z.B. printen, in die DB oder eine Datei schreiben
+def addiere2(zahl1, zahl2):
+    ergebnis = zahl1 + zahl2
+    return ergebnis
+
+print(addiere2(7, 9))  # 16
+print(16)                          # 16
+
+# Weiterer Vorteil von Funktionen
+#
+
+def name(vorname, nachname):
+    print(vorname + ' ' + nachname)
+
+name('Daniel', 'Dmitrovski')            #Daniel Dmitrovski
