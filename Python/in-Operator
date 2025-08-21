@@ -1,0 +1,42 @@
+
+# in-Operator
+
+# Schlüsselwort in
+
+# Wird in Vergleichen benutzt, die dann zu einem Boolean evaluieren.
+
+# Testet, ob ein Element (darf auch eine Sequenz sein) in einer Sequenz vorkommt.
+
+str1 = 'Hello'
+print('e' in 'Hello')     # True
+print('a' in 'Hello')     # False
+print('Hell' in 'Hello')  # True
+
+liste1 = [3, 6, 2, 9, 7]
+print(3 in liste1)  # True
+
+# in-Operator als Oder-Ersatz in Python:
+zahl1 = 25
+if zahl1 == 25 or zahl1 == 41:
+    print('Bingo')
+
+if 25 in [25, 41]:
+    print('Bingo')
+
+
+# 13 17 21 29 33 37 45
+for i in range(13, 49, 4):
+    # if i == 25 or i == 41:
+    if i in [25, 41]:
+        continue
+    print(i, end=' ')
+print()
+
+# Die 57 soll dazukommen:
+# 13 17 21 29 33 37 45
+for i in range(13, 66, 4):
+    # if i == 25 or i == 41 or i == 57:
+    if i in [25, 41, 57]:
+        continue
+    print(i, end=' ')
+print()
