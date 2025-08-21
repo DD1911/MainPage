@@ -1,0 +1,54 @@
+#Zählschleife
+
+#In anderen Sprachen: for (int i = 0; i < 10; i++) {}
+
+#range()
+#Python-eigene (Build-in) Funktion.
+#range(Anfang, Ende): ANFANG ist Inklusiv ENDE exklusiv.
+range1 = range(1, 10)
+print(range1)                           #range(1, 10)
+print(type(range1))                     #<class 'range'>
+print(list(range1))                     #[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+#for variable in sequenz
+#Sprachübergreifend Programmierrcihtline: Die Variable sollte i (iterieren, index) heissen oder den Inhalt beschreiben.
+#Generell in Bezeichner davon ausgehen, dass der Kollege:in eine englische Tastatur hat.
+#Bei jeden Durchlauf wird ein Element aus SEQUENZ in VARIABLE gespeichert.
+
+for i in range (1, 10):
+    #print(i)
+    print(i, end=' ')                   #1 2 3 4 5 6 7 8 9
+print()                                 #Zeilenumbruch durch disen Print
+
+#Python-Programmierrichtlinie: Wenn die Variable in der Schleife nicht benutzt wird, wird der Unterstrich verwendet. (LZK)
+for _ in range(1, 10):
+    print('Hello', end=' ')             #Hello Hello Hello Hello Hello Hello Hello Hello Hello
+print()
+
+
+#range(ENDE)
+#Bei nur einem Wert, geht es immer bei 0 los.
+#for i in range(0, 10):
+for i in range(10):                     #kürzere schreibweise
+    print(i, end=' ')                   #0 1 2 3 4 5 6 7 8 9
+print()
+
+#range(ANFANG, ENDE, SCHRITTWEITE)
+for i in range(1, 9+1):
+    print(i, end=' ')                   #1 2 3 4 5 6 7 8 9
+print()
+
+# Negative Schrittweite
+# Der Startwert wird der schrittweise entsprechend jedes Mal kleiner.
+# Subtraktion von ANFANG bis ENDE. Fällt nicht unter Endwert
+# Das Erste Argument muss größer sein als das Zweite.
+for i in range(30, 10, -3):             # 30 27 24 21 18 15 12
+    print(i, end=" ")
+    print()
+
+# +1 schreibt man, um die Endzahl im Quellcode zu sehen
+# range(ANFANG, ENDE)
+    for i in range(1, 9+1):                 # 1 2 3 4 5 6 7 8 9
+        print(i, end=' ')
+print()
