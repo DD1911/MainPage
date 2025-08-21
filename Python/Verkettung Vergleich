@@ -1,0 +1,11 @@
+#Verkettung Vergleich
+
+zahl1 = 7
+#if 3 <zahl1 and zahl1 <9:
+if 3 <zahl1 <9:
+    print('4 bis 8')
+
+#Exkurs
+#Selbst das >funktioniert, aber vielleicht für den Mensch zu kompliziert.
+#if > 3 < 9:
+    #print('4 bis 8')
