@@ -1,0 +1,71 @@
+# if elif else
+
+#Alle drei sind Schlüsselwörter.
+
+#Gehört zur Gruppe Kontrollstrukturen.
+#Da drin zur Untergruppe der Verzweigung.
+
+#if
+#WENN die Bedingung True ist, frühe einen eingerückten Quellcode aus.
+#Es kann auch nichts ausgeführt werden.
+#zahl1 = 23             # das # wird gesetzt um es auszukomentieren und einen der beiden Zustände zu erzeugen.
+zahl1 = 23
+#zahl1 = 24
+if zahl1 == 23:
+    print('Super, zahl1 ist 23!')           #Super, zahl1 ist 23!
+
+
+#if else
+#WENN Bedingung True ist, führe den if-Block aus.
+#Sonst führe den else-Block aus.
+wetter2 = 'Bewölkt'
+#if wetter2 = 'regent':
+print('Es regnet')
+#else:
+   # print('Es regent Nicht')
+
+
+#if elif
+#WENN Bedingung True ist, führe den if-Block aus.
+#Sonst WENN die nächste Bedingung True ist, führe den elif Block aus.
+
+wetter3 = 'Bewölkt'
+if wetter3 == 'Sonne':
+    print('Die Sonne scheint!')
+elif wetter3 == 'Regen':
+    print ('Es Regent')
+
+
+
+#if elif else
+#wetter = 'Sonne'       # durch # auskommentiert
+#wetter = 'Regen'       # durch # auskommentiert
+wetter = 'Schnee'
+if wetter == 'Sonne':
+    print('Yeah, es scheint die Sonne')
+elif wetter == 'Regen':
+    print('Mist,es regent')
+else:
+    print('Wow es schneit')
+
+#Mehrer elif.
+#Es wird höchstens ein Fall/Block ausgeführt!
+#
+from random import randint
+wochentag = randint(1, 7)
+if wochentag == 1:
+    print('Monatg')
+elif wochentag == 2:
+    print('Dienstag')
+elif wochentag == 3:
+    print('Mittwoch')
+elif wochentag == 4:
+    print('Donnerstag')
+elif wochentag == 5:
+    print('Freitag')
+elif wochentag == 6:
+    print('Samstag')
+elif wochentag == 7:
+    print('Sonntag')
+else:
+    print('FEHLER')
