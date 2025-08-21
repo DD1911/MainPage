@@ -1,0 +1,39 @@
+# Zuweisungsoperator
+# Um einer Variablen einen Wert zuzuweisen.
+from mpmath import kleinj
+from shapely.geos import geos_version_string
+
+zahl1 = 42
+
+#Verkürtzer Schreibweisen der Zuweisungsoperator
+
+zahl2 = 23
+zahl2 = zahl2 + 1
+print(zahl2)                        #24
+
+zahl2 += 6
+# zahl2 = zahl2 + 6
+print(zahl2)                        #30
+
+# -= , *= , /=, //=, %=, **=
+zahl3 = 34
+zahl3 %= 8
+#zahl3 = zahl3 % 8
+print(zahl3)                        #2
+
+#Mehrfachzuweisung
+#Englisch: Multiple assignment
+#Der "Rückgabe-Wert"
+zahl1 = zahl2 = zahl3 = 0
+#zahl1 = zahl2 = 0
+#zahl1 = 0
+print(zahl1,zahl2,zahl3)            #0 0 0
+
+
+#Beide Varianten sind okay:
+#klein = gross -ziffer = sonder = False
+klein = False
+gross = False
+ziffer = False
+sonder = False
+
