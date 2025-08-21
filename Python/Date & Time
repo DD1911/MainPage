@@ -1,0 +1,27 @@
+# Datum & Zeit
+
+# Das datetime-Modul (Datei) aus dem datetime Package (Ordner) importieren.
+from datetime import datetime
+
+# datetime.now()
+# Erzeugt ein datetime-Objekt vom jetzigen Zeitpunkt.
+# ISO 8601 legt den internationalen Zeit-Standard fest.
+jetzt = datetime.now()
+print(jetzt)  # 2025-07-08 09:46:12.713939
+print(type(jetzt))  # <class 'datetime.datetime'>
+
+# datetime() Konstruktor-Methode
+geburtstag = datetime(1970, 12, 3, 9, 35, 0)
+print(geburtstag)  # 1970-12-03 09:35:00
+
+# weekday()
+# 0 (Montag) - 6 (Sonntag)
+print(geburtstag.weekday())             # 3
+print(jetzt.weekday())                  # 1
+
+#Attribute (Eiegnschaften)
+#year, month, day, hour, ...
+print(geburtstag.year)                  #1970
+
+# Es wird automatisch gecheckt, ob das Datum existiert.
+zeit = datetime(1996, 4, 29)
