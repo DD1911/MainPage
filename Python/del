@@ -1,0 +1,35 @@
+
+# del
+
+# Schlüsselwort zum Löschen von Variablen/Indexen
+
+# Nach dem Löschen ist die Variable nicht mehr bekannt.
+# Als hätte es sie nie gegeben.
+str1 = 'Hello'
+print(str1)  # Hello
+del str1
+# print(str1)  # NameError
+# print(str2)  # NameError
+
+# Nach dem Löschen eines Indexes wird die Liste neu indiziert.
+# Was meint, dass die Lücke geschlossen wird.
+liste1 = [0, 1, 2, 3, 4, 5, 6, 7]
+print(liste1)  # [0, 1, 2, 3, 4, 5, 6, 7]
+
+del liste1[3]
+print(liste1)  # [0, 1, 2, 4, 5, 6, 7]
+
+# pop(index)
+# Entfernt den Wert am übergebenen Index
+# UND gibt diesen Wert zurück.
+liste1 = [0, 1, 2, 3, 4, 5, 6, 7]
+print(liste1)  # [0, 1, 2, 3, 4, 5, 6, 7]
+zahl1 = liste1.pop(3)
+print(zahl1, liste1)  # 3 [0, 1, 2, 4, 5, 6, 7]
+
+# Alternative zu del
+# Löschen mit pop(index) ohne den Wert aufzufangen.
+liste1.pop(0)
+
+
+
