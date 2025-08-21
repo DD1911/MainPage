@@ -1,0 +1,45 @@
+#Typenkonvertierung
+
+#int()
+#Python-eigene Funktion zum Umwandeln in einen Integer.
+#eingabe = input('Bitte eine Ganzzahl eingeben')
+eingabe = '123'
+ergenbis = eingabe + 7                 #TypeError: can only concatenate str (not "int") to str
+eingabe_int = int(eingabe)
+print(type(eingabe))                    #<class 'str'>
+print(type(eingabe_int))                #<class 'int'>
+ergebnis = eingabe_int + 7
+print(ergebnis)                         #130
+
+
+#Float zu Integer umwandeln.
+float1 = 123.45
+int1 = int(float1)
+print(int1)                             #123
+
+
+#str()
+#Python-eigen Funktion zum Umwandeln in einen String.
+zahl1 = 23
+ausgabe = 'zahl1' + zahl1               #TypeError: can only concatenate str (not "int") to str
+zahl1_str = 'zahl1 ist' + zahl1_str
+print(ausgabe)                          #Zahl1 ist 23
+
+
+#float ()
+#Python-eigene Funktion zum Umwandeln in Fließkommazahl (Float).
+print(float(123))                       #123.0
+print(float('123.45'))
+
+
+#bool()
+#Python-eigene Funktion zum Umwandeln in Boolean.
+#Alle nicht leeren strings werden zu True.
+print(bool('Hello'))                    #True
+print(bool(""))                         #False
+
+#Alle Zahlen, die nicht 0/0.0 sind, sind True.
+print(bool(0))                          #False
+print(bool(42))                         #True
+print(bool(0.0))                        #False
+print(bool(123.45))                     #True
