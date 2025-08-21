@@ -1,0 +1,20 @@
+#Format-String
+#ein f vor das öffnende Anführungszeichen
+#und dann kann man im string per geschweifter klammern geschützte Bereich für ausführbahren quellcode erstellen.
+vorname = 'Daniel'
+nachname = 'Dmitrovski'
+
+name = f'Mein Name ist {vorname} {nachname}'
+
+print(name)                                #Mein Name ist Daniel Dmitrovski
+
+zahl1 = 7
+zahl2 = 8
+print(f'zahl1 ist {zahl1} und zahl2 ist {zahl2}')  #zahl1 ist 7 und zahl2 ist 8
+
+#Der geschützte Bereich kann beliebig lange Ausdrücke beinhalten.
+print(f'Die Multiplikation ergibt: {zahl1 * zahl2}')  #Die Multiplikation ergibt:56
+
+#Exkurs Dictionary
+#Benutzer auch die geschweiften Klammern
+dict1 = {'vorname' : 'Daniel', 'nachname': 'Dmitrovski', 'alter': 39}
