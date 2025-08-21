@@ -1,0 +1,66 @@
+#Variablen und Datentypen
+
+#Variablen
+#Conatiner zum Speichern von Werten.
+#Die Werte bleiben während der Laufzeit des Skripts in der Variable.
+
+zahl1 = 100
+print(zahl1)                                    #100
+
+#Variablenbezeichner:
+#Heutzutage sollte (Programmierrichtlinie) man sprechende Bezeichner verwenden
+#die durch ihren Namen auf den Inhalt hinweisen.
+#Als Zeichen dürfen (sonst funktioniert es nicht) nur Buchstaben, Ziffern und den unterstrich verwendet werden.
+#Ziffern dürfen nicht am Anfang eines Bezeichners stehen. (Ist in fast allen Programmiersprachen so)
+#Schreibweise: lower_snake_case
+#Kleinschreibung und den unterstrich als Worttrenner.
+
+meine_erste_varibale = 23
+print(meine_erste_varibale)                    # 23  <-- (Ausgegebenes Ergebnis)
+
+
+#Python ist case-sensitive
+#Groß- und Kleinschreibung wird unterschieden.
+nachname = ('Dmitrovski')
+print(nachname)                                #Dmitrovski  richtige ausgabe, weil kleingeschrieben
+#print(Nachname)                                #NameError: 'Nachname' is not defined. Did you mean: 'nachname'?
+
+
+#Datentypen
+#Werte können von verschieden Typen/Arten sein.
+
+#Ganzahl
+#Zahl ohne Kommastelle.
+#Englisch: Integer
+zahl2 = 42
+#Python eigene funktion Type(), die den Datentyp des Wertes zurückgibt.
+print(type(zahl2))                            # <class 'int'> (Kurzform für Integer)
+
+#Fließkommazahl (Gleitkommazahl)
+#Englisch: Float
+komma_zahl = 123.45
+print(komma_zahl)                             # 123.45
+print(type(komma_zahl))                       # <class 'float'>
+
+#Zeichenkette
+#Englisch: String
+#Als Begrenzer gehen Gleichwertig doppelte oder Einfache anführungszeichen ('xyz') - ("xyz")
+print('Hello World')                          #Hello World
+print("Hello World")                          #Hello World
+
+vorname = 'Daniel'
+print(vorname)                                #Daniel
+print(type(vorname))                          # <class 'str'>
+
+#Boolean
+#Wahrheitswert
+#Kann zwei verschiedene Werte haben: True oder False
+#Die werte müssen genau so geschrieben werden: Python ist case-sensitiv (unterscheidet Groß-und Kleinschreibung)
+
+bool1 = True
+bool2 = False
+print(bool1)                                  # True
+print(bool2)                                  # False
+print(type(bool1))                            # <class 'bool'>
+print(type(bool2))                            # <class 'bool'>
+
