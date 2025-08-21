@@ -1,0 +1,72 @@
+#Zufallszahlen
+
+from random import randint
+
+#randint()
+#Gibt eine zufällige Zahl zwischen a und b wieder.
+#In den Klammern nur schreiben: 1,6
+#das a: und b: wird von pycharm ergänzt.
+wuerfel = randint(1, 6)                 #z.B. 4
+
+print(wuerfel)
+
+zahl1 = randint(23, 24)
+if zahl1 == 23:
+    print('Super, Zahl1 ist 23!')
+
+
+from random import randint, uniform
+
+# randint(anfang, ende)
+# anfang UND ende sind inklusiv.
+print(randint(1, 6))  # z.B. 3
+
+# uniform(anfang, ende)
+# anfang UND ende sind inklusiv.
+# Gibt einen Float zurück.
+print(uniform(1.3, 4.4))  # z.B. 4.026333015561564
+
+# Exkurs.
+# Wenn man beim Import nur das Modul angibt, muss man das Modul bei der Benutzung immer davor schreiben.
+import random
+print(random.randint(1, 6))
+print(random.uniform(1.3, 4.4))
+
+# random ist das Modul/die Datei und da drin sind die Funktionen randint(), uniform() ...
+# Wie müssen wissen, welche Funktionen in welchen Modulen sind.
+
+# random()
+# Die wichtigste, die Ur-Zufallsfunktion.
+# Gibt einen Float zwischen 0 und 1 zurück.
+# Anfang, die 0, ist inklusiv und das Ende, die 1, ist exklusiv.
+from random import random
+print(random())  # 0.5755655251026933
+
+# In jeder Sprache gibt es diese Zufallsfunktion, die von 0 bis 0.999999999999999 zurückgibt.
+print(random())               # 0 bis 0.999999999999999
+print(random() * 6)           # 0 bis 5.999999999999999
+print(int(random() * 6))      # 0 bis 5
+print(int(random() * 6) + 1)  # 1 bis 6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
