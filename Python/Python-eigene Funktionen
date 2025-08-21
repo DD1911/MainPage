@@ -1,0 +1,53 @@
+ Python-eigene Funktionen
+
+# len()
+# Gibt die Anzahl der Elemente (Länge) einer sequenz zurück.
+print(len([1, 3, 5, 7]))                        #4
+print(len('Hello World'))                       #11
+print(len(range(0, 1001, 44)))                  #23
+print(list(range(0, 1001, 44)))                 #23 Elemente in der Sequenz
+
+# min()
+# Gibt den kleinsten Wert einer Sequenz zurück.
+print(min([6, 4, 2, 9, 11, 13]))  # 2
+# Bei Strings geht es um die Größe des ASCII-Zahlenwerts der einzelnen Zeichen.
+# https://www.chip.de/ii/1/0/9/3/0/3/2/4/4/b1a76775417075b1.png
+print(min('Hello'))  # H
+print(min('HALLO'))  # A
+
+# max()
+# Gibt den größten Wert einer Sequenz zurück.
+print(max([6, 4, 2, 9, 11, 13]))  # 13
+
+# Python-eigene Funktionen
+
+# Die Funktionen, die direkt zur Verfügung stehen, ohne dass man etwas importieren muss.
+
+# print(dir(__builtins__))
+
+for i in dir(__builtins__):
+    if i[0].islower():
+        print(i, end=', ')
+print()
+
+'''
+abs, aiter, all, anext, any, ascii, bin, bool, breakpoint, bytearray, bytes, callable, chr, classmethod, compile, 
+complex, copyright, credits, delattr, dict, dir, divmod, enumerate, eval, exec, exit, filter, float, format, frozenset, 
+getattr, globals, hasattr, hash, help, hex, id, input, int, isinstance, issubclass, iter, len, license, list, locals, 
+map, max, memoryview, min, next, object, oct, open, ord, pow, print, property, quit, range, repr, reversed, round, set, 
+setattr, slice, sorted, staticmethod, str, sum, super, tuple, type, vars, zip, 
+'''
+
+# Stand 07.07.2025: bool(), float(), int(), str(), print(), type(), len(), min(), max(), round(), list(), input(),
+# range()
+
+print(len(dir(__builtins__)))  # 160
+
+counter = 0
+for i in dir(__builtins__):
+    if i[0].islower():
+        print(i, end=', ')
+        counter = counter + 1
+print()
+
+print('Anzahl der Python-eigenen (built-in) Funktionen:', c)  # 75
