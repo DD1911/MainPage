@@ -1,0 +1,39 @@
+#while-Schleife
+
+#Mächtigste Schleife mit der alles umsetzbar ist.
+
+#Zählschleife mit for in
+for i in range(5):
+    print(i, end=' ')                   # 0 1 2 3 4
+print()
+
+#Zählschleife mit while
+#SOLANGE
+#Die Schleife wird ausgeführt, solange die Bedingung True ist.
+i = 0
+while i < 5:
+    print(i, end='')                    # 0 1 2 3 4
+    i += 1
+print()
+
+#Stärke von while:
+#Die Anzahl der Durchläufe steht nicht fest.
+#oder ist für uns nicht vorhersehbar.
+i = 1
+while i < 10_000_000:
+    print(i, end='')                    #1264218063263442
+    i = i + i * i
+print()
+
+
+#Unterstrich in Zahlen
+#sollte man als Tausender-Trenner benutzen.
+#Macht es für den Mensch nur lesbar,
+#und wird von Python-Interpreter ignoriert.
+
+#Endlosschleife
+i = 0
+while 1 < 5:
+    print(i, end='')                    #0 1 2 3
+    i += 1                              #Wenn diese Zeile fehlt, entsteht direkt eine Endlosschleife
+print()
