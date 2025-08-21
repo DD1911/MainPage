@@ -1,0 +1,65 @@
+#Rechenoperatoren
+
+#Operatroen operieren mit Werten.
+#Operanden sind die Werte, mit denen ein Operator operiert.
+
+#Progamierrichtlinie: Leerzeichen um die Operation.
+#Operatoren
+#+, -, *
+#bsp.
+print(3 + 4)                              #7
+print(8 - 4)                              #4
+print(12 * 2)                             #24
+
+#Divison per /
+#Es ensteht immer ein Float(Kommazahl)
+print(9 / 3)                              #3.0
+print(10 / 3)                             #3.333333333333333
+
+#Floor-Division per //
+#Wird auch Integer-Division genannt.
+#Floor steht für abrunden, was automatisch passiert.
+print(9 // 3)                             #3
+print(10 // 3)                            #3
+
+#Modulo.
+#Restwert-Division per %
+#Wie oft geht die zweite Zahl in die erste Zahl, entscheidend ist dann, was übrig bleibt.
+
+print(10 % 3)                             #1 (Der rest der übrig bleibt)
+print(7 % 3)                              #1
+print(4 % 3)                              #1
+
+#Häufigste Anwendung: Ist eine Zahl gerade oder ungerade?
+
+zahl = 7
+print(zahl % 2)                           #1 (daher ist die Zahl ungerade)
+zahl2 = 8
+print(zahl2 % 2)                          #0 (daher ist die Zahl gerade)
+
+#Spezialfälle:
+#Wenn beide Zahlen gleich sind, kommt immer null raus.
+print(7 % 7)                              #0
+#wenn die erste Zahl kleiner ist, bleibt die erste Zahl übrig.
+print(4 % 7)                              #4
+
+#Anderes Anwendungsbeispiel:
+#Ist eine Zahl durch eine andere teilbar?
+#z.B. wenn man nach jeder siebten Ausgabe einen Zeilenumbruch.
+print(42 % 7)                             #0
+print(35 & 7)                             #0
+print(28 % 7)                             #0
+
+#Potenzoperator per **
+#für die Hochrechnung ( 2 hoch 8 = 256 zustände)
+
+print(2 ** 3)                             #8 (2 * 2 * 2)
+print(2 ** 8)                             #256
+print(2 ** 24)                            #16.777.216 (Anzahl der möglichen Farben)
+print(2 ** 32)                            #4.294.967.296 (Anzahl der möglichen Ipv4-Adressen)
+
+
+
+
+
+
