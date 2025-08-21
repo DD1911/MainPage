@@ -1,0 +1,54 @@
+# String-Methoden
+
+# Stehen mit Punkt getrennt hinter einem String-Objekt.
+
+str1 = 'Hello'
+
+# upper(), lower()
+print(str1.upper())  # HELLO
+print(str1.lower())  # hello
+
+# Methoden zum Testen von Strings.
+# Geben alle einen Boolean zurück.
+# Alle Methoden/Funktionen die mit "is" anfangen,
+# sollten etwas testen und einen Boolean zurückgeben.
+
+# isdigit()
+# Testet, ob alle Zeichen im String Ziffern sind.
+print('1234'.isdigit())      # True
+print('1234.567'.isdigit())  # False
+
+# isalpha()
+# Testet, ob alle Zeichen im String Buchstaben sind.
+print('Hello'.isalpha())   # True
+print('Hello!'.isalpha())  # False
+
+# islower()
+# Testet, ob alle vorhanden Buchstaben, Kleinbuchstaben sind.
+# Es dürfen beliebig viele Nicht-Buchstaben (Ziffern, Sonderzeichen) vorhanden sein.
+# Im Prinzip ein is_non_upper()
+print('abc123;:_'.islower())  # True
+
+# isupper() testet, ob alle vorhanden Buchstaben, Großbuchstaben sind.
+
+# strip()
+# Zum Trimmen von Strings.
+# Entfernt Zeichen vom Anfang und Ende des Strings.
+# Der Standard sind Whitespaces: Leerzeichen, Zeilenumbrüche (\n), Tabulatoren (\t)
+print('---' + '    Hello    '.strip() + '---')            # ---Hello---
+print('---' + '  \n\n\t  Hello\t\n    '.strip() + '---')  # ---Hello---
+print('abcabcdfghabc'.strip('abc'))                       # dfgh
+
+# Online:
+# https://www.w3schools.com/python/python_ref_string.asp
+# https://docs.python.org/3/library/stdtypes.html#string-methods
+
+# Beispiel Usereingabe:
+# strip(): Falls unbeabsichtigte Leerzeichen vom User kommen, sollen diese entfernt werden.
+# lower(): Die Eingabe wird zu Kleinbuchstaben gemacht, damit man nur auf Kleinbuchstaben vergleichen muss.
+# eingabe = input('Willst du weitermachen?').strip().lower()
+eingabe = 'Ja '
+if eingabe == 'ja':
+    print('Weiter geht es!')
+
+
