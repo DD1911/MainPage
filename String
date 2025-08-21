@@ -1,0 +1,30 @@
+#String
+#Zeichenketten
+
+vorname = 'Daniel'
+nachname = 'Dmitrovski'
+
+#String-Verkettung
+#Konkatation
+#Englisch: concatenation
+#das Pluszeichen dient als Verkettungsoperator,
+#wenn beide Operanden (Werte) Strings sind.
+
+
+name = vorname + nachname               # ohne leerzeichen
+print(name)                             # Daniel Dmitrovski
+name2 = vorname + ' ' + nachname        # mit leerzeichen
+print(name2)                            # Daniel Dmitrovski
+
+#Literal:
+#Literally - wörtlich.
+#Der hardcode Wert wie z.B.: 'Daniel' , 42,  3.5
+#Gegenstück einer Variable.
+
+#String-Multiplikation
+#ein Operand muss ein String sein und der andere ein Integer.
+print('Hello' * 7)                      #Hello Hello Hello Hello Hello Hello Hello
+print(7 * 'Hello')                      #Hello Hello Hello Hello Hello Hello Hello
+
+
+
