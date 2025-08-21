@@ -1,0 +1,118 @@
+# Zahlensysteme
+# unser Zahlensystem ist das Dezimalsystem.
+# Standardmäßig gibt Python Zahlen im Dezimalsystem aus.
+
+# Binärsystem
+# auch genannt: Dualsystem, Zweisystem.
+# Vorne muss 0b | 0b stehen und danach eine binäre Zahl folgen.
+# 0b | 0b ist der Präfix für binäre Zahlen.
+# Mögliche/erlaubte Ziffern: 0, 1
+
+print(0b00000001)       #1
+print(0b00000010)       #2
+print(0b00000011)       #3
+print(0b00000100)       #4
+print(0b00000101)       #5
+print(0b00000110)       #6
+print(0b00000111)       #7
+print(0b00001000)       #8
+print(0b00001001)       #9
+print(0b00001010)       #10
+print(0b00001011)       #11
+print(0b00001100)       #12
+print(0b00001101)       #13
+print(0b00001110)       #14
+print(0b00001111)       #15
+
+print(0b00010000)       #16
+print(0b00100000)       #32
+print(0b01000000)       #64
+print(0b10000000)       #128
+
+# Führende Nullen der binären Zahl können weggelassen werden.
+print(0b10)             #2
+
+# Unterstreichen zur besseren Lesbarkeit.
+print(0b_0101_0101)                 #85 (64 + 16 + 4 + 1)
+print(0b01010101)                   #85 (64 + 16 + 4 + 1)
+
+# bin()
+# Python-eigene Funktion.
+# Gibt von einer Dezimalzahl die Binärzahl zurück.
+
+print(bin(85))          #0b1010101
+print(type(bin(85)))    #<class 'str'>
+
+# Hexadezimalsystem.
+# Vom Wort her 16.
+# Taucht z.B. bei CSS-Farben auf: #FA6CD3
+# 0x | 0X ist der Präfix für hexadezimale Zahlen.
+# Mögliche/erlaubte Ziffern: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F
+print(0x10)                     # 16
+
+print(0xA)                      # 10
+print(0xB)                      # 11
+print(0xC)                      # 12
+print(0xD)                      # 13
+print(0xE)                      # 14
+print(0xF)                      # 15
+
+# Größtmöglicher Wert mit zwei Stellen.
+print(0xFF)                     # 255
+
+print(0xF)                      # 15
+print(0x10)                     # 16
+print(0x11)                     # 17
+
+# Mehr als zwei Stellen braucht man in der Regel nicht.
+print(0xFFF)                    # 4095
+print(0xFFFF)                   # 65535
+
+# Hexadezimal zu Dezimal.
+print(0xD8)                     #216
+
+# hex()
+# Python-eigene Funktion.
+# Gibt von einer Dezimalzahl die Hexadezimal zurück.
+
+print(hex(255))                 #0xff
+
+# Umrechnen bin <-> hex
+# Super easy:
+# Die vier rechten Stellen der Binärzahl entsprechen der rechten Stelle der Hexadezimalzahl.
+# Der nächste Vierblock der Binärzahl entspricht der nächsten Stelle der Hexadezimalzahl.
+print(hex(0b_0101_0101))  # 0x55
+
+print(hex(0b_0101_0101_0101_0101))  # 0x5555
+
+print(hex(0b_1110_1111_1101_1011))  # 0xefdb
+
+print(bin(0xABCD))  # 0b_1010_1011_1100_1101  # 0b_1010_1011_1100_1101
+
+
+# Zu jeder Zahl kann man theoretisch ein Zahlensystem machen.
+
+
+# Octal
+# Das wahrscheinlich viert-praktischste Zahlensystem.
+# Vom Wort acht.
+# 0o | 0O ist der Präfix für oktale Zahlen.
+# Mögliche/erlaubte Ziffern: 0, 1, 2, 3, 4, 5, 6, 7
+print(0o10)  # 8
+print(0o20)  # 16
+
+# Größtmöglicher Wert:
+print(0o77)   # 63
+
+
+# oct()
+# Python-eigene Funktion.
+# Gibt von einer Dezimalzahl die Oktalzahl zurück.
+print(oct(255))  # 0o377 (3*64 + 7*8 + 7)
+
+print(0o100)  # 64
+
+print(0o300)  # 192
+print(0o070)  #  56
+print(0o007)  #   7
+
