@@ -1,0 +1,81 @@
+# Dateibehandlung
+
+# Eingabe/Ausgabe - Input/Output (I/O)
+
+# open()
+# Python-eigene Funktion, als Einstiegspunkt.
+# Gibt einen TextIOWrapper zurück über den wir die Datei benutzen können.
+# Der Modus 'w' steht für write (schreiben).
+# Im Modus 'w' wird die Datei erzeugt, wenn sie nicht schon existiert.
+# Und wenn sie existiert hat, wird der Inhalt gelöscht.
+file1 = open('daten.txt', 'w')
+print(type(file1))
+print(file1.mode)  # w
+
+# Ab jetzt sind alles Methoden vom TextIOWrapper-Objekt
+
+# write()
+# Methode des TextIOWrapper-Objekts.
+# Ohne inklusiven Zeilenumbruch.
+file1.write('Hello File!')
+file1.write(' ')
+file1.write('Hello File!')
+
+# close()
+# Schließt/beendet die Verbindung - Löscht das TextIOWrapper-Objekt.
+# Sollte man immer am Ende machen.
+file1.close()
+
+# Der Modus 'r' für read (lesen)
+file2 = open('daten.txt', 'r')
+
+# read()-Methode
+print(file2.read())  # Hello File! Hello File!
+
+# Im Modus 'r' muss die Datei bereits existieren.
+# file3 = open('daten3.txt', 'r')  # FileNotFoundError
+
+# seek()-Methode
+# Setzt den Dateizeiger um.
+# Nach dem Auslesen der gesamten Datei ist der Dateizeiger am Ende der Datei
+# und ein erneutes Auslesen ist nicht möglich.
+print('2. Auslese-Versuch:', file2.read())  # 2. Auslese-Versuch:
+# Meistens will man den Dateizeiger wieder an den Anfang der Datei setzen.
+file2.seek(0)
+print('3. Auslese-Versuch:', file2.read())  # 3. Auslese-Versuch: Hello File! Hello File!
+
+# Der Modus 'a'
+# 'a' steht für append (anfügen).
+file3 = open('daten.txt', 'a')
+file3.write('\nHello, please append me!')
+
+# Die Modi 'w+', 'r+', 'a+'
+# Bei allen geht Lesen & Schreiben und der Buchstabe bestimmt die restlichen Eigenschaften.
+file4 = open('daten.txt', 'r+')
+for i in range(1, 99+1):
+    file4.write(str(i) + '. Luftballon\n')
+
+file4.seek(0)
+print(file4.read())
+
+# readline()-Methode
+# Liest die nächste Zeile aus.
+file4.seek(0)
+print(file4.readline())  # 1. Luftballon
+
+# readlines()-Methode
+# Gibt alle Zeilen (ab dem Dateizeiger) als Liste zurück.
+file4.seek(0)
+print(file4.readlines())  # ['1. Luftballon\n', '2. Luftballon\n', '3. Luftballon\n', ...
+
+
+
+
+
+
+
+
+
+
+
+
