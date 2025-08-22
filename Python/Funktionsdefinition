@@ -62,4 +62,4 @@ print(16)                          # 16
 def name(vorname, nachname):
     print(vorname + ' ' + nachname)
 
-name('Daniel', 'Dmitrovski')            #Daniel Dmitrovski
+name('Daniel', 'Smith')            #Daniel Smith
