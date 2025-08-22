@@ -2,11 +2,11 @@
 #ein f vor das öffnende Anführungszeichen
 #und dann kann man im string per geschweifter klammern geschützte Bereich für ausführbahren quellcode erstellen.
 vorname = 'Daniel'
-nachname = 'Dmitrovski'
+nachname = 'Smith'
 
 name = f'Mein Name ist {vorname} {nachname}'
 
-print(name)                                #Mein Name ist Daniel Dmitrovski
+print(name)                                #Mein Name ist Daniel Smith
 
 zahl1 = 7
 zahl2 = 8
@@ -17,4 +17,4 @@ print(f'Die Multiplikation ergibt: {zahl1 * zahl2}')  #Die Multiplikation ergibt
 
 #Exkurs Dictionary
 #Benutzer auch die geschweiften Klammern
-dict1 = {'vorname' : 'Daniel', 'nachname': 'Dmitrovski', 'alter': 39}
+dict1 = {'vorname' : 'Daniel', 'nachname': 'Smith', 'alter': 39}
