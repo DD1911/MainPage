@@ -1,3 +1,32 @@
+# Fehlerbehandlung
+
+# Errorhandling
+
+# Exception - Ausnahme
+
+print(int('22'))
+# print(int('zweiundzwanzig'))  # ValueError
+
+# Die wichtigsten Schlüsselwörter sind try & except
+
+# try - probiere (aus)
+# except - außer
+
+# In den try-Block schreibt man das, was schiefgehen könnte (was man ausprobieren möchte).
+# In quasi allen anderen Sprachen heisst es catch statt except.
+# Wenn im try-Block ein Fehler entsteht/geworfen wird,
+# wird dieser vom except-Block aufgefangen.
+try:
+
+    print(int('22'))
+    print(int('zweiundzwanzig'))
+
+except:
+
+    print('Die Eingabe war keine Ganzzahl!')
+
+
+print('Hauptprogrammteil')
 
 # Fehlerbehandlung
 
@@ -23,12 +52,113 @@ except ZeroDivisionError:
 
 # Die Fehlerklassen sind in der UpperCamelCase-Schreibweise
 
+# Fehlerbehandlung
+
+# else
+# Wird ausgeführt, wenn kein except-Block ausgeführt wird.
+
+try:
+
+    eingabe = '7'
+    zahl = int(eingabe)
+    print('Das Ergebnis der Division ist:', 100 / zahl)
+
+    # Alternativer else-Bereich
+    #
+
+    print('Alles war gut! (Alternativer Bereich)')
+
+except ValueError:
+    print('Die Eingabe war keine Ganzzahl!')
+except ZeroDivisionError:
+    print('Die Eingabe war 0!')
+else:
+    print('Alles war gut! (else)')
+
+
+# Fehlerbehandlung
+
+# finally
+# Wird in jedem Fall ausgeführt.
+
+try:
+
+    eingabe = '7'
+    zahl = int(eingabe)
+    print('Das Ergebnis der Division ist:', 100 / zahl)
+
+    # Alternativer else-Bereich
+    # Bereich, der nur erreicht wird, wenn kein Fehler geworfen wird.
+    print('Alles war gut! (Alternativer Bereich)')
+
+except ValueError:
+    print('Die Eingabe war keine Ganzzahl!')
+except ZeroDivisionError:
+    print('Die Eingabe war 0!')
+else:
+    print('Alles war gut! (else)')
+finally:
+    print('Hier werden z.B. Datenbank-Verbindungen geschlossen.')
+
+print('Weiter im Skript.')
 
 
 
+# Fehlerbehandlung
+
+# Alias und BaseException
+
+# Ein Alias kann man mit dem Schlüsselwort as setzen.
+# Dadurch wirf der geworfene Fehler im Alias abgespeichert.
+
+# BaseException
+# https://docs.python.org/3/library/exceptions.html#exception-hierarchy
+# Jede Exception in Python ist ein Nachfahre von BaseException.
+
+# SyntaxError können nicht aufgefangen werden,
+# da das Skript dann gar nicht ausgeführt wird.
+# Es können nur Fehler aufgefangen werden, die zur Laufzeit (Runtime) entstehen.
+
+try:
+
+    # e1 = int('zweiundzwanzig')  # ValueError
+    # e2 = 100 / 0                # ZeroDivisionError
+    # e3 = 'Hello' + 7            # TypeError
+    # e4 = unbekannt              # NameError
+    # def e5(): e5()              # RecursionError
+    # e5()
+    # e6 = open('unbekannt.txt')  # FileNotFoundError
+    # e7 = [1, 2][2]              # IndexError
+    e8 = {'vorname': 'Peter'}['nachname']
+
+except BaseException as e:
+    print(type(e))  # <class '...'>
+    print(e)
 
 
+# Fehlerbehandlung
 
+# Validieren per Exceptions
+
+while True:
+
+    try:
+
+        eingabe = input('Bitte eine Ganzzahl größer 0 eingeben!')
+
+        zahl = int(eingabe)                                  # 'zweiundzwanzig' -> ValueError
+
+        print('Das Ergebnis der Division ist:', 100 / zahl)  # 0 -> ZeroDivisionError
+
+    except ValueError:
+        print('Die Eingabe war keine Ganzzahl!')
+    except ZeroDivisionError:
+        print('Die Eingabe war 0!')
+    else:
+        break
+
+print('Programmstart:')
+print(zahl)
 
 
 
