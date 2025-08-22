@@ -1,0 +1,39 @@
+
+# Fehlerbehandlung
+
+# Errorhandling
+
+# Exception - Ausnahme
+
+print(int('22'))
+# print(int('zweiundzwanzig'))  # ValueError
+
+# Die wichtigsten Schlüsselwörter sind try & except
+
+# try - probiere (aus)
+# except - außer
+
+# In den try-Block schreibt man das, was schiefgehen könnte (was man ausprobieren möchte).
+# In quasi allen anderen Sprachen heisst es catch statt except.
+# Wenn im try-Block ein Fehler entsteht/geworfen wird,
+# wird dieser vom except-Block aufgefangen.
+try:
+
+    print(int('22'))
+    print(int('zweiundzwanzig'))
+
+except:
+
+    print('Die Eingabe war keine Ganzzahl!')
+
+
+print('Hauptprogrammteil')
+
+
+
+
+
+
+
+
+
