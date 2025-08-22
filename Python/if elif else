@@ -69,3 +69,42 @@ elif wochentag == 7:
     print('Sonntag')
 else:
     print('FEHLER')
+
+
+# Fehlerbehandlung
+
+# else
+# Wird ausgeführt, wenn kein except-Block ausgeführt wird.
+
+try:
+
+    eingabe = '7'
+    zahl = int(eingabe)
+    print('Das Ergebnis der Division ist:', 100 / zahl)
+
+    # Alternativer else-Bereich
+    #
+
+    print('Alles war gut! (Alternativer Bereich)')
+
+except ValueError:
+    print('Die Eingabe war keine Ganzzahl!')
+except ZeroDivisionError:
+    print('Die Eingabe war 0!')
+else:
+    print('Alles war gut! (else)')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
