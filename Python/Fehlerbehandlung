@@ -1,0 +1,37 @@
+
+# Fehlerbehandlung
+
+# Fehlernamen.
+# Wenn neben dem except ein Fehlername steht, geht nur diese Fehlerart in diesen except-Block.
+
+try:
+
+    print(int('zweiundzwanzig'))                       # ValueError
+    eingabe = '0'
+    zahl = int(eingabe)
+    print('Das Ergebnis der Division ist:', 100 / zahl)  # ZeroDivisionError
+
+except ValueError:
+    print('Die Eingabe war keine Ganzzahl!')
+except ZeroDivisionError:
+    print('Die Eingabe war 0!')
+
+
+# ZeroDivisionError.
+# Nirgendwo (Mathematik und keiner Programmiersprache) darf man durch 0 teilen.
+# print(100 / 0)  # ZeroDivisionError: division by zero
+
+# Die Fehlerklassen sind in der UpperCamelCase-Schreibweise
+
+
+
+
+
+
+
+
+
+
+
+
+
