@@ -1,0 +1,59 @@
+import random
+
+# Function to determine the winner
+def get_winner(player_choice, computer_choice):
+    if player_choice == computer_choice:
+        return "It's a tie!"
+    
+    # Well beats Rock and Scissors
+    elif (player_choice == "Well" and computer_choice in ["Rock", "Scissors"]) or \
+         (computer_choice == "Well" and player_choice in ["Rock", "Scissors"]):
+        if player_choice == "Well":
+            return "You win! Well beats Rock and Scissors."
+        else:
+            return "Computer wins! Well beats Rock and Scissors."
+    
+    # Paper beats Well
+    elif player_choice == "Paper" and computer_choice == "Well":
+        return "You win! Paper beats Well."
+    elif computer_choice == "Paper" and player_choice == "Well":
+        return "Computer wins! Paper beats Well."
+    
+    # Standard rules
+    elif (player_choice == "Rock" and computer_choice == "Scissors") or \
+         (player_choice == "Scissors" and computer_choice == "Paper") or \
+         (player_choice == "Paper" and computer_choice == "Rock"):
+        return "You win!"
+    else:
+        return "Computer wins!"
+
+# Function to get the computer's choice
+def get_computer_choice():
+    choices = ["Rock", "Scissors", "Paper", "Well"]
+    return random.choice(choices)
+
+# Main function for the game
+def play_game():
+    print("Welcome to Rock, Paper, Scissors with the WELL option!")
+    
+    while True:
+        # User makes a choice
+        player_choice = input("Choose Rock, Paper, Scissors, or Well (or type 'quit' to exit): ").capitalize()
+        
+        if player_choice == 'Quit':
+            print("Game over. Goodbye!")
+            break
+        elif player_choice not in ["Rock", "Scissors", "Paper", "Well"]:
+            print("Invalid input. Please choose Rock, Paper, Scissors, or Well.")
+            continue
+        
+        # The computer makes a choice
+        computer_choice = get_computer_choice()
+        print(f"Computer chooses: {computer_choice}")
+        
+        # Determine the result
+        result = get_winner(player_choice, computer_choice)
+        print(result)
+
+# Start the game
+play_game()
