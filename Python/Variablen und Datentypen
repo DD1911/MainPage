@@ -21,8 +21,8 @@ print(meine_erste_varibale)                    # 23  <-- (Ausgegebenes Ergebnis)
 
 #Python ist case-sensitive
 #Groß- und Kleinschreibung wird unterschieden.
-nachname = ('Dmitrovski')
-print(nachname)                                #Dmitrovski  richtige ausgabe, weil kleingeschrieben
+nachname = ('Smith')
+print(nachname)                                #Smith  richtige ausgabe, weil kleingeschrieben
 #print(Nachname)                                #NameError: 'Nachname' is not defined. Did you mean: 'nachname'?
 
 
