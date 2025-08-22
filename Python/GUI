@@ -1,0 +1,74 @@
+
+# GUI (Graphical User Interface)
+# Grafische Benutzer-Oberfläche
+
+# Das verbreiteste Python-GUI-Package tkinter.
+
+# Der Stern als Wildcard importiert alles.
+
+from tkinter import *
+
+# Ein TK-Objekt erzeugen.
+window = Tk()
+window.title('Urlaubsanspruch')
+window.geometry('512x256')
+
+#Label
+label_alter = Label(window, text = 'Alter', font=('Arial', 20))
+label_alter.grid(column=0, row=0)               #zeile und spalte bestimmen
+
+label_bz = Label(window, text = 'Zugehoerigkeit', font=('Arial', 20))
+label_bz.grid(column=0, row=2)
+
+label_behinderung = Label(window, text = 'Behinderung', font=('Arial', 20))
+label_behinderung.grid(column=0, row=3)
+
+#Entry (Eingabefelder)
+entry_alter = Entry(window, width=15)
+entry_alter.grid(column=1, row=0)
+
+entry_bz = Entry(window, width=15)
+entry_bz.grid(column=1, row=2)
+
+entry_behinderung = Entry(window, width=15)
+entry_behinderung.grid(column=1, row=3)
+
+# Ergebnisfeld
+ergebnis_label = Label(window, text='', font=('Arial', 15), fg='green')
+ergebnis_label.grid(column=0, row=7, columnspan=2, pady=20)
+
+# Berechnungsfunktion
+def berechne_urlaub():
+    try:
+        alter = int(entry_alter.get())
+        zugehoerigkeit = int(entry_bz.get())
+        behinderung = int(entry_behinderung.get())
+
+        urlaubstage = 26  # Basisurlaub
+
+        # Urlaub nach Alter
+        if alter < 18:
+            urlaubstage = 30
+        elif alter >= 55:
+            urlaubstage = 28
+
+        # Zusatzurlaub durch Behinderung
+        if behinderung >= 50:
+            urlaubstage += 5
+
+        # Zusatzurlaub durch Zugehörigkeit
+        if zugehoerigkeit > 10:
+            urlaubstage += 2
+
+        ergebnis_label.config(text=f'Dein Urlaubsanspruch beträgt {urlaubstage} Tage.')
+
+    except ValueError:
+        ergebnis_label.config(text="Bitte nur ganze Zahlen eingeben!", fg='red')
+
+
+# Button
+btn_berechnen = Button(window, text="Berechne deine Urlaubstage", command=berechne_urlaub)
+btn_berechnen.grid(column=0, row=4, columnspan=2, pady=10)
+
+# GUI starten
+window.mainloop()
