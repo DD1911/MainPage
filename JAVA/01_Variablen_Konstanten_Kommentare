@@ -1,0 +1,60 @@
+public class 01_Variablen_Konstanten_Kommentare {
+    public static void main(String[] args){
+        System.out.println("So Erstellt man ein Kommentar")
+
+        // Einzeiliger Kommentar
+    
+        /*
+        * Hallo
+        * public class 1_Variablen_Konstanten_Kommentare = Eine Klasse namens 1_Variablen_Konstanten_Kommentare
+        * public static void main(String[] args) = Startpunkt des Programms.
+        * System.out.println(...) = Gibt Text in der Konsole aus.
+        * Erklaer kommentare
+        * */
+
+        /*
+        * JavaDoc - Kommentar wird eingeleitet mit /**
+        * in diesen Spalzen koennen zukuenftig Informationen stehe
+        * fuer einen automatiserte Dokumentation eingeben. 
+         */
+
+        /* ----------------------------------------------------------------------------------------------------------*/
+
+        /*
+        * ---- Bennenungsregeln fuer varibalen ----
+        * Varibalen muessen mit einem Bichstaben oder "_" (Unterstrich, engl. underscore), oder $ beginnen
+        * Es duerfen auch keine Java-Schluesselwoerter verwendet werden 
+        * Keine Umlaute!
+        * */
+
+        // ---- Namenskonvention von Variablen ----
+
+        /*
+        * Variablen werden im LowerCamelCase geschrieben
+        * Jedes neue Wort wird gross geschrieben ( der erste Buchstabe eines Wortes )
+        * Am Anfang werden Variablen klein geschrieben: z.B.: "eineZahl", "tollesWetterHeute"
+        */
+       int eineZahl;                            // Reine Deklaration der Varibale ohne Initialisierung
+       eineZahl = 20;                           // Initialisierung der vorher erstellten Variable
+
+       int eineZahl2 = 15;                      // Deklaration + Initialisierung in der gleichen Zeile
+
+       int zahl3, zahl4, zahl5;                 // Mehrfach Deklaration, Datentyp vorne gibt Datentyp fuer alle Variablen an
+
+       /*
+       * Konstanten werden komplett gross geschrieben mit Unterstrich getrennt
+       * und mit final ( unveraenderlich) definiert
+       * So definierte KOnstanten koennen dann nicht mehr veraendert werden
+       * SCREAMING_SNAKE_CASE   
+       */
+
+      final int Eine_Konstante = 100;
+
+      /*
+      * Trennsymbol: Verbessert die lesbarkeit von Zahlen im Quellcode
+      * Trennersymbol darf nicht am Anfang, am ende vor dem Dezimaltrennzeichen oder binaer, Hexa, oder oktal - Definierer stehen
+      */
+    
+      int meineZahl = 200_000;
+    }
+}
