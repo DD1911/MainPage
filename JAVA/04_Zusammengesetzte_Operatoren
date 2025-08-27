@@ -1,0 +1,55 @@
+
+/**
+ * Klasse 04_Zusammengesetzte_Operatoren
+ * 
+ * Diese Klasse zeigt:
+ * - Zuweisungsoperatoren (=)
+ * - Additions-/Subtraktions-/Multiplikations-/Divisions-/Modulo-Zuweisungen (+=, -=, *=, /=, %=)
+ * - Inkrement- und Dekrement-Operatoren (++ und --)
+ * - Beispiele und Erklärungen für die Praxis
+ */
+
+public class _04_Zusammengesetzte_Operatoren {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. Zuweisungsoperator ===");
+
+        int zahl1 = 10; // Wert 10 wird der Variablen zahl1 zugewiesen
+        System.out.println("Ergebnis: zahl1 = " + zahl1); // Ausgabe: 10
+
+        System.out.println("\n=== 2. Additionszuweisungsoperator (+=) ===");
+        zahl1 += 5; // entspricht: zahl1 = zahl1 + 5
+        System.out.println("zahl1 += 5 -> " + zahl1); // Ausgabe: 15
+
+        System.out.println("\n=== 3. Subtraktionszuweisungsoperator (-=) ===");
+        zahl1 -= 3; // entspricht: zahl1 = zahl1 - 3
+        System.out.println("zahl1 -= 3 -> " + zahl1); // Ausgabe: 12
+
+        System.out.println("\n=== 4. Multiplikationszuweisungsoperator (*=) ===");
+        zahl1 *= 2; // entspricht: zahl1 = zahl1 * 2
+        System.out.println("zahl1 *= 2 -> " + zahl1); // Ausgabe: 24
+
+        System.out.println("\n=== 5. Divisionszuweisungsoperator (/=) ===");
+        zahl1 /= 4; // entspricht: zahl1 = zahl1 / 4
+        System.out.println("zahl1 /= 4 -> " + zahl1); // Ausgabe: 6
+
+        System.out.println("\n=== 6. Modulo-Zuweisungsoperator (%=) ===");
+        zahl1 %= 3; // entspricht: zahl1 = zahl1 % 3 (Rest der Division)
+        System.out.println("zahl1 %= 3 -> " + zahl1); // Ausgabe: 0
+
+        System.out.println("\n=== 7. Inkrement-Operator (++) ===");
+        zahl1++; // erhöht den Wert um 1, entspricht: zahl1 = zahl1 + 1
+        System.out.println("zahl1++ -> " + zahl1); // Ausgabe: 1
+
+        System.out.println("\n=== 8. Dekrement-Operator (--) ===");
+        zahl1--; // verringert den Wert um 1, entspricht: zahl1 = zahl1 - 1
+        System.out.println("zahl1-- -> " + zahl1); // Ausgabe: 0
+
+        System.out.println("\n=== Hinweise ===");
+        System.out.println("- Zusammengesetzte Operatoren vereinfachen Berechnungen und Zuweisungen.");
+        System.out.println("- ++ und -- können als Präfix (++zahl) oder Postfix (zahl++) verwendet werden:");
+        System.out.println("  Präfix erhöht vor der Berechnung, Postfix danach.");
+        System.out.println("- Modulo (%) liefert den Rest einer Division.");
+    }
+}
