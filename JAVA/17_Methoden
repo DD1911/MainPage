@@ -1,5 +1,5 @@
 /**
- * Klasse 15_Methoden
+ * Klasse 17_Methoden
  * 
  * Diese Klasse demonstriert:
  * 1. Definition und Aufruf von Methoden
@@ -10,7 +10,7 @@
  * 6. Praktische Beispiele und Tipps
  */
 
-public class _15_Methoden {
+public class _17_Methoden {
 
     public static void main(String[] args) {
 
