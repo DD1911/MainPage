@@ -1,60 +1,79 @@
-public class 01_Variablen_Konstanten_Kommentare {
+
+/**
+ * Klasse 01_Variablen_Konstanten_Kommentare
+ * 
+ * Einführung:
+ * - Wie man Kommentare schreibt (einzeilig, mehrzeilig, JavaDoc)
+ * - Deklaration und Initialisierung von Variablen
+ * - Konstanten definieren
+ * - Namenskonventionen für Variablen und Konstanten
+ * - Trennzeichen für Zahlen
+ */
+
+public class _01_Variablen_Konstanten_Kommentare {
+
     public static void main(String[] args){
-        System.out.println("So Erstellt man ein Kommentar")
 
-        // Einzeiliger Kommentar
-    
-        /*
-        * Hallo
-        * public class 1_Variablen_Konstanten_Kommentare = Eine Klasse namens 1_Variablen_Konstanten_Kommentare
-        * public static void main(String[] args) = Startpunkt des Programms.
-        * System.out.println(...) = Gibt Text in der Konsole aus.
-        * Erklaer kommentare
-        * */
+        System.out.println("So erstellt man einen Kommentar");
+
+        // === 1. Kommentare ===
+        // Einzeiliger Kommentar: wird nur in dieser Zeile ausgeführt
 
         /*
-        * JavaDoc - Kommentar wird eingeleitet mit /**
-        * in diesen Spalzen koennen zukuenftig Informationen stehe
-        * fuer einen automatiserte Dokumentation eingeben. 
+         * Mehrzeiliger Kommentar:
+         * Kann über mehrere Zeilen gehen
+         * Gut für ausführliche Erklärungen
          */
 
-        /* ----------------------------------------------------------------------------------------------------------*/
+        /**
+         * JavaDoc-Kommentar:
+         * Wird für automatische Dokumentationen verwendet
+         * Beginnt mit /** und endet mit */
+         */
 
-        /*
-        * ---- Bennenungsregeln fuer varibalen ----
-        * Varibalen muessen mit einem Bichstaben oder "_" (Unterstrich, engl. underscore), oder $ beginnen
-        * Es duerfen auch keine Java-Schluesselwoerter verwendet werden 
-        * Keine Umlaute!
-        * */
+        System.out.println("Kommentare sind wichtig für die Lesbarkeit!");
 
-        // ---- Namenskonvention von Variablen ----
+        // === 2. Variablen ===
+        // Variablen speichern Daten während der Programmausführung
 
-        /*
-        * Variablen werden im LowerCamelCase geschrieben
-        * Jedes neue Wort wird gross geschrieben ( der erste Buchstabe eines Wortes )
-        * Am Anfang werden Variablen klein geschrieben: z.B.: "eineZahl", "tollesWetterHeute"
-        */
-       int eineZahl;                            // Reine Deklaration der Varibale ohne Initialisierung
-       eineZahl = 20;                           // Initialisierung der vorher erstellten Variable
+        // Deklaration einer Variable (nur Typ + Name)
+        int eineZahl;                
+        eineZahl = 20;               // Initialisierung: Wert zuweisen
 
-       int eineZahl2 = 15;                      // Deklaration + Initialisierung in der gleichen Zeile
+        // Deklaration + Initialisierung in einer Zeile
+        int eineZahl2 = 15;
 
-       int zahl3, zahl4, zahl5;                 // Mehrfach Deklaration, Datentyp vorne gibt Datentyp fuer alle Variablen an
+        // Mehrfach-Deklaration derselben Art
+        int zahl3, zahl4, zahl5;     // alle int
 
-       /*
-       * Konstanten werden komplett gross geschrieben mit Unterstrich getrennt
-       * und mit final ( unveraenderlich) definiert
-       * So definierte KOnstanten koennen dann nicht mehr veraendert werden
-       * SCREAMING_SNAKE_CASE   
-       */
+        // === 3. Konstanten ===
+        // Konstanten sind unveränderliche Werte, werden mit final deklariert
+        // Namenskonvention: SCREAMING_SNAKE_CASE
+        final int MAX_WERT = 100;
 
-      final int Eine_Konstante = 100;
+        // Versuch, eine Konstante zu ändern, führt zu Fehler:
+        // MAX_WERT = 200;  // ❌ Kompilerfehler
 
-      /*
-      * Trennsymbol: Verbessert die lesbarkeit von Zahlen im Quellcode
-      * Trennersymbol darf nicht am Anfang, am ende vor dem Dezimaltrennzeichen oder binaer, Hexa, oder oktal - Definierer stehen
-      */
-    
-      int meineZahl = 200_000;
+        // === 4. Namenskonventionen für Variablen ===
+        // LowerCamelCase:
+        int meinAlter = 25;
+        String aktuellesWetter = "Sonnig";
+
+        // Variablen dürfen nicht mit Zahlen oder Sonderzeichen beginnen
+        // z.B. int 1Zahl; ❌ ist falsch
+        // int _ersteZahl; ✅ korrekt
+        // int $preis; ✅ korrekt
+
+        // Java-Schlüsselwörter dürfen nicht verwendet werden
+        // z.B. int class; ❌
+
+        // === 5. Trennsymbol für Zahlen ===
+        // Erleichtert die Lesbarkeit großer Zahlen
+        int grosseZahl = 200_000;    // 200000, das Unterstrichsymbol dient nur der Lesbarkeit
+
+        System.out.println("Variable eineZahl: " + eineZahl);
+        System.out.println("Variable eineZahl2: " + eineZahl2);
+        System.out.println("Konstante MAX_WERT: " + MAX_WERT);
+        System.out.println("Variable grosseZahl: " + grosseZahl);
     }
 }
