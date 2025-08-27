@@ -1,0 +1,70 @@
+/**
+ * Klasse 09_SwitchCase
+ * 
+ * Diese Klasse demonstriert:
+ * - Grundlegende Switch-Case-Struktur
+ * - Verwendung von int, String und char im Switch
+ * - Fallunterscheidung (case)
+ * - Default-Fall für alle anderen Werte
+ * - Wichtigkeit von break
+ * - Interaktive Eingabe über Scanner
+ */
+
+import java.util.Scanner;
+
+public class _09_SwitchCase {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. Einfaches Switch-Case Beispiel ===");
+
+        int tag = 2; // Beispielwert für den Wochentag
+
+        // Switch-Case prüft den Wert von tag
+        switch (tag) {
+            case 1:
+                System.out.println("Heute ist Montag.");
+                break; // beendet den Switch-Block nach Ausführung des Falls
+            case 2:
+                System.out.println("Heute ist Dienstag.");
+                break;
+            case 3:
+                System.out.println("Heute ist Mittwoch.");
+                break;
+            default:
+                // Default wird ausgeführt, wenn kein case zutrifft
+                System.out.println("Heute ist kein Wochentag, es ist Wochenende.");
+        }
+
+        System.out.println("\n=== 2. Interaktives Switch-Case Beispiel ===");
+
+        // Scanner für Benutzereingabe
+        Scanner input = new Scanner(System.in);
+        System.out.print("Bitte geben Sie den Wochentag (1-3) ein: ");
+        int userInput = input.nextInt(); // Benutzereingabe speichern
+
+        // Switch prüft nun den vom Benutzer eingegebenen Wert
+        switch (userInput) {
+            case 1:
+                System.out.println("Menüpunkt 1 ausgewählt");
+                break; // Ohne break würde die Ausführung in den nächsten case "fallen" (Fallthrough)
+            case 2:
+                System.out.println("Menüpunkt 2 ausgewählt");
+                break;
+            case 3:
+                System.out.println("Menüpunkt 3 ausgewählt");
+                break;
+            default:
+                System.out.println("Ungültige Eingabe"); // Standardfall für alle anderen Werte
+        }
+
+        System.out.println("\n=== 3. Tipps für Switch-Case ===");
+        System.out.println("- Switch kann mit int, byte, short, char, String und enum verwendet werden.");
+        System.out.println("- Jeder case sollte in der Regel mit break enden, um ungewolltes Durchfallen zu vermeiden.");
+        System.out.println("- Default-Fall fängt alle nicht explizit behandelten Werte ab.");
+        System.out.println("- Switch-Case eignet sich für Mehrfachauswahl oder Menüs.");
+        System.out.println("- Klammern und Einrückung helfen, die Struktur klar zu halten.");
+
+        input.close(); // Scanner schließen, um Ressourcen freizugeben
+    }
+}
