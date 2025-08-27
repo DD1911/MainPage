@@ -1,0 +1,78 @@
+
+/**
+ * Klasse 05_Strings
+ * 
+ * Einführung in Strings in Java:
+ * - Strings als Zeichenketten
+ * - Verkettung von Strings
+ * - Verkettung mit anderen Datentypen
+ * - Länge eines Strings
+ * - Zugriff auf einzelne Zeichen
+ * - Teilstrings (Substring)
+ * - Wichtige Hinweise zu StringIndexOutOfBoundsException
+ */
+
+public class _05_Strings {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. Grundlegende Strings ===");
+
+        // Deklaration und Initialisierung eines Strings
+        String meinString = "Hallo Welt!";
+        System.out.println(meinString); // Ausgabe: "Hallo Welt!"
+
+        System.out.println("\n=== 2. Verkettung von Strings ===");
+
+        String string1 = "Hallo";
+        String string2 = "Welt";
+        String string3 = string1 + " " + string2 + "!"; // Ergebnis: "Hallo Welt!"
+        System.out.println(string3);
+
+        System.out.println("\n=== 3. Verkettung mit anderen Datentypen ===");
+
+        int zahl1 = 10;
+        int zahl2 = 20;
+
+        // Verkettung von Strings und Zahlen, Berechnung in Klammern
+        String string4 = "Die Summe von " + zahl1 + " und " + zahl2 + " ist " + (zahl1 + zahl2) + ".";
+        System.out.println(string4); // Ausgabe: "Die Summe von 10 und 20 ist 30."
+
+        // Achtung: Ohne Klammern wird links-nach-rechts ausgewertet
+        String string5 = "Ergebnis: " + zahl1 + zahl2; // Ausgabe: "Ergebnis: 1020"
+        System.out.println(string5);
+
+        // Mit Klammern wird zuerst gerechnet
+        String string6 = "Ergebnis: " + (zahl1 + zahl2); // Ausgabe: "Ergebnis: 30"
+        System.out.println(string6);
+
+        System.out.println("\n=== 4. Länge eines Strings ===");
+
+        String string7 = "Hallo Welt!";
+        int laenge = string7.length(); // Anzahl der Zeichen im String
+        System.out.println("Die Länge des Strings \"" + string7 + "\" ist: " + laenge); // Ausgabe: 11
+
+        System.out.println("\n=== 5. Zugriff auf einzelne Zeichen ===");
+
+        char erstesZeichen = string7.charAt(0); // Index 0 = erstes Zeichen
+        char zweitesZeichen = string7.charAt(1); // Index 1 = zweites Zeichen
+        System.out.println("Das erste Zeichen ist: " + erstesZeichen); // H
+        System.out.println("Das zweite Zeichen ist: " + zweitesZeichen); // a
+
+        System.out.println("\n=== 6. Teilstring (Substring) ===");
+
+        // Teilstring von Index 0 bis 5 (5 exklusiv)
+        String teilString = string7.substring(0, 5); // "Hallo"
+        System.out.println("Teilstring (0-5): " + teilString);
+
+        // Teilstring ab Index 6 bis Ende
+        String teilString2 = string7.substring(6); // "Welt!"
+        System.out.println("Teilstring (6-Ende): " + teilString2);
+
+        System.out.println("\n=== 7. Wichtige Hinweise ===");
+        System.out.println("- String-Indizes beginnen bei 0.");
+        System.out.println("- substring(a, b) nimmt Zeichen von Index a bis b-1.");
+        System.out.println("- Zugriff auf ungültige Indizes löst StringIndexOutOfBoundsException aus.");
+        System.out.println("- Verkettung mit Zahlen: Klammern beachten, sonst falsches Ergebnis.");
+    }
+}
