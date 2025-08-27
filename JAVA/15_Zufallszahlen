@@ -1,0 +1,93 @@
+
+// Import für Zufallszahlen
+import java.util.Random;
+
+/**
+ * Klasse 15_Zufallszahlen
+ * 
+ * Diese Klasse zeigt umfassend:
+ * 1. Erstellung eines Zufallszahlengenerators
+ * 2. 1D-Array mit Zufallszahlen füllen
+ * 3. Ausgabe der Zahlen
+ * 4. Zufallszahlen in unterschiedlichen Bereichen
+ * 5. Double-Zufallszahlen
+ * 6. Statistische Auswertungen (Minimum, Maximum, Summe, Durchschnitt)
+ * 7. 2D-Array mit Zufallszahlen
+ * 
+ * Jede Zeile ist kommentiert, um den Ablauf vollständig zu verstehen.
+ */
+public class _15_Zufallszahlen {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. Zufallszahlengenerator erstellen ===");
+        Random random = new Random(); // Random-Objekt erzeugen
+
+        System.out.println("\n=== 2. 1D-Array mit Zufallszahlen füllen ===");
+        int[] zufallszahlen = new int[10]; // Array mit 10 Elementen
+
+        // Array mit Zufallszahlen 0–99 füllen
+        for (int i = 0; i < zufallszahlen.length; i++) {
+            zufallszahlen[i] = random.nextInt(100); // nextInt(100) -> 0 bis 99
+        }
+
+        System.out.println("Zufallszahlen im Array:");
+        for (int zahl : zufallszahlen) {
+            System.out.println(zahl);
+        }
+
+        System.out.println("\n=== 3. Zufallszahlen in anderem Bereich (50–150) ===");
+        for (int i = 0; i < zufallszahlen.length; i++) {
+            zufallszahlen[i] = 50 + random.nextInt(101); // 50 bis 150
+        }
+        for (int zahl : zufallszahlen) {
+            System.out.println(zahl);
+        }
+
+        System.out.println("\n=== 4. Double-Zufallszahlen (0.0 bis 100.0) ===");
+        double[] zufallDouble = new double[5];
+        for (int i = 0; i < zufallDouble.length; i++) {
+            zufallDouble[i] = random.nextDouble() * 100; // 0.0 bis 100.0
+            System.out.println(zufallDouble[i]);
+        }
+
+        System.out.println("\n=== 5. Statistische Auswertung ===");
+        int min = zufallszahlen[0];
+        int max = zufallszahlen[0];
+        int summe = 0;
+        for (int zahl : zufallszahlen) {
+            if (zahl < min) min = zahl;
+            if (zahl > max) max = zahl;
+            summe += zahl;
+        }
+        double durchschnitt = (double) summe / zufallszahlen.length;
+
+        System.out.println("Minimum: " + min);
+        System.out.println("Maximum: " + max);
+        System.out.println("Summe: " + summe);
+        System.out.println("Durchschnitt: " + durchschnitt);
+
+        System.out.println("\n=== 6. 2D-Array mit Zufallszahlen ===");
+        int[][] matrix = new int[3][4]; // 3 Zeilen, 4 Spalten
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                matrix[i][j] = random.nextInt(50); // 0–49
+            }
+        }
+
+        System.out.println("2D-Array Werte:");
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + "\t");
+            }
+            System.out.println();
+        }
+
+        System.out.println("\n=== Zusammenfassung ===");
+        System.out.println("- Random.nextInt(max) erzeugt ganze Zahlen von 0 bis max-1");
+        System.out.println("- Random.nextDouble() erzeugt Gleitkommazahlen zwischen 0.0 und 1.0");
+        System.out.println("- Arrays können 1D oder 2D sein");
+        System.out.println("- Statistische Auswertungen wie min, max, summe, durchschnitt möglich");
+        System.out.println("- Verschiedene Wertebereiche sind einfach anpassbar");
+    }
+}
