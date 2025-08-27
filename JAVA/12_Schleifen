@@ -1,0 +1,78 @@
+
+/**
+ * Klasse 12_Schleifen
+ * 
+ * Diese Klasse demonstriert alle grundlegenden Schleifenarten in Java:
+ * - For-Schleife
+ * - While-Schleife
+ * - Do-While-Schleife
+ * 
+ * Zusätzlich enthalten:
+ * - Verschachtelte Schleifen
+ * - Break & Continue
+ * - Tipps zur Verwendung von Schleifen
+ */
+
+public class _12_Schleifen {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. For-Schleife ===");
+        // For-Schleife: Wiederholt Code eine bekannte Anzahl von Malen
+        // Syntax: for (Startwert; Bedingung; Schritt)
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("For-Schleife, i = " + i);
+        }
+
+        System.out.println("\n=== 2. While-Schleife ===");
+        // While-Schleife: Wiederholt Code solange Bedingung true ist
+        int j = 1;
+        while (j <= 5) {
+            System.out.println("While-Schleife, j = " + j);
+            j++; // Schleifenvariable erhöhen
+        }
+
+        System.out.println("\n=== 3. Do-While-Schleife ===");
+        // Do-While-Schleife: Code wird mindestens einmal ausgeführt
+        int k = 1;
+        do {
+            System.out.println("Do-While-Schleife, k = " + k);
+            k++;
+        } while (k <= 5); // Bedingung am Ende prüfen
+
+        System.out.println("\n=== 4. Verschachtelte Schleifen ===");
+        // Beispiel für verschachtelte For-Schleifen (z.B. für Tabellen)
+        for (int row = 1; row <= 3; row++) {
+            for (int col = 1; col <= 3; col++) {
+                System.out.print("(" + row + "," + col + ") ");
+            }
+            System.out.println(); // Neue Zeile nach jeder Reihe
+        }
+
+        System.out.println("\n=== 5. Break & Continue Beispiele ===");
+        // Break: Schleife sofort beenden
+        for (int i = 1; i <= 5; i++) {
+            if (i == 4) {
+                System.out.println("Break bei i=4, Schleife wird beendet");
+                break;
+            }
+            System.out.println("i = " + i);
+        }
+
+        // Continue: Aktuellen Durchlauf überspringen
+        for (int i = 1; i <= 5; i++) {
+            if (i % 2 == 0) {
+                System.out.println("Continue bei gerader Zahl i=" + i);
+                continue;
+            }
+            System.out.println("Ungerade Zahl i=" + i);
+        }
+
+        System.out.println("\n=== 6. Tipps für Schleifen ===");
+        System.out.println("- For-Schleifen: feste Anzahl von Wiederholungen");
+        System.out.println("- While-Schleifen: Bedingung wird zuerst geprüft");
+        System.out.println("- Do-While-Schleifen: mindestens einmal ausführen");
+        System.out.println("- Verschachtelte Schleifen: nützlich für Tabellen, Matrizen oder Arrays");
+        System.out.println("- Break & Continue zur Steuerung von Schleifen");
+    }
+}
