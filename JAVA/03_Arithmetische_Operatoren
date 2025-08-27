@@ -1,0 +1,111 @@
+
+/**
+ * Klasse 03_Arithmetische_Operatoren
+ * 
+ * Einführung in arithmetische Operationen in Java:
+ * - Addition (+), Subtraktion (-), Multiplikation (*), Division (/), Modulo (%)
+ * - Unterschied zwischen int, float und double bei Division
+ * - Inkrement (++) und Dekrement (--)
+ * - Präfix vs. Postfix
+ * - Verkettung von Rechenoperationen
+ * - Zusammengesetzte Zuweisungen (+=, -=, *=, /=, %=)
+ */
+
+public class _03_Arithmetische_Operatoren {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. Grundrechenarten ===");
+
+        // Addition
+        int zahl1 = 10;
+        int zahl2 = 15;
+        int summe = zahl1 + zahl2; // 10 + 15 = 25
+        System.out.println("Addition: " + zahl1 + " + " + zahl2 + " = " + summe);
+
+        // Subtraktion
+        int zahl3 = 20;
+        int zahl4 = 5;
+        int differenz = zahl3 - zahl4; // 20 - 5 = 15
+        System.out.println("Subtraktion: " + zahl3 + " - " + zahl4 + " = " + differenz);
+
+        // Multiplikation
+        int zahl5 = 5;
+        int zahl6 = 4;
+        int produkt = zahl5 * zahl6; // 5 * 4 = 20
+        System.out.println("Multiplikation: " + zahl5 + " * " + zahl6 + " = " + produkt);
+
+        // Division
+        int zahl7 = 20;
+        int zahl8 = 4;
+        int divInt = zahl7 / zahl8; // int-Division: 20 / 4 = 5
+        System.out.println("Division (int): " + zahl7 + " / " + zahl8 + " = " + divInt);
+
+        float divFloat = (float) zahl7 / zahl8; // float-Division: 20 / 4 = 5.0
+        double divDouble = (double) zahl7 / zahl8; // double-Division: 20 / 4 = 5.0
+        System.out.println("Division (float): " + divFloat);
+        System.out.println("Division (double): " + divDouble);
+
+        // Division mit Rest
+        int zahl9 = 20;
+        int zahl10 = 6;
+        int intDiv = zahl9 / zahl10; // Ergebnis int: 3
+        float floatDiv = (float) zahl9 / zahl10; // Ergebnis float: 3.3333333
+        double doubleDiv = (double) zahl9 / zahl10; // Ergebnis double: 3.3333333333333335
+        System.out.println("Division 20/6 (int) = " + intDiv);
+        System.out.println("Division 20/6 (float) = " + floatDiv);
+        System.out.println("Division 20/6 (double) = " + doubleDiv);
+
+        System.out.println("\n=== 2. Modulo (Restwert) ===");
+        int zahlMod = 20 % 6; // Rest der Division 20 / 6 = 2
+        System.out.println("20 % 6 = " + zahlMod);
+
+        // Beispiel gerade/ungerade
+        int zahlCheck = 10;
+        if (zahlCheck % 2 == 0) {
+            System.out.println(zahlCheck + " ist gerade");
+        } else {
+            System.out.println(zahlCheck + " ist ungerade");
+        }
+
+        zahlCheck = 7;
+        if (zahlCheck % 2 == 0) {
+            System.out.println(zahlCheck + " ist gerade");
+        } else {
+            System.out.println(zahlCheck + " ist ungerade");
+        }
+
+        System.out.println("\n=== 3. Inkrement und Dekrement ===");
+        int zahlInc = 5;
+        int zahlDec = 5;
+
+        // Postfix-Inkrement: Wert wird erst genutzt, dann erhöht
+        System.out.println("Post-Inkrement: zahlInc++ = " + zahlInc++);
+        System.out.println("Wert nach Post-Inkrement: " + zahlInc);
+
+        // Präfix-Inkrement: Wert wird zuerst erhöht, dann genutzt
+        System.out.println("Pre-Inkrement: ++zahlDec = " + ++zahlDec);
+
+        int zahlPostD = 5;
+        int zahlPreD = 5;
+        System.out.println("Post-Dekrement: zahlPostD-- = " + zahlPostD--);
+        System.out.println("Wert nach Post-Dekrement: " + zahlPostD);
+        System.out.println("Pre-Dekrement: --zahlPreD = " + --zahlPreD);
+
+        System.out.println("\n=== 4. Kettenrechnung und Operatorreihenfolge ===");
+        int a = 10, b = 5, c = 2;
+        int ergebnis1 = a + b * c; // Punkt-vor-Strich: 5*2=10, dann 10+10=20
+        int ergebnis2 = (a + b) * c; // Klammern ändern Reihenfolge: 10+5=15, 15*2=30
+        System.out.println("a + b * c = " + ergebnis1);
+        System.out.println("(a + b) * c = " + ergebnis2);
+
+        System.out.println("\n=== 5. Zusammengesetzte Operatoren ===");
+        int zahlComp = 10;
+        zahlComp += 5; // 15
+        zahlComp -= 3; // 12
+        zahlComp *= 2; // 24
+        zahlComp /= 4; // 6
+        zahlComp %= 4; // 2
+        System.out.println("Ergebnis zusammengesetzte Operatoren = " + zahlComp);
+    }
+}
