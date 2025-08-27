@@ -1,0 +1,80 @@
+/**
+ * Klasse 10_BoolscheOperatoren
+ * 
+ * Diese Klasse demonstriert:
+ * - Logisches UND (&&)
+ * - Logisches ODER (||)
+ * - Logisches NICHT (!)
+ * 
+ * Zusätzlich:
+ * - Anwendung in if-Anweisungen
+ * - Kombinationen von booleschen Ausdrücken
+ * - Tipps für korrekte Nutzung
+ */
+
+public class _10_BoolscheOperatoren {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. Boolesche Variablen ===");
+        boolean a = true;
+        boolean b = false;
+
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+
+        System.out.println("\n=== 2. Logisches UND (&&) ===");
+        boolean c = a && b; // true, wenn a UND b beide true sind
+        System.out.println("a && b: " + c);
+
+        boolean f = a && !b; // true, wenn a true UND b false → !b = true
+        System.out.println("a && !b: " + f);
+
+        System.out.println("\n=== 3. Logisches ODER (||) ===");
+        boolean d = a || b; // true, wenn a ODER b mindestens true ist
+        System.out.println("a || b: " + d);
+
+        System.out.println("\n=== 4. Logisches NICHT (!) ===");
+        boolean e = !a; // dreht den Wert von a um
+        System.out.println("!a: " + e);
+        System.out.println("!b: " + !b);
+
+        System.out.println("\n=== 5. Anwendung in if-Anweisungen ===");
+
+        // UND-Beispiel
+        if (a && b) {
+            System.out.println("a UND b sind beide wahr");
+        } else {
+            System.out.println("Mindestens einer von a oder b ist falsch");
+        }
+
+        if (a && f) {
+            System.out.println("a ist wahr UND f ist wahr");
+        }
+
+        // ODER-Beispiel
+        if (a || b) {
+            System.out.println("Mindestens einer von a oder b ist wahr");
+        }
+
+        // NICHT-Beispiel
+        if (!a) {
+            System.out.println("a ist falsch");
+        } else {
+            System.out.println("a ist wahr");
+        }
+
+        if (!b) {
+            System.out.println("b ist falsch");
+        } else {
+            System.out.println("b ist wahr");
+        }
+
+        System.out.println("\n=== 6. Tipps für boolesche Operatoren ===");
+        System.out.println("- && (UND) liefert true nur, wenn beide Operanden true sind.");
+        System.out.println("- || (ODER) liefert true, wenn mindestens ein Operand true ist.");
+        System.out.println("- ! (NICHT) kehrt den booleschen Wert um.");
+        System.out.println("- Kombinationen ermöglichen komplexe Bedingungen in if-Anweisungen.");
+        System.out.println("- Klammern können zur Klarheit bei komplexen Ausdrücken helfen: (a && b) || (!c)");
+    }
+}
