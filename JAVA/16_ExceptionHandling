@@ -1,0 +1,108 @@
+/**
+ * Klasse 16_ExceptionHandling
+ * 
+ * Vollständige Einführung in Exception Handling in Java:
+ * - Try-Catch-Blöcke
+ * - Mehrere Catch-Blöcke
+ * - Finally-Block
+ * - Verschachtelte Try-Catch-Blöcke
+ * - Benutzerdefinierte Exceptions
+ * - Throws in Methoden
+ * - Tipps für gute Fehlerbehandlung
+ */
+
+public class _16_ExceptionHandling {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. Grundlegendes Try-Catch ===");
+        try {
+            int[] zahlen = {1, 2, 3};
+            // Zugriff auf einen ungültigen Index
+            System.out.println(zahlen[3]); // ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Fehler: Index außerhalb der Array-Grenzen!");
+            System.out.println("Fehlermeldung: " + e.getMessage());
+            e.printStackTrace(); // Detaillierte Fehlermeldung
+        }
+
+        System.out.println("\n=== 2. Mehrere Catch-Blöcke ===");
+        try {
+            String text = null;
+            System.out.println(text.length()); // NullPointerException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array-Fehler: " + e.getMessage());
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException: Objekt ist null!");
+            e.printStackTrace();
+        } catch (Exception e) { // Allgemeiner Catch
+            System.out.println("Unbekannter Fehler: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        System.out.println("\n=== 3. Finally-Block ===");
+        try {
+            int ergebnis = 10 / 0; // ArithmeticException
+            System.out.println(ergebnis);
+        } catch (ArithmeticException e) {
+            System.out.println("Fehler: Division durch Null!");
+        } finally {
+            // Wird immer ausgeführt, z. B. zum Schließen von Ressourcen
+            System.out.println("Finally-Block: Aufräumarbeiten werden durchgeführt.");
+        }
+
+        System.out.println("\n=== 4. Verschachtelte Try-Catch-Blöcke ===");
+        try {
+            int[] array = new int[2];
+            try {
+                System.out.println(array[5]); // ArrayIndexOutOfBoundsException
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Innere Catch: Ungültiger Array-Index");
+            }
+            // Weitere Anweisungen im äußeren Try-Block
+            String s = null;
+            System.out.println(s.length()); // NullPointerException
+        } catch (NullPointerException e) {
+            System.out.println("Äußere Catch: NullPointerException abgefangen");
+        }
+
+        System.out.println("\n=== 5. Benutzerdefinierte Exception ===");
+        try {
+            int alter = -3;
+            if (alter < 0) {
+                // Eigene Exception erzeugen
+                throw new IllegalArgumentException("Alter darf nicht negativ sein!");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Benutzerdefinierte Exception: " + e.getMessage());
+        }
+
+        System.out.println("\n=== 6. Exceptions in Methoden mit throws ===");
+        try {
+            int result = teile(10, 0); // Division durch 0
+            System.out.println("Ergebnis: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Fehler in Methode: " + e.getMessage());
+        }
+
+        System.out.println("\n=== 7. Tipps für gute Fehlerbehandlung ===");
+        System.out.println("- Verwende spezifische Catch-Blöcke, nicht nur Exception");
+        System.out.println("- Nutze finally für Ressourcenfreigabe (Dateien, Streams)");
+        System.out.println("- Dokumentiere Methoden mit throws für mögliche Exceptions");
+        System.out.println("- Logging kann helfen, Fehler nachzuvollziehen");
+        System.out.println("- Benutzerfreundliche Fehlermeldungen geben, ohne Programmabsturz");
+
+        System.out.println("\n=== Programmende ===");
+    }
+
+    /**
+     * Beispielmethode, die eine Exception werfen kann
+     * @param a Dividend
+     * @param b Divisor
+     * @return Ergebnis der Division
+     * @throws ArithmeticException wenn Division durch 0
+     */
+    public static int teile(int a, int b) throws ArithmeticException {
+        return a / b; // Kann ArithmeticException auslösen
+    }
+}
