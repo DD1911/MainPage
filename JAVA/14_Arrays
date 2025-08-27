@@ -1,0 +1,85 @@
+
+/**
+ * Klasse 14_Arrays
+ * 
+ * Diese Klasse demonstriert:
+ * - Einfache Arrays (1D)
+ * - Array-Literale
+ * - Zugriff über Index
+ * - Länge von Arrays
+ * - Iteration über Arrays (for-Schleife, for-each)
+ * - Mehrdimensionale Arrays (2D)
+ * 
+ * Jede Zeile ist kommentiert, damit der Code verständlich ist.
+ */
+public class _14_Arrays {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. Einfaches 1D-Array erstellen und Werte zuweisen ===");
+        int[] zahlen = new int[5]; // Array der Länge 5, Standardwerte 0
+        zahlen[0] = 1;
+        zahlen[1] = 2;
+        zahlen[2] = 3;
+        zahlen[3] = 4;
+        zahlen[4] = 5;
+
+        // Ausgabe der einzelnen Elemente
+        for (int i = 0; i < zahlen.length; i++) {
+            System.out.println("zahlen[" + i + "] = " + zahlen[i]);
+        }
+
+        System.out.println("\n=== 2. Array-Literal erstellen ===");
+        int[] neueZahlenArray = {1, 2, 3, 4, 5}; // Werte direkt bei der Deklaration
+        for (int i = 0; i < neueZahlenArray.length; i++) {
+            System.out.println("neueZahlenArray[" + i + "] = " + neueZahlenArray[i]);
+        }
+
+        System.out.println("\n=== 3. Array mit Strings ===");
+        String[] namen = {"Max", "Moritz", "Lisa"}; // Array mit komplexem Datentyp
+
+        // Zugriff über Index
+        System.out.println("namen[0] = " + namen[0]);
+        System.out.println("namen[1] = " + namen[1]);
+        System.out.println("namen[2] = " + namen[2]);
+
+        // Länge des Arrays
+        System.out.println("Länge des Arrays namen: " + namen.length);
+
+        System.out.println("\n=== 4. Ausgabe mit klassischer for-Schleife ===");
+        for (int i = 0; i < namen.length; i++) {
+            System.out.println("namen[" + i + "] = " + namen[i]);
+        }
+
+        System.out.println("\n=== 5. Ausgabe mit for-each Schleife ===");
+        for (String name : namen) {
+            System.out.println("name = " + name);
+        }
+
+        System.out.println("\n=== 6. Mehrdimensionales Array (2D) ===");
+        double[][] array2D = new double[3][2]; // 3 Zeilen, 2 Spalten
+
+        // Werte zuweisen
+        array2D[0][0] = 1.1;
+        array2D[0][1] = 1.2;
+        array2D[1][0] = 2.1;
+        array2D[1][1] = 2.2;
+        array2D[2][0] = 3.1;
+        array2D[2][1] = 3.2;
+
+        // Ausgabe des 2D-Arrays mit verschachtelter for-Schleife
+        for (int i = 0; i < array2D.length; i++) {
+            for (int j = 0; j < array2D[i].length; j++) {
+                System.out.println("array2D[" + i + "][" + j + "] = " + array2D[i][j]);
+            }
+            System.out.println(); // Leerzeile zur besseren Lesbarkeit
+        }
+
+        System.out.println("\n=== 7. Zusammenfassung ===");
+        System.out.println("Arrays können:");
+        System.out.println("- primitive Datentypen oder Objekte enthalten");
+        System.out.println("- über Index gelesen und beschrieben werden");
+        System.out.println("- ein- oder mehrdimensional sein");
+        System.out.println("- mit for-Schleife oder for-each iteriert werden");
+    }
+}
