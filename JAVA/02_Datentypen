@@ -1,0 +1,67 @@
+
+/**
+ * Klasse 02_Datentypen
+ * 
+ * Einführung in Datentypen in Java:
+ * - Primitive Datentypen (byte, short, int, long, float, double, char, boolean)
+ * - Unterschied zwischen Ganzzahlen und Gleitkommazahlen
+ * - Best-Practice Hinweise
+ * - Verwendung von var (Java 10+)
+ */
+
+public class _02_Datentypen {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. Ganzzahlige Datentypen ===");
+
+        // byte: sehr kleine Zahl, 8 Bit, -128 bis 127
+        byte sehrKleineZahl = 8;
+        System.out.println("byte: " + sehrKleineZahl);
+
+        // short: etwas größere Zahl, 16 Bit, -32.768 bis 32.767
+        short etwasGroessereZahl = 356;
+        System.out.println("short: " + etwasGroessereZahl);
+
+        // int: normale Zahl, 32 Bit, -2.147.483.648 bis 2.147.483.647
+        int normaleZahl = 2000; // Best-Practice: Standard für ganze Zahlen
+        System.out.println("int: " + normaleZahl);
+
+        // long: sehr große Zahl, 64 Bit
+        long sehrGrosseZahl = 20000000L; // Suffix L erforderlich
+        System.out.println("long: " + sehrGrosseZahl);
+
+        System.out.println("\n=== 2. Gleitkommazahlen ===");
+
+        // float: 32 Bit, einfache Genauigkeit, Suffix f erforderlich
+        float kommaZahl = 21.3f;
+        System.out.println("float: " + kommaZahl);
+
+        // double: 64 Bit, doppelte Genauigkeit, Standard für Fließkommazahlen
+        double weitereGrosseKommazahl = 5773277342.47452725;
+        System.out.println("double: " + weitereGrosseKommazahl);
+
+        System.out.println("\n=== 3. Zeichen ===");
+
+        // char: einzelnes Zeichen, in einfache Anführungszeichen
+        char einzeichen = 'a';
+        System.out.println("char: " + einzeichen);
+
+        System.out.println("\n=== 4. Boolean ===");
+
+        // boolean: Wahrheitswerte, true oder false
+        boolean myBool = true;
+        boolean myBool2 = false;
+        System.out.println("boolean myBool: " + myBool);
+        System.out.println("boolean myBool2: " + myBool2);
+
+        System.out.println("\n=== 5. Typinferenz mit var (Java 10+) ===");
+
+        // var: Datentyp wird vom Compiler automatisch erkannt
+        var meinZahl = 50; // Compiler erkennt int
+        System.out.println("var meinZahl: " + meinZahl);
+
+        // Hinweis: var kann nur lokal in Methoden verwendet werden
+        // Best Practice: Für Anfänger besser primitive Typen explizit nutzen
+    }
+}
