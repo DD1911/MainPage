@@ -1,0 +1,58 @@
+/**
+ * Klasse 15_Methoden
+ * 
+ * Diese Klasse demonstriert:
+ * 1. Definition und Aufruf von Methoden
+ * 2. Methoden mit Parametern
+ * 3. Methoden mit Rückgabewerten
+ * 4. Methoden ohne Parameter
+ * 5. Methodenüberladung (Overloading)
+ * 6. Praktische Beispiele und Tipps
+ */
+
+public class _15_Methoden {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. Methode mit Parameter aufrufen ===");
+        greetUser("Alice"); // Aufruf der Methode mit String-Parameter
+        greetUser("Bob");
+
+        System.out.println("\n=== 2. Methode mit Rückgabewert ===");
+        int summe = addNumbers(5, 7); // Rückgabewert speichern
+        System.out.println("Summe von 5 und 7: " + summe);
+
+        System.out.println("\n=== 3. Methode ohne Parameter ===");
+        printSeparator();
+
+        System.out.println("\n=== 4. Methodenüberladung (Overloading) ===");
+        System.out.println("Addition von zwei Zahlen: " + addNumbers(3, 4));
+        System.out.println("Addition von drei Zahlen: " + addNumbers(3, 4, 5));
+
+        System.out.println("\n=== 5. Tipps für Methoden ===");
+        System.out.println("- Methoden verbessern Übersicht und Wiederverwendbarkeit.");
+        System.out.println("- Methoden können Parameter empfangen und Werte zurückgeben.");
+        System.out.println("- Methoden ohne Rückgabewert verwenden 'void'.");
+        System.out.println("- Überladung ermöglicht gleiche Methode mit unterschiedlicher Parameteranzahl.");
+    }
+
+    // 1. Methode zur Begrüßung eines Benutzers (mit Parameter, kein Rückgabewert)
+    public static void greetUser(String name) {
+        System.out.println("Hallo, " + name + "!");
+    }
+
+    // 2. Methode zur Addition von zwei Zahlen (mit Rückgabewert)
+    public static int addNumbers(int a, int b) {
+        return a + b; // Rückgabe der Summe
+    }
+
+    // 3. Methode ohne Parameter, kein Rückgabewert
+    public static void printSeparator() {
+        System.out.println("------------------------------");
+    }
+
+    // 4. Methodenüberladung: addNumbers mit drei Parametern
+    public static int addNumbers(int a, int b, int c) {
+        return a + b + c;
+    }
+}
