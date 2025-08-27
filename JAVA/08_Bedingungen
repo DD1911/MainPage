@@ -1,0 +1,80 @@
+/**
+ * Klasse 08_Bedingungen
+ * 
+ * Diese Klasse demonstriert:
+ * - if-Anweisung
+ * - if-else if-else-Anweisung
+ * - switch-Anweisung
+ * - ternären Operator
+ * - interaktive Benutzereingabe mit Scanner
+ */
+
+import java.util.Scanner;
+
+public class _08_Bedingungen {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. if-Anweisung ===");
+        int alter = 20;
+
+        // if-Anweisung prüft eine Bedingung
+        if (alter >= 18) {
+            System.out.println("Sie sind volljährig.");
+        } else {
+            System.out.println("Sie sind minderjährig.");
+        }
+
+        System.out.println("\n=== 2. if-else if-else-Anweisung ===");
+        // Mehrere Bedingungen prüfen
+        if (alter < 13) {
+            System.out.println("Sie sind ein Kind.");
+        } else if (alter < 18) {
+            System.out.println("Sie sind ein Jugendlicher.");
+        } else {
+            System.out.println("Sie sind ein Erwachsener.");
+        }
+
+        System.out.println("\n=== 3. switch-Anweisung ===");
+        // Switch prüft den Wert von alter
+        switch (alter) {
+            case 16:
+                System.out.println("Sie sind 16 Jahre alt.");
+                break;
+            case 18:
+                System.out.println("Sie sind 18 Jahre alt.");
+                break;
+            default:
+                System.out.println("Sie sind nicht 16 oder 18 Jahre alt.");
+        }
+
+        System.out.println("\n=== 4. Interaktiver switch mit Scanner ===");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Bitte geben Sie Ihr Alter ein: ");
+        int userAlter = scanner.nextInt();
+
+        switch (userAlter) {
+            case 16:
+                System.out.println("Sie sind 16 Jahre alt.");
+                break;
+            case 18:
+                System.out.println("Sie sind 18 Jahre alt.");
+                break;
+            default:
+                System.out.println("Sie sind nicht 16 oder 18 Jahre alt.");
+        }
+
+        System.out.println("\n=== 5. Ternärer Operator ===");
+        // Kurzform von if-else
+        String ergebnis = (userAlter >= 18) ? "Sie sind volljährig." : "Sie sind minderjährig.";
+        System.out.println(ergebnis);
+
+        scanner.close(); // Scanner schließen
+        System.out.println("\n=== 6. Tipps für Bedingungen ===");
+        System.out.println("- if prüft Bedingungen und führt Code nur aus, wenn true.");
+        System.out.println("- if-else if-else für mehrere mögliche Fälle.");
+        System.out.println("- switch für Fallunterscheidungen mit festen Werten (int, char, String, enum).");
+        System.out.println("- ternärer Operator für einfache Kurzentscheidungen.");
+        System.out.println("- Scanner ermöglicht dynamische Benutzereingaben.");
+    }
+}
