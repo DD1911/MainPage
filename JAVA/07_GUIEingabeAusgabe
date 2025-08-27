@@ -1,0 +1,46 @@
+/**
+ * Klasse 07_GUIEingabeAusgabe
+ * 
+ * Diese Klasse demonstriert:
+ * - Einfache GUI-Ausgabe mit JOptionPane.showMessageDialog
+ * - GUI-Eingabe mit JOptionPane.showInputDialog
+ * - Umwandlung von String-Eingaben in numerische Werte
+ * - Kombination von Text und Berechnungen in Dialogen
+ */
+
+import javax.swing.JOptionPane;
+
+public class _07_GUIEingabeAusgabe {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. GUI-Ausgabe ===");
+
+        // Einfaches Dialogfenster mit Text
+        JOptionPane.showMessageDialog(null, "Hallo Welt!");
+
+        // Dialogfenster mit Text und Berechnung
+        int summe = 5 + 10;
+        JOptionPane.showMessageDialog(null, "Das Ergebnis von 5 + 10 ist: " + summe);
+
+        System.out.println("\n=== 2. GUI-Eingabe ===");
+
+        // Eingabe eines Strings vom Benutzer
+        String name = JOptionPane.showInputDialog("Bitte geben Sie Ihren Namen ein:");
+        // Begrüßung des Benutzers mit GUI-Ausgabe
+        JOptionPane.showMessageDialog(null, "Hallo " + name + "!");
+
+        // Eingabe eines Alters als String
+        String alterString = JOptionPane.showInputDialog("Bitte geben Sie Ihr Alter ein:");
+        // Umwandlung des Strings in einen Integer
+        int alter = Integer.parseInt(alterString);
+        JOptionPane.showMessageDialog(null, "Sie sind " + alter + " Jahre alt.");
+
+        System.out.println("\n=== 3. Tipps zur GUI-Ein- und Ausgabe ===");
+        System.out.println("- showMessageDialog: Anzeige von Informationen in einem Dialogfenster.");
+        System.out.println("- showInputDialog: Abfrage von Benutzereingaben in einem Dialogfenster.");
+        System.out.println("- Eingegebene Werte sind Strings und müssen ggf. konvertiert werden (z.B. Integer.parseInt).");
+        System.out.println("- GUI-Ausgabe ist besonders nützlich für kleine Programme ohne Konsole.");
+        System.out.println("- Für größere GUI-Programme empfiehlt sich die Verwendung von Swing-Komponenten (JFrame, JButton etc.).");
+    }
+}
