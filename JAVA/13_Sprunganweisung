@@ -1,0 +1,151 @@
+
+// Import für Benutzereingaben über Dialogfenster
+import javax.swing.JOptionPane;
+
+/**
+ * Klasse 13_Sprunganweisung
+ * 
+ * Diese Klasse demonstriert:
+ * - if / else / else if
+ * - switch-case
+ * - while-Schleifen, for-Schleifen, do-while-Schleifen
+ * - break und continue
+ * - return innerhalb einer Methode
+ * - benannte Schleifen
+ * 
+ * Jeder Block enthält ausführliche Kommentare und Beispiele.
+ */
+public class _13_Sprunganweisung {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. If / Else / Else if Beispiele ===");
+        int zahl = 5;
+
+        // Einfache Bedingung
+        if (zahl > 0) {
+            System.out.println("Die Zahl ist positiv.");
+        } else {
+            System.out.println("Die Zahl ist negativ oder null.");
+        }
+
+        // Mehrere Bedingungen
+        if (zahl > 0) {
+            System.out.println("Die Zahl ist positiv.");
+        } else if (zahl < 0) {
+            System.out.println("Die Zahl ist negativ.");
+        } else {
+            System.out.println("Die Zahl ist null.");
+        }
+
+        System.out.println("\n=== 2. Switch-Case Beispiel ===");
+        switch (zahl) {
+            case 1:
+                System.out.println("Die Zahl ist eins.");
+                break;
+            case 2:
+                System.out.println("Die Zahl ist zwei.");
+                break;
+            case 3:
+                System.out.println("Die Zahl ist drei.");
+                break;
+            default:
+                System.out.println("Die Zahl ist größer als drei.");
+        }
+
+        System.out.println("\n=== 3. For-Schleife Beispiel ===");
+        // For-Schleife: Wiederholt 5 Mal
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("For-Schleife, i = " + i);
+        }
+
+        System.out.println("\n=== 4. While-Schleife Beispiel ===");
+        int count = 1;
+        while (count <= 5) {
+            System.out.println("While-Schleife, count = " + count);
+            count++;
+        }
+
+        System.out.println("\n=== 5. Do-While-Schleife Beispiel ===");
+        int j = 1;
+        do {
+            System.out.println("Do-While-Schleife, j = " + j);
+            j++;
+        } while (j <= 5);
+
+        System.out.println("\n=== 6. Break und Continue Beispiel ===");
+        for (int i = 1; i <= 10; i++) {
+            if (i == 8) {
+                System.out.println("Break bei i=8, Schleife wird beendet.");
+                break; // beendet die Schleife
+            }
+            if (i % 2 == 0) {
+                System.out.println("Continue bei gerader Zahl i=" + i);
+                continue; // überspringt den Rest des aktuellen Durchlaufs
+            }
+            System.out.println("i = " + i + " (ungerade Zahl)");
+        }
+
+        System.out.println("\n=== 7. Benannte Schleife Beispiel ===");
+        outerLoop:
+        for (int i = 1; i <= 5; i++) {
+            for (int k = 1; k <= 5; k++) {
+                System.out.println("i=" + i + ", k=" + k);
+                if (i * k > 6) {
+                    System.out.println("Break outerLoop bei i*k>6");
+                    break outerLoop; // beendet die äußere Schleife
+                }
+            }
+        }
+
+        System.out.println("\n=== 8. Dauerschleife mit Benutzereingaben ===");
+        while (true) {
+            String eingabe = JOptionPane.showInputDialog(
+                    "Geben Sie eine Zahl ein (0 zum Beenden):");
+            int input = Integer.parseInt(eingabe);
+
+            if (input == 0) {
+                System.out.println("Dauerschleife beendet.");
+                break; // beendet die Schleife
+            }
+
+            // Switch zur Verarbeitung der Eingabe
+            switch (input) {
+                case 1:
+                    System.out.println("Die Zahl ist eins.");
+                    break;
+                case 2:
+                    System.out.println("Die Zahl ist zwei.");
+                    break;
+                case 3:
+                    System.out.println("Die Zahl ist drei.");
+                    break;
+                default:
+                    System.out.println("Die Zahl ist größer als drei.");
+            }
+
+            System.out.println("Schleife läuft weiter...");
+        }
+
+        System.out.println("\n=== 9. Return innerhalb einer Methode Beispiel ===");
+        int wert = berechnePositiv(7);
+        System.out.println("Rückgabewert der Methode: " + wert);
+
+        System.out.println("\n=== Programm Ende erreicht ===");
+    }
+
+    /**
+     * Beispielmethode für return
+     * 
+     * @param x Zahl
+     * @return x, wenn positiv, sonst 0
+     */
+    public static int berechnePositiv(int x) {
+        if (x < 0) {
+            System.out.println("x ist negativ, Methode kehrt mit 0 zurück.");
+            return 0; // Methode sofort verlassen
+        }
+        System.out.println("x ist positiv, Methode gibt x zurück.");
+        return x;
+    }
+}
