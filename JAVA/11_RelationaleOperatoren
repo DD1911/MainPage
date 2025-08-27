@@ -1,0 +1,72 @@
+/**
+ * Klasse 11_RelationaleOperatoren
+ * 
+ * Diese Klasse demonstriert alle relationalen Operatoren in Java:
+ * - Gleichheit (==)
+ * - Ungleichheit (!=)
+ * - Größer als (>)
+ * - Kleiner als (<)
+ * - Größer oder gleich (>=)
+ * - Kleiner oder gleich (<=)
+ * 
+ * Zusätzlich werden if-Anweisungen zur Bedingungsprüfung gezeigt.
+ */
+
+public class _11_RelationaleOperatoren {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. Variablen deklarieren ===");
+        int x = 10;
+        int y = 20;
+
+        System.out.println("\n=== 2. Relationale Operatoren ===");
+
+        // Gleichheitsoperator (==)
+        boolean isEqual = (x == y); // true wenn x und y gleich sind
+        System.out.println("x == y: " + isEqual);
+
+        // Ungleichheitsoperator (!=)
+        boolean isNotEqual = (x != y); // true wenn x und y ungleich sind
+        System.out.println("x != y: " + isNotEqual);
+
+        // Größer-als-Operator (>)
+        boolean isGreater = (x > y); // true wenn x größer als y
+        System.out.println("x > y: " + isGreater);
+
+        // Kleiner-als-Operator (<)
+        boolean isLess = (x < y); // true wenn x kleiner als y
+        System.out.println("x < y: " + isLess);
+
+        // Größer-gleich-Operator (>=)
+        boolean isGreaterOrEqual = (x >= y); // true wenn x größer oder gleich y
+        System.out.println("x >= y: " + isGreaterOrEqual);
+
+        // Kleiner-gleich-Operator (<=)
+        boolean isLessOrEqual = (x <= y); // true wenn x kleiner oder gleich y
+        System.out.println("x <= y: " + isLessOrEqual);
+
+        System.out.println("\n=== 3. Anwendung mit if-Anweisungen ===");
+
+        // Prüfung, ob x kleiner als y
+        if (x < y) {
+            System.out.println("x ist kleiner als y");
+        }
+
+        // Prüfung, ob x ungleich y
+        if (x != y) {
+            System.out.println("x ist ungleich y");
+        }
+
+        // Prüfung, ob x kleiner oder gleich 10
+        if (x <= 10) {
+            System.out.println("x ist kleiner oder gleich 10");
+        }
+
+        System.out.println("\n=== 4. Tipps für relationale Operatoren ===");
+        System.out.println("- Relationale Operatoren liefern boolean Werte (true/false).");
+        System.out.println("- Werden oft in if-, while- oder for-Bedingungen verwendet.");
+        System.out.println("- Vergiss nicht, dass == für primitive Typen sinnvoll ist, bei Objekten sollte equals() verwendet werden.");
+        System.out.println("- Kombinationen mit logischen Operatoren (&, |, &&, ||) ermöglichen komplexe Bedingungen.");
+    }
+}
