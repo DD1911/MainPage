@@ -1,0 +1,57 @@
+/**
+ * Klasse 06_KonsolenausgabeUndEingabe
+ * 
+ * Diese Klasse demonstriert:
+ * - Konsolenausgabe mit System.out.println und System.out.print
+ * - Berechnungen in der Ausgabe
+ * - Konsoleneingabe von Strings, int und double mit Scanner
+ * - Schritt-für-Schritt Kommentare und Erklärungen
+ */
+
+import java.util.Scanner; // Scanner-Klasse importieren
+
+public class _06_KonsolenausgabeUndEingabe {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== 1. Konsolenausgabe ===");
+
+        // Einfache Textausgabe
+        System.out.println("Hallo Welt!"); // Gibt den Text auf der Konsole aus
+
+        // Ausgabe einer Berechnung
+        System.out.println(5 + 10); // Berechnet 5 + 10 und gibt 15 aus
+
+        // Ausgabe mit Text und Berechnung
+        System.out.println("Das Ergebnis ist: " + (5 + 10)); // Ergebnis: 15
+
+        System.out.println("\n=== 2. Konsoleneingabe ===");
+
+        // Scanner für Benutzereingaben erstellen
+        Scanner scanner = new Scanner(System.in);
+
+        // Eingabe eines Strings (Name)
+        System.out.print("Bitte geben Sie Ihren Namen ein: "); // print ohne Zeilenumbruch
+        String name = scanner.nextLine(); // Liest ganze Zeile ein
+        System.out.println("Hallo " + name + "!"); // Begrüßung
+
+        // Eingabe eines Integers (Alter)
+        System.out.print("Bitte geben Sie Ihr Alter ein: ");
+        int alter = scanner.nextInt(); // Liest eine ganze Zahl ein
+        System.out.println("Sie sind " + alter + " Jahre alt.");
+
+        // Eingabe eines Doubles (Kontostand)
+        System.out.print("Bitte geben Sie Ihren Kontostand ein: ");
+        double kontostand = scanner.nextDouble(); // Liest eine Kommazahl ein
+        System.out.println("Ihr Kontostand beträgt: " + kontostand + " Euro.");
+
+        // Scanner schließen
+        scanner.close();
+
+        System.out.println("\n=== 3. Tipps zur Konsoleneingabe und -ausgabe ===");
+        System.out.println("- Verwende println für Zeilenende, print ohne Zeilenumbruch.");
+        System.out.println("- Scanner kann Strings, int, double und andere Datentypen einlesen.");
+        System.out.println("- Nach nextInt() oder nextDouble() muss man manchmal nextLine() nutzen, um den Zeilenumbruch zu verarbeiten.");
+        System.out.println("- Scanner immer schließen, um Ressourcen freizugeben.");
+    }
+}
