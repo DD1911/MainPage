@@ -1,0 +1,110 @@
+USE erdkunde;
+
+-- ======================================
+-- EINFACHE ABFRAGEN (QUERIES)
+-- ======================================
+-- SQL = Structured Query Language.
+-- Damit frage ich Daten ab, füge neue ein oder ändere bestehende.
+-- Wichtige Abfragen laufen über das Schlüsselwort SELECT.
+
+-- ======================================
+-- 1. SELECT = Daten anzeigen
+-- ======================================
+-- Mit * hole ich ALLE Spalten aus der Tabelle.
+-- Danach sehe ich sofort den kompletten Inhalt.
+SELECT * FROM laender;   -- Erwartet: 6 Länder
+SELECT * FROM staedte;   -- Erwartet: 18 Städte
+
+-- ======================================
+-- 2. SORTIEREN mit ORDER BY
+-- ======================================
+-- Standardmäßig gibt die Datenbank keine feste Reihenfolge zurück.
+-- Mit ORDER BY kann ich die Ausgabe sortieren.
+
+-- Alphabetisch nach Stadtnamen
+SELECT * FROM staedte ORDER BY name;
+
+-- Nach Einwohnerzahl (aufsteigend)
+SELECT * FROM staedte ORDER BY einwohnerzahl;
+
+-- ASC = Ascending = aufsteigend (ist Standard, könnte ich auch weglassen)
+SELECT * FROM staedte ORDER BY einwohnerzahl ASC;
+
+-- DESC = Descending = absteigend
+-- Damit sehe ich die größten Städte zuerst.
+SELECT * FROM staedte ORDER BY einwohnerzahl DESC;
+
+-- Mehrere Kriterien: Erst Land, dann Einwohnerzahl (absteigend)
+SELECT * FROM staedte ORDER BY laender_id, einwohnerzahl DESC;
+
+-- ======================================
+-- 3. LIMIT = Anzahl der Ergebnisse begrenzen
+-- ======================================
+-- Praktisch, wenn ich nicht alles sehen will.
+
+-- Zeige mir die ersten 10 Städte
+SELECT * FROM staedte LIMIT 10;
+
+-- LIMIT mit Startwert und Anzahl:
+-- Syntax: LIMIT start, anzahl
+-- Beispiel: Ab Datensatz 11 zeige mir 5 Stück.
+SELECT * FROM staedte LIMIT 10, 5;
+
+-- LIMIT 0,10 ist das gleiche wie LIMIT 10
+SELECT * FROM staedte LIMIT 0, 10;
+
+-- ======================================
+-- 4. ORDER BY + LIMIT kombinieren
+-- ======================================
+-- Typisches Beispiel: Die größten 3 Städte
+SELECT * FROM staedte ORDER BY einwohnerzahl DESC LIMIT 3;
+
+-- ======================================
+-- Exkurs: SQL ist deklarativ
+-- ======================================
+-- Ich sage SQL nur, was ich haben will (z. B. "Top 3 Städte nach Einwohnerzahl").
+-- SQL kümmert sich selbst darum, WIE das Ergebnis berechnet wird.
+-- Programmiersprachen wie Python sind dagegen imperativ:
+-- Da müsste ich jeden Schritt (z. B. sortieren, dann die ersten 3 nehmen) explizit angeben.
+
+-- ======================================
+-- 5. Einzelne Spalten statt *
+-- ======================================
+-- Mit * hole ich alles, aber oft will ich nur bestimmte Spalten.
+-- Beispiel: Nur Name und Einwohnerzahl der Top 3 Städte
+SELECT name, einwohnerzahl
+FROM staedte
+ORDER BY einwohnerzahl DESC
+LIMIT 3;
+
+-- ======================================
+-- 6. Reservierte Wörter beachten
+-- ======================================
+-- "name" ist in MySQL ein reserviertes Wort.
+-- Deshalb setze ich es vorsichtshalber in Backticks (`).
+-- So weiß MySQL: Das ist mein eigener Spaltenname.
+SELECT `name`, einwohnerzahl
+FROM staedte
+ORDER BY einwohnerzahl DESC
+LIMIT 3;
+
+-- ======================================
+-- 7. Spaltenalias (AS)
+-- ======================================
+-- Mit AS kann ich Spaltennamen schöner beschriften.
+-- Ideal für Ausgaben oder Reports.
+SELECT `name` AS 'Stadt',
+       einwohnerzahl AS 'Einwohnerzahl'
+FROM staedte
+ORDER BY einwohnerzahl DESC
+LIMIT 3;
+
+-- Tipp: Ich schreibe jede Spalte im SELECT in eine eigene Zeile.
+-- So wird es übersichtlicher, gerade bei langen Abfragen.
+-- Bei Alias-Namen darf ich einfache oder doppelte Anführungszeichen nehmen.
+-- Wenn keine Sonderzeichen drin sind, geht es auch ohne Anführungszeichen.
+SELECT `name` AS 'Stadt',
+       einwohnerzahl AS Einwohner
+FROM staedte
+ORDER BY einwohnerzahl DESC
+LIMIT 3;
