@@ -1,0 +1,66 @@
+USE erdkunde;
+
+-- ======================================
+-- WHERE = Bedingung zum Filtern von Datensätzen
+-- ======================================
+-- Mit WHERE sage ich der Datenbank:
+-- "Gib mir nur die Zeilen, die die Bedingung erfüllen."
+-- Wichtig: In SQL gibt es KEINE Zuweisungen in Bedingungen.
+-- Ein einzelnes = ist also IMMER ein Vergleich, nicht wie in Python oder C.
+
+-- ======================================
+-- 1. Gleichheitsvergleich (=)
+-- ======================================
+-- Beispiel: Ich möchte nur die Stadt Rom.
+SELECT * FROM staedte WHERE name = 'Rom';
+
+-- ======================================
+-- 2. Ungleich (<> oder != oder NOT)
+-- ======================================
+-- Ich möchte ALLE Städte, außer Rom.
+-- Dafür gibt es gleich mehrere Schreibweisen:
+SELECT * FROM staedte WHERE name <> 'Rom';     -- Standard SQL (funktioniert überall)
+SELECT * FROM staedte WHERE name != 'Rom';     -- MySQL erlaubt auch dieses Zeichen
+SELECT * FROM staedte WHERE NOT name = 'Rom';  -- NOT vor der Bedingung
+
+-- ======================================
+-- 3. Größer, kleiner, größer/gleich, kleiner/gleich
+-- ======================================
+-- Beispiel: Alle Städte mit mindestens 1 Mio. Einwohnern
+SELECT * FROM staedte WHERE einwohnerzahl >= 1000000;
+
+-- Es geht auch mit einer Funktion (POW = Potenz)
+SELECT * FROM staedte WHERE einwohnerzahl >= POW(10, 6);
+
+-- Mit Sortierung nach Einwohnerzahl
+SELECT * FROM staedte
+WHERE einwohnerzahl >= 1000000
+ORDER BY einwohnerzahl;
+
+-- ======================================
+-- 4. Von-bis mit BETWEEN
+-- ======================================
+-- BETWEEN wert1 AND wert2
+-- WICHTIG: Beide Grenzen sind inklusiv!
+-- Beispiel: Städte zwischen 1 und 2 Millionen Einwohnern
+SELECT * FROM staedte
+WHERE einwohnerzahl BETWEEN 1000000 AND 2000000;
+
+-- Das gleiche Ergebnis bekomme ich mit >= und <=
+SELECT * FROM staedte
+WHERE einwohnerzahl >= 1000000 AND einwohnerzahl <= 2000000;
+
+-- BETWEEN kann ich auch für IDs nehmen:
+-- Beispiel: Städte mit ID 2, 3 und 4
+SELECT * FROM staedte WHERE id BETWEEN 2 AND 4;
+
+-- ======================================
+-- 5. NOT in Kombination mit BETWEEN
+-- ======================================
+-- Ich kann NOT direkt vor BETWEEN schreiben
+SELECT * FROM staedte
+WHERE einwohnerzahl NOT BETWEEN 1000000 AND 2000000;
+
+-- Oder ich setze NOT vor die ganze Bedingung
+SELECT * FROM staedte
+WHERE NOT einwohnerzahl BETWEEN 1000000 AND 2000000;
