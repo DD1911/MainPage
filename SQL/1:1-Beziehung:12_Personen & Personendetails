@@ -1,0 +1,107 @@
+-- ======================================
+-- 1:1-Beziehung: Personen & Personendetails
+-- ======================================
+
+-- Szenario:
+-- Wichtige Informationen (Name, Email, Anrede) in der Tabelle "personen"
+-- Zusätzliche Details (Adresse, Telefonnummer) in "personendetails"
+-- Vorteile:
+-- - Bessere Übersicht
+-- - Performance-Vorteile bei vielen Spalten
+-- - Klar getrennte Verantwortlichkeiten
+
+DROP DATABASE IF EXISTS kunden;
+CREATE DATABASE kunden;
+USE kunden;
+
+-- ======================================
+-- Tabelle "personen" erstellen
+-- ======================================
+CREATE TABLE personen (
+    id INT PRIMARY KEY AUTO_INCREMENT,  -- eindeutige ID
+    anrede VARCHAR(255),
+    vorname VARCHAR(255),
+    nachname VARCHAR(255),
+    email VARCHAR(255)
+);
+
+SHOW COLUMNS FROM personen;
+
+-- ======================================
+-- Daten in "personen" einfügen
+-- ======================================
+INSERT INTO personen (anrede, vorname, nachname, email) VALUES
+('Herr', 'Paul', 'Wellert', 'paul@web.de'),
+('Herr', 'Peter', 'Pan', 'peterp@web.de'),
+('Frau', 'Mary', 'Jane', 'maryj@web.de');
+
+SELECT * FROM personen;
+
+-- ======================================
+-- Tabelle "personendetails" erstellen
+-- ======================================
+CREATE TABLE personendetails (
+    id INT PRIMARY KEY AUTO_INCREMENT,  -- FK (Foreign Key) auf personen.id
+    strasse VARCHAR(255),
+    hausnr VARCHAR(255),
+    plz VARCHAR(255),                   -- CHAR(5) wäre hier optimal
+    ort VARCHAR(255),
+    telnr VARCHAR(255)
+);
+
+SHOW COLUMNS FROM personendetails;
+
+-- ======================================
+-- Daten in "personendetails" einfügen
+-- ======================================
+INSERT INTO personendetails (strasse, hausnr, plz, ort, telnr) VALUES
+('Eberswalder Str.', '30', '10437', 'Berlin', '+491636861296'),
+('Dunker Str.', '10', '10437', 'Berlin', '+491636861978'),
+('Lychener Str.', '3', '10437', 'Berlin', '+491655555555');
+
+SELECT * FROM personendetails;
+
+-- ======================================
+-- Tabellen zusammenführen
+-- ======================================
+-- Ohne ON: Kreuzprodukt (alle Kombinationen) => 3x3=9 Rows
+SELECT * FROM personen 
+INNER JOIN personendetails;
+
+-- Mit ON: 1:1-Beziehung über ID => 3 Rows
+SELECT * FROM personen 
+INNER JOIN personendetails ON personen.id = personendetails.id;
+
+-- ======================================
+-- Exkurs: Anwendungsbeispiele für 1:1
+-- ======================================
+-- Beispiel: Rechnungen & Überweisungen
+-- - Jede Rechnung hat genau eine Überweisung
+-- - Jede Überweisung gehört genau zu einer Rechnung
+-- Mit einem Satz kann immer nur eine Kardinalität (1, n, m) beschrieben werden.
+
+-- ======================================
+-- Exkurs: AUTO_INCREMENT
+-- ======================================
+/*
+-- Man kann AUTO_INCREMENT auch manuell setzen:
+CREATE TABLE personendetails (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    strasse VARCHAR(255),
+    hausnr VARCHAR(255),
+    plz VARCHAR(255),
+    ort VARCHAR(255),
+    telnr VARCHAR(255),
+    personen_id INT  -- FK auf personen.id
+) AUTO_INCREMENT = 149;
+
+-- Spalten anzeigen
+SHOW COLUMNS FROM personendetails;
+
+-- Werte einfügen mit manuell gesetzter ID
+INSERT INTO personendetails VALUES
+(149, 'FAKE', '30', '10437', 'Berlin', '+491636861296');
+
+-- AUTO_INCREMENT für nächste Einträge setzen
+ALTER TABLE personendetails AUTO_INCREMENT = 149;
+*/
