@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Design & Media Queries Übung</title>
+    <style>
+        /* ==================================================== */
+        /* 1. BASISSTYLES                                      */
+        /* ==================================================== */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row; /* Standard: nebeneinander */
+            gap: 10px;
+        }
+
+        .box {
+            flex: 1;
+            padding: 20px;
+            background-color: lightblue;
+            text-align: center;
+        }
+
+        /* ==================================================== */
+        /* 2. MEDIA QUERIES                                     */
+        /* Für Bildschirme kleiner als 600px wird flex-direction geändert */
+        /* ==================================================== */
+        @media only screen and (max-width: 600px) {
+            .container {
+                flex-direction: column; /* Boxen untereinander */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Responsive Design Beispiel</h1>
+
+    <div class="container">
+        <div class="box">Box 1</div>
+        <div class="box">Box 2</div>
+        <div class="box">Box 3</div>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- 3. RESPONSIVE BILDER                                 -->
+    <!-- width: 100%; height: auto                            -->
+    <!-- ==================================================== -->
+    <h2>Responsive Bild</h2>
+    <img src="bild.jpg" alt="Beispielbild" style="width:100%; height:auto; max-width:500px;">
+
+    <!-- ==================================================== -->
+    <!-- 4. MINI-AUFGABE ZUM ÜBEN                              -->
+    <!-- 1. Erstelle drei Boxen nebeneinander                -->
+    <!-- 2. Nutze Media Query, um bei kleinerem Bildschirm die Boxen untereinander zu zeigen -->
+    <!-- 3. Füge ein Bild ein, das sich responsiv anpasst     -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
 
