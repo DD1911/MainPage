@@ -1,0 +1,44 @@
+USE erdkunde;
+
+-- ======================================
+-- LOGISCHE OPERATORIEN IN SQL
+-- ======================================
+-- Mit logischen Operatoren kann ich Bedingungen in WHERE kombinieren.
+-- Typische Operatoren sind:
+--   AND, OR, NOT
+-- Zusätzlich gibt es IN(), was ein schöneres OR ist.
+
+-- ======================================
+-- 1. AND
+-- ======================================
+-- Mit AND müssen beide Bedingungen erfüllt sein.
+-- Beispiel: Alle Städte aus Land mit ID = 2 (USA),
+-- die gleichzeitig mindestens 1 Mio. Einwohner haben.
+SELECT * 
+FROM staedte
+WHERE laender_id = 2
+  AND einwohnerzahl >= 1000000;
+-- Erwartet: 2 Städte (New York, Los Angeles)
+
+-- ======================================
+-- 2. OR
+-- ======================================
+-- Mit OR reicht es, wenn eine der Bedingungen stimmt.
+-- Beispiel: Alle Städte aus Land mit ID = 3 (Frankreich)
+-- oder aus Land mit ID = 6 (Spanien).
+SELECT *
+FROM staedte
+WHERE laender_id = 3 OR laender_id = 6;
+-- Erwartet: 6 Städte (Paris, Marseille, Lyon, Madrid, Barcelona, Valencia)
+
+-- ======================================
+-- 3. IN()
+-- ======================================
+-- IN() ist wie ein Kurzschreibweise für mehrere OR-Bedingungen.
+-- Die Abfrage oben geht auch so:
+SELECT *
+FROM staedte
+WHERE laender_id IN (3, 6);
+
+-- Das Gleiche wie:
+-- WHERE laender_id = 3 OR laender_id = 6
