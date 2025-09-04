@@ -1,0 +1,66 @@
+USE erdkunde;
+
+-- ======================================
+-- JOIN = Tabellen zusammenbringen
+-- ======================================
+-- JOINs verbinden Daten aus mehreren Tabellen.
+-- So kann ich z. B. Städte mit den Ländern verknüpfen.
+
+-- Kontrolle: Inhalte der Tabellen
+SELECT * FROM laender;  -- 6 Länder
+SELECT * FROM staedte;  -- 18 Städte
+
+-- ======================================
+-- 1. INNER JOIN
+-- ======================================
+-- Einfacher INNER JOIN ohne ON:
+SELECT * FROM staedte INNER JOIN laender;  
+-- Ergebnis: 108 Zeilen (18 x 6)
+-- Erklärung: Das ist das **Kreuzprodukt**. 
+-- Jede Stadt wird mit jedem Land kombiniert – erst danach filtert man normalerweise.
+
+-- ======================================
+-- 2. INNER JOIN mit ON
+-- ======================================
+-- Wir brauchen eine Bedingung, welche Spalten zusammengehören.
+-- In unserem Fall: staedte.laender_id = laender.id
+SELECT * 
+FROM staedte
+INNER JOIN laender ON laender_id = laender.id;
+-- Ergebnis: 18 Zeilen (jede Stadt wird genau dem passenden Land zugeordnet)
+
+-- Ich kann die Spalte auch vollständig ausschreiben:
+SELECT * 
+FROM staedte
+INNER JOIN laender ON staedte.laender_id = laender.id;
+-- Funktioniert genauso. Eindeutiger bei vielen Tabellen nützlich.
+
+-- ======================================
+-- 3. Sortierung nach Land und Stadtname
+-- ======================================
+SELECT *
+FROM staedte
+INNER JOIN laender ON laender_id = laender.id
+ORDER BY laender.id, staedte.name;
+
+-- ======================================
+-- 4. Nur die wichtigen Spalten anzeigen
+-- ======================================
+-- Statt *, wähle ich nur die Spalten aus, die ich wirklich brauche.
+SELECT staedte.name AS 'Stadt',
+       staedte.einwohnerzahl AS 'Einwohnerzahl',
+       laender.name AS 'Land'
+FROM staedte
+INNER JOIN laender ON laender_id = laender.id;
+
+-- ======================================
+-- 5. Mit Filter (WHERE)
+-- ======================================
+-- Beispiel: Alle Städte aus Frankreich oder Spanien
+SELECT staedte.name AS 'Stadt',
+       staedte.einwohnerzahl AS 'Einwohnerzahl',
+       laender.name AS 'Land'
+FROM staedte
+INNER JOIN laender ON laender_id = laender.id
+WHERE laender.name = 'Frankreich' OR laender.name = 'Spanien';
+-- Ergebnis: 6 Städte (Paris, Marseille, Lyon, Madrid, Barcelona, Valencia)
