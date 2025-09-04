@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tabellen Übung</title>
+</head>
+<body>
+
+    <!-- ==================================================== -->
+    <!-- 1. TABELLENGRUNDLAGEN                               -->
+    <!-- <table> = Gesamte Tabelle                            -->
+    <!-- <tr> = Tabellenzeile                                 -->
+    <!-- <th> = Tabellenkopf (fett und zentriert)           -->
+    <!-- <td> = Tabellenzelle (Daten)                        -->
+    <!-- ==================================================== -->
+
+    <h1>Tabellen in HTML</h1>
+
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Alter</th>
+            <th>Stadt</th>
+        </tr>
+        <tr>
+            <td>Anna</td>
+            <td>25</td>
+            <td>Berlin</td>
+        </tr>
+        <tr>
+            <td>Ben</td>
+            <td>30</td>
+            <td>Hamburg</td>
+        </tr>
+        <tr>
+            <td>Clara</td>
+            <td>28</td>
+            <td>München</td>
+        </tr>
+    </table>
+
+    <!-- ==================================================== -->
+    <!-- 2. ZUSAMMENFÜHRUNG VON ZELLEN                        -->
+    <!-- colspan="X" = Anzahl Spalten, die zusammengeführt werden -->
+    <!-- rowspan="X" = Anzahl Zeilen, die zusammengeführt werden -->
+    <!-- ==================================================== -->
+
+    <h2>Beispiel: Zusammengeführte Zellen</h2>
+
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th colspan="2">Details</th> <!-- Spalten zusammengeführt -->
+        </tr>
+        <tr>
+            <td>Anna</td>
+            <td>25 Jahre</td>
+            <td>Berlin</td>
+        </tr>
+        <tr>
+            <td>Ben</td>
+            <td colspan="2">30 Jahre, Hamburg</td> <!-- Zellen zusammengeführt -->
+        </tr>
+    </table>
+
+    <!-- ==================================================== -->
+    <!-- 3. STYLING VON TABELLEN (BASICS)                    -->
+    <!-- border="1" = einfacher Rahmen                         -->
+    <!-- Später kann man CSS für Design & Layout nutzen        -->
+    <!-- ==================================================== -->
+
+    <!-- ==================================================== -->
+    <!-- 4. MINI-AUFGABE ZUM ÜBEN                              -->
+    <!-- 1. Erstelle eine Tabelle mit 3 Spalten und 4 Zeilen  -->
+    <!-- 2. Füge Überschriften (<th>) hinzu                   -->
+    <!-- 3. Füge mindestens eine zusammengeführte Zelle ein   -->
+    <!-- 4. Optional: Tabelle mit border="1" darstellen       -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
 
