@@ -30,3 +30,40 @@ SELECT * FROM staedte;  -- Kontrolle, jetzt 13 Zeilen
 -- ACHTUNG: Ohne WHERE löscht man ALLE Zeilen!
 DELETE FROM staedte;
 SELECT * FROM staedte;  -- Kontrolle, jetzt 0 Zeilen
+
+USE erdkunde;
+
+-- ======================================
+-- 4. DELETE = einzelne oder alle Datensätze löschen
+-- ======================================
+DELETE FROM staedte;            -- Alle Datensätze löschen
+SELECT * FROM staedte;          -- Kontrolle: 0 Zeilen
+-- Hinweis: AUTO_INCREMENT wird NICHT zurückgesetzt
+-- Neue Inserts erhalten weiterhin die nächste ID
+INSERT INTO staedte (name, einwohnerzahl) VALUES ('Friesoythe', 27000);
+SELECT * FROM staedte;          -- id = 19 (nicht 1!)
+
+-- ======================================
+-- 5. TRUNCATE = ganze Tabelle leeren
+-- ======================================
+-- Gehört zur DDL (Data Definition Language), nicht DML
+-- Setzt auch den AUTO_INCREMENT zurück
+TRUNCATE TABLE staedte;
+INSERT INTO staedte (name, einwohnerzahl) VALUES ('Friesoythe', 27000);
+SELECT * FROM staedte;          -- id = 1
+
+-- ======================================
+-- 6. Zusammenfassung: DDL vs DML
+-- ======================================
+-- DDL (Data Definition Language) → Struktur ändern:
+--   CREATE TABLE, DROP TABLE, ALTER TABLE, TRUNCATE
+--   -> TRUNCATE gehört zur DDL, daher wird AUTO_INCREMENT zurückgesetzt
+
+-- DML (Data Manipulation Language) → Daten ändern:
+--   SELECT, INSERT, UPDATE, DELETE
+--   -> DELETE löscht nur die Daten, AUTO_INCREMENT bleibt bestehen
+
+-- Faustregel:
+--   DROP = ganze Struktur entfernen
+--   DELETE = nur Daten löschen
+--   TRUNCATE = alle Daten löschen + AUTO_INCREMENT zurücksetzen
