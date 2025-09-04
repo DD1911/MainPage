@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Links & Navigation Übung</title>
+</head>
+<body>
+
+    <!-- ==================================================== -->
+    <!-- 1. HYPERLINKS                                      -->
+    <!-- Das <a>-Tag wird verwendet, um Links zu erstellen -->
+    <!-- href="URL" definiert das Ziel des Links           -->
+    <!-- ==================================================== -->
+
+    <h1>Links in HTML</h1>
+
+    <!-- Externer Link -->
+    <p>
+        Dies ist ein <a href="https://www.google.com" target="_blank">externer Link zu Google</a>.
+        <!-- target="_blank" öffnet den Link in einem neuen Tab -->
+    </p>
+
+    <!-- Interner Link -->
+    <p>
+        Dies ist ein <a href="seite2.html">interner Link zu einer anderen Seite</a>.
+        <!-- Seite muss im gleichen Ordner liegen -->
+    </p>
+
+    <!-- ==================================================== -->
+    <!-- 2. ANKER / SPRUNGMARKEN                            -->
+    <!-- Man kann innerhalb derselben Seite springen        -->
+    <!-- id="..." markiert ein Ziel, href="#id" springt dorthin -->
+    <!-- ==================================================== -->
+
+    <h2 id="zielpunkt">Zielpunkt auf der Seite</h2>
+    <p>Hier endet der Sprung, wenn man auf den Anker klickt.</p>
+
+    <p>
+        <a href="#zielpunkt">Klicke hier, um zum Zielpunkt zu springen</a>
+    </p>
+
+    <!-- ==================================================== -->
+    <!-- 3. NAVIGATIONSBEREICH                              -->
+    <!-- Oft wird <nav> für Menü oder Navigation verwendet -->
+    <!-- Enthält in der Regel <ul> mit <li> und <a>         -->
+    <!-- ==================================================== -->
+
+    <nav>
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="#start">Start</a></li>
+            <li><a href="#zielpunkt">Zielpunkt</a></li>
+            <li><a href="seite2.html">Seite 2</a></li>
+        </ul>
+    </nav>
+
+    <h2 id="start">Startbereich</h2>
+    <p>Hier beginnt die Seite. Mit dem Navigationselement kann man schnell springen.</p>
+
+    <!-- ==================================================== -->
+    <!-- MINI-AUFGABE ZUM ÜBEN                               -->
+    <!-- 1. Erstelle ein Menü mit 3 Links:                  -->
+    <!--    - Interner Link zu einem Abschnitt auf der Seite -->
+    <!--    - Externer Link zu einer Website                 -->
+    <!--    - Link zu einer zweiten HTML-Seite               -->
+    <!-- 2. Füge einen Ankerpunkt ein und springe dorthin   -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
 
