@@ -1,0 +1,45 @@
+USE erdkunde;
+
+-- ======================================
+-- LIKE = Mustervergleich für Zeichenketten
+-- ======================================
+-- Mit LIKE kann ich nach Mustern in Zeichenketten suchen.
+-- Funktioniert ähnlich wie ==, aber mit Wildcards.
+
+-- Einfacher Vergleich: Gleich wie =
+SELECT * FROM staedte WHERE name = 'Rom';
+SELECT * FROM staedte WHERE name LIKE 'Rom';
+-- Ergebnis ist identisch.  
+
+-- ======================================
+-- 1. Wildcard % (Prozent)
+-- ======================================
+-- % steht für 0 bis unendlich viele Zeichen.
+-- Beispiel: Alle Städte, die mit "B" anfangen
+SELECT * FROM staedte WHERE name LIKE 'B%';  -- Berlin, Birmingham, Barcelona
+
+-- Städte, die auf "a" enden
+SELECT * FROM staedte WHERE name LIKE '%a';  -- Roma, Valencia
+
+-- Städte, die mit "B" anfangen und auf "a" enden
+SELECT * FROM staedte WHERE name LIKE 'B%a';  -- Barcelona
+
+-- Städte, die ein "n" irgendwo im Namen haben
+SELECT * FROM staedte WHERE name LIKE '%n%';  -- 12 Städte
+
+-- ======================================
+-- 2. Wildcard _ (Unterstrich)
+-- ======================================
+-- _ steht für genau ein beliebiges Zeichen
+-- Beispiel: Städte, deren zweiter Buchstabe ein "a" ist
+SELECT * FROM staedte WHERE name LIKE '_a%';  -- 8 Städte
+
+-- ======================================
+-- 3. NOT LIKE
+-- ======================================
+-- Alles, was NICHT passt
+SELECT * FROM staedte WHERE name NOT LIKE '%n%';  -- 6 Städte
+SELECT * FROM staedte WHERE NOT name LIKE '%n%';  -- identisch
+
+-- ======================================
+-- 4. LIKE in anderen Datenbank
