@@ -1,0 +1,72 @@
+USE erdkunde;
+
+-- ======================================
+-- AGGREGAT-FUNKTIONEN = ZUSAMMENFASSUNG VON WERTEN
+-- ======================================
+-- Aggregat-Funktionen fassen mehrere Werte einer Spalte zu einem einzigen Wert zusammen.
+-- Sie sind sehr performant, da sie meist nur eine Spalte gleichzeitig betrachten.
+
+-- ======================================
+-- 1. MAX() = größter Wert
+-- ======================================
+-- Beispiel: Größte Stadt nach Einwohnerzahl
+SELECT MAX(einwohnerzahl) FROM staedte;
+-- Ergebnis: 8.175.133 (New York)
+
+-- ======================================
+-- 2. MIN() = kleinster Wert
+-- ======================================
+-- Beispiel: Kleinste Stadt nach Einwohnerzahl
+SELECT MIN(einwohnerzahl) FROM staedte;
+-- Ergebnis: 479.803 (Lyon)
+
+-- Bei Zeichenketten wird nach ASCII-Werten entschieden
+SELECT MIN(name) FROM staedte;
+-- Ergebnis: 'Barcelona' (kommt alphabetisch als erstes)
+
+-- ======================================
+-- 3. COUNT() = Anzahl
+-- ======================================
+-- Zählt die Zeilen mit Werten in einer Spalte
+SELECT COUNT(id) FROM staedte;
+-- Ergebnis: 18 Städte
+
+-- ======================================
+-- 4. SUM() = Summe
+-- ======================================
+-- Addiert alle Werte in einer Spalte
+SELECT SUM(einwohnerzahl) FROM staedte;
+-- Ergebnis: 42.999.535
+
+-- ======================================
+-- 5. AVG() = Durchschnitt
+-- ======================================
+SELECT AVG(einwohnerzahl) FROM staedte;
+-- Ergebnis: 2.388.863,0556
+
+-- Alternativ kann man AVG auch aus SUM und COUNT berechnen:
+SELECT SUM(einwohnerzahl) / COUNT(einwohnerzahl) FROM staedte;
+-- Ergebnis ist identisch
+
+-- ======================================
+-- 6. Mehrere Aggregat-Funktionen zusammen
+-- ======================================
+SELECT MAX(einwohnerzahl),
+       MIN(einwohnerzahl),
+       COUNT(einwohnerzahl),
+       SUM(einwohnerzahl),
+       AVG(einwohnerzahl)
+FROM staedte;
+
+-- ======================================
+-- 7. Achtung: Aggregatfunktionen dürfen NICHT mit "normalen" Spalten zusammen benutzt werden
+-- ======================================
+#SELECT MAX(einwohnerzahl), name FROM staedte;  
+-- ❌ Error: In aggregated query nonaggregated column
+
+-- Wenn ich die Stadt mit höchster Einwohnerzahl brauche, muss ich ORDER BY & LIMIT benutzen:
+SELECT einwohnerzahl, name
+FROM staedte
+ORDER BY einwohnerzahl DESC
+LIMIT 1;
+-- Ergebnis: New York, 8.175.133
