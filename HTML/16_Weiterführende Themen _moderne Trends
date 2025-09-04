@@ -1,1 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms & Validation Vertieft</title>
+</head>
+<body>
+
+    <h1>Fortgeschrittene Formulare & Validierung</h1>
+
+    <!-- ==================================================== -->
+    <!-- 1. FORMULAR MIT VALIDIERUNG                           -->
+    <!-- type="text", "email", "number", "password" usw.     -->
+    <!-- required = Pflichtfeld                               -->
+    <!-- pattern = RegEx für Eingabeformat                     -->
+    <!-- min, max, step = numerische Einschränkungen          -->
+    <!-- ==================================================== -->
+
+    <form id="fortgeschrittenesFormular">
+        <!-- Name Pflichtfeld -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required placeholder="Vor- und Nachname">
+        <br><br>
+
+        <!-- E-Mail Pflichtfeld mit automatischer Validierung -->
+        <label for="email">E-Mail:</label>
+        <input type="email" id="email" name="email" required placeholder="email@example.com">
+        <br><br>
+
+        <!-- Telefonnummer mit Pattern -->
+        <label for="telefon">Telefon (Format: 0123-456789):</label>
+        <input type="tel" id="telefon" name="telefon" pattern="[0-9]{4}-[0-9]{6}" placeholder="0123-456789">
+        <br><br>
+
+        <!-- Alter mit min/max/step -->
+        <label for="alter">Alter:</label>
+        <input type="number" id="alter" name="alter" min="18" max="99" step="1" required>
+        <br><br>
+
+        <!-- Passwort mit Pattern (mindestens 8 Zeichen, Buchstaben+Zahlen) -->
+        <label for="passwort">Passwort:</label>
+        <input type="password" id="passwort" name="passwort" pattern="(?=.*\d)(?=.*[a-zA-Z]).{8,}" required>
+        <br><br>
+
+        <button type="submit">Absenden</button>
+    </form>
+
+    <!-- ==================================================== -->
+    <!-- 2. INTERAKTIVES FEEDBACK MIT JAVASCRIPT              -->
+    <!-- Bei Fehlern Nutzer direkt informieren                -->
+    <!-- ==================================================== -->
+
+    <p id="feedback" style="color:red;"></p>
+
+    <script>
+        const form = document.getElementById("fortgeschrittenesFormular");
+        const feedback = document.getElementById("feedback");
+
+        form.addEventListener("submit", function(e){
+            if(!form.checkValidity()){
+                e.preventDefault(); // verhindert das Absenden bei Fehler
+                feedback.textContent = "Bitte überprüfe deine Eingaben. Pflichtfelder und Format müssen korrekt sein.";
+            } else {
+                feedback.textContent = "";
+                alert("Formular erfolgreich abgeschickt!");
+            }
+        });
+    </script>
+
+    <!-- ==================================================== -->
+    <!-- 3. MINI-AUFGABE ZUM ÜBEN                              -->
+    <!-- 1. Erstelle ein Formular mit Name, E-Mail, Telefonnummer, Alter, Passwort -->
+    <!-- 2. Nutze required, pattern, min, max, step           -->
+    <!-- 3. Füge interaktives Feedback mit JavaScript hinzu    -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
 
