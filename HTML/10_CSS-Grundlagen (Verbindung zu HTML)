@@ -1,1 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Weiterführendes & Moderne Themen Übung</title>
+</head>
+<body>
+
+    <!-- ==================================================== -->
+    <!-- 1. VERBINDUNG MIT CSS                                -->
+    <!-- CSS dient zum Styling von HTML-Elementen             -->
+    <!-- Inline-Style, interne <style>, externe CSS-Datei     -->
+    <!-- ==================================================== -->
+
+    <h1 style="color: blue;">Beispiel: Inline-CSS</h1>
+
+    <style>
+        /* Interne CSS */
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+
+    <p class="highlight">Dieser Text ist durch CSS formatiert.</p>
+
+    <!-- ==================================================== -->
+    <!-- 2. EINBINDUNG VON JAVASCRIPT                        -->
+    <!-- <script> innerhalb von <head> oder <body>          -->
+    <!-- extern: <script src="script.js"></script>           -->
+    <!-- DOM-Zugriff, Event-Handling, Interaktivität         -->
+    <!-- ==================================================== -->
+
+    <button id="clickButton">Klick mich!</button>
+    <p id="demo">Hier erscheint der Text nach Klick.</p>
+
+    <script>
+        const button = document.getElementById("clickButton");
+        const demo = document.getElementById("demo");
+
+        button.addEventListener("click", function() {
+            demo.textContent = "Du hast den Button geklickt!";
+        });
+    </script>
+
+    <!-- ==================================================== -->
+    <!-- 3. PROGRESSIVE WEB APPS (PWA) - GRUNDLAGEN          -->
+    <!-- Offline-fähige Websites, Service Worker, Manifest    -->
+    <!-- ==================================================== -->
+
+    <!-- Hinweis: PWA benötigt Service Worker und Manifest-Datei, hier nur Erklärung -->
+
+    <!-- ==================================================== -->
+    <!-- 4. HTML TEMPLATES                                    -->
+    <!-- <template> = unsichtbarer Container für wiederverwendbaren Code -->
+    <!-- Kann via JavaScript dynamisch eingefügt werden     -->
+    <!-- ==================================================== -->
+
+    <template id="meinTemplate">
+        <p>Dies ist ein Template-Text.</p>
+    </template>
+
+    <button id="showTemplate">Template anzeigen</button>
+
+    <div id="container"></div>
+
+    <script>
+        const showBtn = document.getElementById("showTemplate");
+        const container = document.getElementById("container");
+        const template = document.getElementById("meinTemplate");
+
+        showBtn.addEventListener("click", function() {
+            const clone = template.content.cloneNode(true);
+            container.appendChild(clone);
+        });
+    </script>
+
+    <!-- ==================================================== -->
+    <!-- 5. MICRODATA / STRUCTURED DATA                      -->
+    <!-- data-* oder schema.org für strukturierte Infos       -->
+    <!-- Hilft Suchmaschinen, Inhalte besser zu verstehen    -->
+    <!-- ==================================================== -->
+
+    <div itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Max Mustermann</span>,
+        <span itemprop="jobTitle">Webentwickler</span>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- 6. INTEGRATION VON FRAMEWORKS                        -->
+    <!-- Bootstrap, TailwindCSS usw.                           -->
+    <!-- erleichtern Layout, Styling und responsive Design   -->
+    <!-- ==================================================== -->
+
+    <p class="text-blue-500 font-bold">Beispiel: TailwindCSS Klassennamen</p>
+
+    <!-- ==================================================== -->
+    <!-- 7. MINI-AUFGABE ZUM ÜBEN                              -->
+    <!-- 1. Füge CSS (intern oder extern) hinzu               -->
+    <!-- 2. Füge ein JavaScript-Event hinzu                   -->
+    <!-- 3. Erstelle ein Template und zeige es dynamisch     -->
+    <!-- 4. Optional: Microdata für eine Person hinzufügen   -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
 
