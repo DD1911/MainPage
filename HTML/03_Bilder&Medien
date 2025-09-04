@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Bilder & Medien Übung</title>
+</head>
+<body>
+
+    <!-- ==================================================== -->
+    <!-- 1. BILDER EINFÜGEN                                  -->
+    <!-- <img> Tag wird verwendet, um Bilder darzustellen -->
+    <!-- src="Pfad" definiert das Bild                       -->
+    <!-- alt="Alternativtext" beschreibt das Bild           -->
+    <!-- ==================================================== -->
+
+    <h1>Bilder in HTML</h1>
+
+    <p>
+        <img src="bild.jpg" alt="Beispielbild" width="300">
+        <!-- width="300" definiert die Breite in Pixel -->
+    </p>
+
+    <!-- ==================================================== -->
+    <!-- 2. AUDIO & VIDEO                                   -->
+    <!-- Audio: <audio> mit controls                        -->
+    <!-- Video: <video> mit controls, width, height        -->
+    <!-- ==================================================== -->
+
+    <h2>Audio-Beispiel</h2>
+    <audio controls>
+        <source src="audio.mp3" type="audio/mpeg">
+        Dein Browser unterstützt das Audio-Element nicht.
+    </audio>
+
+    <h2>Video-Beispiel</h2>
+    <video controls width="400">
+        <source src="video.mp4" type="video/mp4">
+        Dein Browser unterstützt das Video-Element nicht.
+    </video>
+
+    <!-- ==================================================== -->
+    <!-- 3. Pfadangaben                                     -->
+    <!-- Absoluter Pfad: https://example.com/bild.jpg      -->
+    <!-- Relativer Pfad: bilder/bild.jpg (im gleichen Ordner oder Unterordner) -->
+    <!-- ==================================================== -->
+
+    <p>
+        Beispiel für einen relativen Pfad: 
+        <img src="bilder/beispiel.jpg" alt="Beispielbild relativ">
+    </p>
+
+    <!-- ==================================================== -->
+    <!-- 4. MINI-AUFGABE ZUM ÜBEN                            -->
+    <!-- 1. Füge ein Bild mit relativen Pfad ein            -->
+    <!-- 2. Füge ein Bild mit absolutem Pfad ein            -->
+    <!-- 3. Füge ein Audio-Element mit controls ein         -->
+    <!-- 4. Füge ein Video-Element mit controls und Breite ein -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
 
