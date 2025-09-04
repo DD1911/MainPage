@@ -1,0 +1,48 @@
+USE erdkunde;
+
+-- ======================================
+-- JOIN-TYPEN: LEFT, RIGHT, INNER
+-- ======================================
+
+-- Alle Datensätze aus den Tabellen ansehen
+SELECT * FROM staedte;  -- 21 Zeilen
+SELECT * FROM laender;  -- 8 Zeilen
+
+-- ======================================
+-- 1. INNER JOIN
+-- ======================================
+-- Nur Datensätze, die in beiden Tabellen einen passenden Schlüssel haben
+-- -> Städte mit gültiger laender_id
+SELECT * 
+FROM staedte
+INNER JOIN laender ON staedte.laender_id = laender.id;  
+-- 20 Zeilen, Köln fehlt, da laender_id NULL ist
+
+-- ======================================
+-- 2. LEFT JOIN
+-- ======================================
+-- Alle Datensätze der linken Tabelle (staedte) werden angezeigt
+-- Fehlende rechte Tabelle (laender) wird mit NULL gefüllt
+SELECT *
+FROM staedte
+LEFT JOIN laender ON staedte.laender_id = laender.id;
+-- 21 Zeilen, alle Städte vorhanden, Köln hat NULL für Länder-Spalten
+
+-- ======================================
+-- 3. RIGHT JOIN
+-- ======================================
+-- Alle Datensätze der rechten Tabelle (laender) werden angezeigt
+-- Fehlende linke Tabelle (staedte) wird mit NULL gefüllt
+SELECT *
+FROM staedte
+RIGHT JOIN laender ON staedte.laender_id = laender.id;
+-- 22 Zeilen, Köln fehlt wieder, aber Länder ohne Städte werden angezeigt
+
+-- ======================================
+-- 4. LEFT JOIN mit getauschter Reihenfolge
+-- ======================================
+-- Wichtigere Tabelle zuerst, dann LEFT JOIN
+SELECT *
+FROM laender
+LEFT JOIN staedte ON staedte.laender_id = laender.id;
+-- Alle Länder werden angezeigt, Städte-Spalten NULL, wenn keine Stadt vorhanden
