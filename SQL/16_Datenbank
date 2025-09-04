@@ -1,0 +1,46 @@
+-- ======================================
+-- 1. Datenbanken anzeigen
+-- ======================================
+SHOW DATABASES;
+
+-- ======================================
+-- 2. Benutzer anzeigen
+-- ======================================
+-- Alle Benutzer
+SELECT * FROM mysql.user;
+
+-- Nur Host, User und SELECT-Rechte anzeigen
+SELECT Host, User, Select_priv FROM mysql.user;
+
+-- Aktueller Benutzer
+SELECT USER();  -- z. B. root@localhost
+
+-- ======================================
+-- 3. Admin-Benutzer anlegen
+-- ======================================
+-- Vorher löschen, falls vorhanden
+DROP USER IF EXISTS admin@localhost;
+
+-- Benutzer erstellen
+CREATE USER admin@localhost IDENTIFIED BY '123geheim';
+
+-- Alle Rechte auf allen Datenbanken geben
+GRANT ALL PRIVILEGES ON *.* TO admin@localhost;
+
+-- Erlaubt dem Benutzer, Rechte weiterzugeben
+GRANT GRANT OPTION ON *.* TO admin@localhost;
+
+-- ======================================
+-- 4. Limitierter Benutzer anlegen
+-- ======================================
+DROP USER IF EXISTS grobi@localhost;
+CREATE USER grobi@localhost IDENTIFIED BY '123geheim';
+
+-- Nur SELECT-Rechte auf die Tabelle erdkunde.staedte
+GRANT SELECT ON erdkunde.staedte TO grobi@localhost;
+
+-- ======================================
+-- 5. Kontrolle: Benutzerrechte
+-- ======================================
+SELECT * FROM mysql.user;       -- Benutzerkonten überprüfen
+SELECT * FROM mysql.tables_priv; -- Rechte auf Tabellenebene prüfen
