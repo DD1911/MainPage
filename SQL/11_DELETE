@@ -1,0 +1,32 @@
+USE erdkunde;
+
+-- ======================================
+-- DELETE = Datensätze löschen
+-- ======================================
+-- DELETE gehört zur DML (Data Manipulation Language)
+-- Syntax: DELETE FROM tabelle WHERE bedingung;
+
+-- ======================================
+-- 1. Einzelne Zeile löschen
+-- ======================================
+-- Beispiel: Die Stadt Rom löschen
+SELECT * FROM staedte WHERE name = 'Rom';  -- Kontrolle vorher
+DELETE FROM staedte WHERE name = 'Rom';
+SELECT * FROM staedte;  -- Kontrolle nachher, 17 Zeilen
+
+-- ======================================
+-- 2. Mehrere Zeilen löschen mit BETWEEN
+-- ======================================
+-- Beispiel: Städte mit ID zwischen 9 und 12 löschen
+DELETE FROM staedte WHERE id BETWEEN 9 AND 12;
+SELECT * FROM staedte;  -- Kontrolle, jetzt 13 Zeilen
+
+-- Hinweis: MySQL zeigt an, wie viele Datensätze gelöscht wurden
+-- Wenn kein Datensatz gelöscht wird, gibt es keinen Fehler, sondern "0 rows affected"
+
+-- ======================================
+-- 3. Alle Datensätze löschen
+-- ======================================
+-- ACHTUNG: Ohne WHERE löscht man ALLE Zeilen!
+DELETE FROM staedte;
+SELECT * FROM staedte;  -- Kontrolle, jetzt 0 Zeilen
