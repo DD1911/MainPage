@@ -1,0 +1,157 @@
+USE erdkunde;
+
+-- ======================================
+-- LÖSCHEN VON DATENSÄTZEN
+-- ======================================
+
+-- DELETE gehört zur DML (Data Manipulation Language)
+-- Syntax: DELETE FROM tabelle WHERE bedingung;
+
+-- --------------------------------------
+-- 1. Einzelne Zeile löschen
+-- --------------------------------------
+-- Beispiel: Die Stadt Rom löschen
+SELECT * FROM staedte WHERE name = 'Rom';  -- Kontrolle vorher
+DELETE FROM staedte WHERE name = 'Rom';
+SELECT * FROM staedte;                      -- Kontrolle nachher, z.B. 17 Zeilen
+
+-- --------------------------------------
+-- 2. Mehrere Zeilen löschen mit BETWEEN
+-- --------------------------------------
+-- Beispiel: Städte mit ID zwischen 9 und 12 löschen
+DELETE FROM staedte WHERE id BETWEEN 9 AND 12;
+SELECT * FROM staedte;                      -- Kontrolle, z.B. 13 Zeilen
+
+-- Hinweis:
+-- MySQL zeigt an, wie viele Datensätze gelöscht wurden
+-- Wenn kein Datensatz gelöscht wird, gibt es keinen Fehler, sondern "0 rows affected"
+
+-- --------------------------------------
+-- 3. Alle Datensätze löschen
+-- --------------------------------------
+-- ACHTUNG: Ohne WHERE werden ALLE Zeilen gelöscht!
+DELETE FROM staedte;
+SELECT * FROM staedte;                      -- Kontrolle, jetzt 0 Zeilen
+
+-- --------------------------------------
+-- 4. DELETE vs. TRUNCATE
+-- --------------------------------------
+-- DELETE löscht nur die Daten, AUTO_INCREMENT bleibt bestehen
+INSERT INTO staedte (name, einwohnerzahl) VALUES ('Friesoythe', 27000);
+SELECT * FROM staedte;                      -- id = 19 (nicht 1!)
+
+-- TRUNCATE löscht alle Daten UND setzt AUTO_INCREMENT zurück
+TRUNCATE TABLE staedte;
+INSERT INTO staedte (name, einwohnerzahl) VALUES ('Friesoythe', 27000);
+SELECT * FROM staedte;                      -- id = 1
+
+-- ======================================
+-- 5. Zusammenfassung DDL vs DML
+-- ======================================
+-- DDL (Data Definition Language) → Struktur ändern:
+--   CREATE TABLE, DROP TABLE, ALTER TABLE, TRUNCATE
+--   -> TRUNCATE setzt AUTO_INCREMENT zurück
+
+-- DML (Data Manipulation Language) → Daten ändern:
+--   SELECT, INSERT, UPDATE, DELETE
+--   -> DELETE löscht nur die Daten, AUTO_INCREMENT bleibt
+
+-- Faustregel:
+--   DROP = ganze Struktur entfernen
+--   DELETE = nur Daten löschen
+--   TRUNCATE = alle Daten löschen + AUTO_INCREMENT zurücksetzen
+
+
+-- ======================================
+-- ERDKUNDE: NEUE DATENSÄTZE
+-- ======================================
+
+-- Alte Datenbank löschen, neue anlegen
+DROP DATABASE IF EXISTS erdkunde;
+CREATE DATABASE erdkunde;
+USE erdkunde;
+
+-- --------------------------------------
+-- 1. Tabelle "staedte" erstellen
+-- --------------------------------------
+CREATE TABLE staedte
+(
+	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(255),       -- Stadtname (optional NULL möglich)
+    einwohnerzahl INT,          -- Einwohnerzahl (optional NULL möglich)
+    laender_id INT              -- FK auf Länder-Tabelle (optional NULL möglich)
+);
+
+-- --------------------------------------
+-- 2. Tabelle "laender" erstellen
+-- --------------------------------------
+CREATE TABLE laender
+(
+	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(255),       -- Ländername (optional NULL möglich)
+    einwohnerzahl INT           -- Einwohnerzahl (optional NULL möglich)
+);
+
+-- --------------------------------------
+-- 3. Länder-Datensätze einfügen
+-- --------------------------------------
+INSERT INTO laender (`name`, `einwohnerzahl`)
+VALUES
+('Deutschland', '81796000'),
+('USA', '311484627'),
+('Frankreich', '65447374'),
+('Großbritannien', '61792000'),
+('Italien', '60626442'),
+('Spanien', '47190493');
+
+-- --------------------------------------
+-- 4. Städte-Datensätze einfügen
+-- --------------------------------------
+INSERT INTO staedte (`name`, `einwohnerzahl`, `laender_id`)
+VALUES
+('Berlin', '3496082', '1'),
+('Washington, D.C.', '601723', '2'),
+('Paris', '2234105', '3'),
+('London', '7825200', '4'),
+('Rom', '2761477', '5'),
+('Madrid', '3265038', '6'),
+('Hamburg', '1798455', '1'),
+('New York', '8175133', '2'),
+('Marseille', '850602', '3'),
+('Birmingham', '1036878', '4'),
+('Mailand', '1324110', '5'),
+('Barcelona', '1615448', '6'),
+('München', '1353186', '1'),
+('Los Angeles', '3831868', '2'),
+('Lyon', '479803', '3'),
+('Glasgow', '592820', '4'),
+('Neapel', '959574', '5'),
+('Valencia', '798033', '6');
+
+-- --------------------------------------
+-- 5. Neue Datensätze mit NULL / fehlenden Angaben
+-- --------------------------------------
+-- Land ohne Namen (Russland)
+INSERT INTO laender (einwohnerzahl) VALUES ('142905200');
+
+-- Land ohne Einwohnerzahl (Japan)
+INSERT INTO laender (`name`) VALUES ('Japan');
+
+-- Stadt ohne Namen (Chicago)
+INSERT INTO staedte (einwohnerzahl, laender_id) VALUES ('2695598', '2');
+
+-- Stadt ohne Länder-ID (Köln)
+INSERT INTO staedte (`name`, einwohnerzahl) VALUES ('Köln', '1007119');
+
+-- Stadt ohne Einwohnerzahl (Turin)
+INSERT INTO staedte (`name`, laender_id`) VALUES ('Turin', '5');
+
+-- --------------------------------------
+-- 6. Ergebnis anzeigen
+-- --------------------------------------
+SELECT * FROM staedte;
+SELECT * FROM laender;
+
+-- Hinweis:
+-- Spalten, für die kein Wert angegeben wird, erhalten automatisch NULL.
+-- Ideal, um unvollständige Datensätze und NULL-Verhalten zu testen.
