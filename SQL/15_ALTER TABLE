@@ -1,0 +1,49 @@
+USE erdkunde;
+
+-- ======================================
+-- ALTER TABLE: Tabelle verändern
+-- ======================================
+-- Gehört zur DDL (Data Definition Language)
+
+-- ======================================
+-- 1. Spalte hinzufügen: ADD [COLUMN]
+-- ======================================
+-- Füge der Tabelle "staedte" die Spalte "flaeche" hinzu
+ALTER TABLE staedte ADD COLUMN flaeche INT;
+SHOW COLUMNS FROM staedte;
+
+-- ======================================
+-- 2. Spalte löschen: DROP [COLUMN]
+-- ======================================
+-- Lösche die Spalte "flaeche"
+ALTER TABLE staedte DROP COLUMN flaeche;
+SHOW COLUMNS FROM staedte;
+
+-- ======================================
+-- 3. Spalte umbenennen: CHANGE [COLUMN]
+-- ======================================
+-- Spalte "name" in "sname" umbenennen
+ALTER TABLE staedte CHANGE COLUMN name sname VARCHAR(255);
+SHOW COLUMNS FROM staedte;
+
+-- Spalte wieder zurückbenennen
+ALTER TABLE staedte CHANGE COLUMN sname name VARCHAR(255);
+SELECT * FROM staedte;
+
+-- ======================================
+-- 4. Datentyp ändern: MODIFY [COLUMN]
+-- ======================================
+-- Ändere den Datentyp der Spalte "einwohnerzahl" zu FLOAT
+ALTER TABLE staedte MODIFY COLUMN einwohnerzahl FLOAT;
+SHOW COLUMNS FROM staedte;
+
+-- ======================================
+-- 5. Tabelle umbenennen: RENAME TO
+-- ======================================
+-- Ändere den Tabellennamen von "staedte" zu "cities"
+ALTER TABLE staedte RENAME TO cities;
+SHOW TABLES;
+
+-- Tabelle wieder zurückbenennen
+ALTER TABLE cities RENAME TO staedte;
+SELECT * FROM staedte;
