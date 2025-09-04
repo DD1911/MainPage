@@ -68,3 +68,81 @@ WHERE hotels.id IN (
 -- TODO: Prüfen, ob Indizes für hotels_id und gaeste_id existieren.
 -- HINWEIS: YEAR() kann Performance kosten, besser wäre ein Vergleich mit Datum.
 -- FIXME: Diese Abfrage liefert aktuell auch doppelte Hotels zurück, DISTINCT nötig.
+
+
+-- ======================================
+-- 1. Datenbank und Tabelle erstellen
+-- ======================================
+DROP DATABASE IF EXISTS exkurse;  -- Vorhandene Datenbank löschen
+CREATE DATABASE exkurse;          -- Neue Datenbank anlegen
+USE exkurse;
+
+-- ======================================
+-- 2. Tabelle "zeiten" erstellen
+-- ======================================
+-- Verschiedene Datentypen für Zeitangaben
+CREATE TABLE zeiten (
+    id INT PRIMARY KEY,
+    uhrzeit TIME,        -- Nur Uhrzeit (hh:mm:ss)
+    datum DATE,          -- Nur Datum (yyyy-mm-dd)
+    zeitpunkt DATETIME,  -- Kombination aus Datum & Uhrzeit
+    jahr YEAR            -- Nur das Jahr
+);
+
+SHOW COLUMNS FROM zeiten;
+
+-- ======================================
+-- 3. Daten einfügen (ISO 8601 Format)
+-- ======================================
+INSERT INTO zeiten VALUES
+(1, '13:49:33', '2025-07-15', '2025-07-15 13:49:33', '2025');
+
+SELECT * FROM zeiten;
+
+-- ======================================
+-- 4. MySQL Funktionen für Datum & Zeit
+-- ======================================
+SELECT CURTIME();  -- Aktuelle Uhrzeit
+SELECT CURDATE();  -- Aktuelles Datum
+SELECT NOW();      -- Aktueller Zeitpunkt (Datum + Uhrzeit)
+
+-- YEAR() - Jahr aus Datum oder Zeitstempel extrahieren
+SELECT YEAR('2025-07-15');           -- 2025
+SELECT YEAR('2025-07-15 14:33:44');  -- 2025
+SELECT YEAR(NOW());                  -- z. B. 2025
+
+-- Einfügen aktueller Zeitangaben
+INSERT INTO zeiten VALUES (2, CURTIME(), CURDATE(), NOW(), YEAR(NOW()));
+SELECT * FROM zeiten;
+
+-- ======================================
+-- 5. Wochentage
+-- ======================================
+-- WEEKDAY(): Montag=0, Sonntag=6
+SELECT WEEKDAY(NOW());  -- z. B. 1 (Dienstag)
+
+-- DATEDIFF(datum1, datum2) - Differenz in Tagen
+SELECT DATEDIFF('2000-03-01', '2000-02-28');   -- 2
+SELECT DATEDIFF('2001-03-01', '2001-02-28');   -- 1
+SELECT DATEDIFF(CURDATE(), '1970-12-03');      -- z. B. 19948
+
+-- ADDDATE(date, anzahl) - Datum um n Tage erhöhen
+SELECT ADDDATE('1970-12-03', 10000);           -- 1998-04-20
+SELECT ADDDATE('1970-12-03', 20000);           -- 2025-09-05
+
+-- WEEKDAY() und DAYNAME() kombinieren
+SELECT WEEKDAY(ADDDATE('1970-12-03', 20000));       -- 4 (Freitag)
+SELECT DAYNAME(ADDDATE('1970-12-03', 20000));       -- Friday
+
+-- Mehrere Werte in SELECT
+SELECT WEEKDAY(ADDDATE('1970-12-03', 20000)),
+       DAYNAME(ADDDATE('1970-12-03', 20000));
+
+-- ======================================
+-- 6. CONCAT() - Zeichenketten verbinden
+-- ======================================
+SELECT CONCAT(4, ' - ', 'Friday');  -- Ergebnis: '4 - Friday'
+SELECT CONCAT(WEEKDAY(ADDDATE('1970-12-03', 20000)), ' - ', DAYNAME(ADDDATE('1970-12-03', 20000)));
+
+-- Mit Alias für bessere Lesbarkeit
+SELECT CONCAT(WEEKDAY(ADDDATE('1970-12-03', 20000)), ' - ', DAYNAME(ADDDATE('1970-12-03', 20000))) AS 'Wochentag';
