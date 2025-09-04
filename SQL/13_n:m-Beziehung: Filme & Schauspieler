@@ -1,0 +1,135 @@
+-- ======================================
+-- n:m-Beziehung: Filme & Schauspieler
+-- ======================================
+
+-- Szenario:
+-- - Ein Film hat VIELE Schauspieler:innen
+-- - Ein:e Schauspieler:in spielt in VIELEN Filmen mit
+-- => n:m-Beziehung
+-- Lösung: Zwischentabelle (Join Table / Junction Table)
+
+DROP DATABASE IF EXISTS filmverwaltung;
+CREATE DATABASE filmverwaltung;
+USE filmverwaltung;
+
+-- ======================================
+-- Tabelle "filme" erstellen
+-- ======================================
+CREATE TABLE filme (
+    id INT PRIMARY KEY,
+    titel VARCHAR(255),
+    jahr YEAR
+);
+
+SHOW COLUMNS FROM filme;
+
+-- ======================================
+-- Tabelle "schauspieler" erstellen
+-- ======================================
+CREATE TABLE schauspieler (
+    id INT PRIMARY KEY,
+    vorname VARCHAR(255),
+    nachname VARCHAR(255)
+);
+
+SHOW COLUMNS FROM schauspieler;
+
+-- ======================================
+-- Beispiel-Daten einfügen: Filme
+-- ======================================
+INSERT INTO filme VALUES
+(1, 'Matrix', 1999),
+(2, 'Idiocracy', 2006),
+(3, 'Herr der Ringe', 2001),
+(4, 'Fightclub', 1999),
+(5, 'Rocky Horror Picture Show', 1975),
+(6, 'Der einzige Zeuge', 1985),
+(7, 'John Wick', 2014),
+(8, 'Das Haus am See', 2006),
+(9, 'Spaceballs', 1987),
+(10, 'Cool Runnings', 1993);
+
+SELECT * FROM filme;
+
+-- ======================================
+-- Beispiel-Daten einfügen: Schauspieler
+-- ======================================
+INSERT INTO schauspieler VALUES
+(1, 'Keanu', 'Reeves'),
+(2, 'Laurence', 'Fishburne'),
+(3, 'Carrie-Anne', 'Moss'),
+(4, 'Luke', 'Wilson'),
+(5, 'Maya', 'Rudolph'),
+(6, 'Elijah', 'Wood'),
+(7, 'Viggo', 'Mortensen'),
+(8, 'Brad', 'Pitt'),
+(9, 'Edward', 'Norton'),
+(10, 'Meat', 'Loaf'),
+(11, 'Helena', 'Bonham Carter'),
+(12, 'Tim', 'Curry'),
+(13, 'Susan', 'Sarandon'),
+(14, 'Harrison', 'Ford'),
+(15, 'Willem', 'Dafoe'),
+(16, 'Sandra', 'Bullock'),
+(17, 'John', 'Candy');
+
+SELECT * FROM schauspieler;
+
+-- ======================================
+-- Zwischentabelle: Filme ↔ Schauspieler
+-- ======================================
+-- Löst die n:m-Beziehung auf
+-- Benennung: "tabelle1_tabelle2"
+CREATE TABLE filme_schauspieler (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    filme_id INT,        -- FK auf filme.id
+    schauspieler_id INT  -- FK auf schauspieler.id
+);
+
+-- ======================================
+-- Beziehungen in der Zwischentabelle eintragen
+-- ======================================
+INSERT INTO filme_schauspieler (filme_id, schauspieler_id) VALUES
+(1, 1), (1, 2), (1, 3),        -- Matrix
+(2, 4), (2, 5),                 -- Idiocracy
+(3, 6), (3, 7),                 -- Herr der Ringe
+(4, 8), (4, 9), (4, 10), (4, 11), -- Fightclub
+(5, 12), (5, 13), (5, 10),      -- Rocky Horror
+(6, 14), (6, 7),                 -- Der einzige Zeuge
+(7, 1), (7, 15),                 -- John Wick
+(8, 1), (8, 16),                 -- Das Haus am See
+(9, 17),                          -- Spaceballs
+(10, 17);                         -- Cool Runnings
+
+SELECT * FROM filme_schauspieler;  -- 22 rows
+SELECT * FROM filme;               -- 10 rows
+SELECT * FROM schauspieler;        -- 17 rows
+
+-- ======================================
+-- Beispiel-Abfragen
+-- ======================================
+
+-- 1) Alle Zuordnungen mit Filmtitel
+SELECT *
+FROM filme_schauspieler
+INNER JOIN filme ON filme_id = filme.id;
+
+-- 2) Alle Zuordnungen mit Schauspielername & Filmtitel
+SELECT *
+FROM filme_schauspieler
+INNER JOIN filme ON filme_id = filme.id
+INNER JOIN schauspieler ON schauspieler_id = schauspieler.id;
+
+-- 3) Nur Vorname, Nachname, Titel
+SELECT vorname,
+       nachname,
+       titel
+FROM filme_schauspieler
+INNER JOIN filme ON filme_id = filme.id
+INNER JOIN schauspieler ON schauspieler_id = schauspieler.id;
+
+-- ======================================
+-- Hinweis:
+-- Die Zwischentabelle ermöglicht beliebig viele Schauspieler pro Film
+-- und beliebig viele Filme pro Schauspieler.
+-- Dadurch ist die n:m-Beziehung korrekt abgebildet.
