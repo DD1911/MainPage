@@ -1,0 +1,63 @@
+USE erdkunde;
+
+-- ======================================
+-- UPDATE = Datensätze ändern
+-- ======================================
+-- UPDATE gehört zur DML (Data Manipulation Language)
+-- Syntax: UPDATE tabelle SET spalte = wert [, ...] WHERE bedingung;
+
+-- ======================================
+-- 1. Einzelne Werte ändern
+-- ======================================
+-- Beispiel: Einwohnerzahl von Berlin auf 3.685.265 ändern
+SELECT * FROM staedte WHERE name = 'Berlin';  -- Kontrolle vorher
+UPDATE staedte
+SET einwohnerzahl = 3685265
+WHERE name = 'Berlin';
+SELECT * FROM staedte WHERE name = 'Berlin';  -- Kontrolle nachher
+
+-- ======================================
+-- 2. UPDATE von mehreren Spalten möglich
+-- ======================================
+-- Beispiel: Ländername ändern
+SELECT * FROM laender;
+UPDATE laender
+SET name = "Vereinigte Staaten von Amerika"
+WHERE name = 'USA';
+SELECT * FROM laender;
+
+-- ======================================
+-- 3. UPDATE ohne WHERE
+-- ======================================
+-- ACHTUNG: Ändert ALLE Datensätze in der Tabelle
+UPDATE laender
+SET name = 'Erde';
+SELECT * FROM laender;
+
+-- ======================================
+-- 4. UPDATE mit Berechnung
+-- ======================================
+-- Beispiel: Einwohnerzahl verdoppeln für alle Städte mit laender_id = 1
+SELECT * FROM staedte WHERE laender_id = 1;  -- Kontrolle vorher
+UPDATE staedte
+SET einwohnerzahl = einwohnerzahl * 2
+WHERE laender_id = 1;
+SELECT * FROM staedte WHERE laender_id = 1;  -- Kontrolle nachher
+
+-- Hinweis: INT-Spalte hat maximalen Wert (32-Bit)
+-- Bei sehr großen Zahlen kann es zu "Out of range"-Fehlern kommen
+
+-- ======================================
+-- 5. JOIN und UPDATE (optional)
+-- ======================================
+-- UPDATE direkt über JOIN ist möglich, aber hier haben wir es über WHERE gelöst
+SELECT * FROM staedte
+INNER JOIN laender ON laender_id = laender.id;
+
+-- ======================================
+-- 6. Safe Updates
+-- ======================================
+-- Verhindert versehentliche Updates ohne WHERE auf Schlüsselspalten
+SHOW VARIABLES LIKE '%safe_updates%';  -- Status anzeigen
+SET sql_safe_updates = ON;             -- Aktivieren
+SET sql_safe_updates = OFF;            -- Deaktivieren bei Bedarf
