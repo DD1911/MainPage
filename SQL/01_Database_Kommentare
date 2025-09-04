@@ -1,0 +1,70 @@
+-- ======================================
+--   ARBEITEN MIT DATENBANKEN & KOMMENTAREN
+-- ======================================
+
+-- --------------------------------------
+-- ANZEIGEN ALLER DATENBANKEN (Serverebene)
+-- --------------------------------------
+SHOW DATABASES;
+
+-- --------------------------------------
+-- KOMMENTARE IN SQL
+-- --------------------------------------
+
+-- Einzeilige Kommentare:
+-- Variante 1: Doppelte Bindestriche bis zum Zeilenende
+-- Dies ist ein Kommentar
+SELECT NOW();  -- gibt das aktuelle Datum/Zeit zurück
+
+-- Variante 2: Raute (#) bis zum Zeilenende
+# Auch ein Kommentar
+SELECT USER();
+
+-- Mehrzeilige Kommentare (C-Notation):
+/*
+   Alles zwischen /* und */ wird ignoriert.
+   Nützlich für längere Beschreibungen oder
+   zum Deaktivieren von Code-Blöcken.
+*/
+SELECT DATABASE();
+
+-- Inline-Kommentare (in Befehlen):
+SELECT /* nur zum Testen */ DATABASE();
+
+-- --------------------------------------
+-- BEST PRACTICE: PROGRAMMIERRICHTLINIEN
+-- --------------------------------------
+
+-- 1. SQL-Schlüsselwörter (Terminals) werden GROSS geschrieben:
+--    z. B. SELECT, FROM, WHERE, JOIN, CREATE, INSERT ...
+-- 2. Eigene Namen (Tabellen, Spalten, Aliase) klein schreiben.
+-- 3. Kommentare nutzen, um komplexe Logik zu erklären.
+-- 4. Keine unnötigen Kommentare – Code sollte auch so lesbar bleiben.
+-- 5. Bei längeren Skripten: Abschnitte klar abtrennen.
+
+-- --------------------------------------
+-- BEISPIEL: Abfrage mit Kommentaren
+-- --------------------------------------
+
+-- Abfrage: Alle Hotelnamen mit Gästen, die vor 1950 geboren wurden.
+-- Schritt 1: Wir suchen alle relevanten Hotel-IDs
+-- Schritt 2: Wir nutzen diese IDs in einer äußeren Abfrage
+
+SELECT hotelname
+FROM hotels
+WHERE hotels.id IN (
+    SELECT DISTINCT hotels.id
+    FROM zimmer
+    INNER JOIN belegungen ON zimmer.id = zimmer_id
+    INNER JOIN gaeste ON gaeste_id = gaeste.id
+    WHERE hotels.id = hotels_id
+      AND YEAR(gaeste.geburtsdatum) < '1950'
+);
+
+-- --------------------------------------
+-- WEITERE BEISPIELE FÜR KOMMENTARE
+-- --------------------------------------
+
+-- TODO: Prüfen, ob Indizes für hotels_id und gaeste_id existieren.
+-- HINWEIS: YEAR() kann Performance kosten, besser wäre ein Vergleich mit Datum.
+-- FIXME: Diese Abfrage liefert aktuell auch doppelte Hotels zurück, DISTINCT nötig.
