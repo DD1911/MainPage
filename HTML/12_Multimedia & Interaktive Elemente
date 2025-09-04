@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Multimedia & Interaktive Elemente Vertieft</title>
+</head>
+<body>
+
+    <!-- ==================================================== -->
+    <!-- 1. CANVAS – ZEICHNEN UND ANIMATIONEN                -->
+    <!-- <canvas> = Zeichenfläche für Grafiken oder Animationen -->
+    <!-- JavaScript wird benötigt, um Inhalte zu zeichnen   -->
+    <!-- ==================================================== -->
+
+    <h1>Canvas Beispiel</h1>
+
+    <canvas id="canvasVertieft" width="400" height="200" style="border:1px solid #000;"></canvas>
+
+    <script>
+        const canvas = document.getElementById("canvasVertieft");
+        const ctx = canvas.getContext("2d");
+
+        // Einfaches Rechteck zeichnen
+        ctx.fillStyle = "green";
+        ctx.fillRect(50, 50, 150, 100);
+
+        // Kreis zeichnen
+        ctx.beginPath();
+        ctx.arc(300, 100, 50, 0, 2 * Math.PI);
+        ctx.fillStyle = "orange";
+        ctx.fill();
+    </script>
+
+    <!-- ==================================================== -->
+    <!-- 2. DETAILS & SUMMARY – AUFKLAPPBEREICHE            -->
+    <!-- <details> = aufklappbarer Bereich                 -->
+    <!-- <summary> = Überschrift des aufklappbaren Bereichs -->
+    <!-- ==================================================== -->
+
+    <h2>Details & Summary Beispiel</h2>
+    <details>
+        <summary>Mehr Informationen anzeigen</summary>
+        <p>Dies ist ein ausklappbarer Bereich mit weiterführenden Informationen.</p>
+    </details>
+
+    <!-- ==================================================== -->
+    <!-- 3. DIALOG – MODALE FENSTER                         -->
+    <!-- <dialog> = modales Fenster                          -->
+    <!-- JavaScript zum Öffnen/Schließen erforderlich       -->
+    <!-- ==================================================== -->
+
+    <h2>Dialog Beispiel</h2>
+    <button id="openDialog">Dialog öffnen</button>
+
+    <dialog id="meinDialog">
+        <p>Dies ist ein modales Dialogfenster.</p>
+        <button id="closeDialog">Schließen</button>
+    </dialog>
+
+    <script>
+        const dialog = document.getElementById("meinDialog");
+        document.getElementById("openDialog").addEventListener("click", () => dialog.showModal());
+        document.getElementById("closeDialog").addEventListener("click", () => dialog.close());
+    </script>
+
+    <!-- ==================================================== -->
+    <!-- 4. IFRAME – EINGEBETTETE INHALTE                   -->
+    <!-- <iframe> = externe Inhalte einbinden (z.B. Maps)  -->
+    <!-- src, width, height, title                           -->
+    <!-- ==================================================== -->
+
+    <h2>Iframe Beispiel</h2>
+    <iframe src="https://www.example.com" width="400" height="200" title="Beispiel Iframe"></iframe>
+
+    <!-- ==================================================== -->
+    <!-- 5. AUDIO & VIDEO MIT MEHR KONTROLLEN               -->
+    <!-- autoplay, loop, muted                               -->
+    <!-- ==================================================== -->
+
+    <h2>Audio & Video Beispiel</h2>
+    <audio controls autoplay loop>
+        <source src="audio.mp3" type="audio/mpeg">
+        Dein Browser unterstützt das Audio-Element nicht.
+    </audio>
+
+    <video controls width="400" height="200" muted autoplay loop>
+        <source src="video.mp4" type="video/mp4">
+        Dein Browser unterstützt das Video-Element nicht.
+    </video>
+
+    <!-- ==================================================== -->
+    <!-- 6. MINI-AUFGABE ZUM ÜBEN                              -->
+    <!-- 1. Canvas erstellen und Rechteck + Kreis zeichnen    -->
+    <!-- 2. Details/Summary-Element mit Text                   -->
+    <!-- 3. Dialog-Element einfügen und per Button öffnen     -->
+    <!-- 4. Iframe einfügen                                    -->
+    <!-- 5. Audio & Video mit autoplay, loop und muted        -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
 
