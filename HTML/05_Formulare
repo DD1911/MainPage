@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Formulare Übung</title>
+</head>
+<body>
+
+    <!-- ==================================================== -->
+    <!-- 1. FORMULARAUFBAU                                   -->
+    <!-- <form> umschließt das gesamte Formular             -->
+    <!-- action="zielseite.html" = Seite, die Daten empfängt -->
+    <!-- method="get/post" = Methode der Datenübertragung    -->
+    <!-- ==================================================== -->
+
+    <h1>Formulare in HTML</h1>
+
+    <form action="submit.html" method="post">
+        
+        <!-- ==================================================== -->
+        <!-- 2. EINGABEFELDER                                     -->
+        <!-- type="text" = einzeiliges Texteingabefeld          -->
+        <!-- type="email" = E-Mail Validierung                   -->
+        <!-- type="password" = Passwortfeld                       -->
+        <!-- placeholder="..." = Platzhaltertext                -->
+        <!-- required = Pflichtfeld                               -->
+        <!-- ==================================================== -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Dein Name" required>
+        <br><br>
+
+        <label for="email">E-Mail:</label>
+        <input type="email" id="email" name="email" placeholder="email@example.com" required>
+        <br><br>
+
+        <label for="passwort">Passwort:</label>
+        <input type="password" id="passwort" name="passwort" required>
+        <br><br>
+
+        <!-- ==================================================== -->
+        <!-- 3. TEXTBEREICHE                                      -->
+        <!-- <textarea> für längere Texte                        -->
+        <!-- rows/cols = Größe festlegen                          -->
+        <!-- ==================================================== -->
+        <label for="nachricht">Nachricht:</label>
+        <textarea id="nachricht" name="nachricht" rows="4" cols="40" placeholder="Deine Nachricht"></textarea>
+        <br><br>
+
+        <!-- ==================================================== -->
+        <!-- 4. AUSWAHLFELDER                                     -->
+        <!-- <select> Dropdown-Menü                              -->
+        <!-- <option> Auswahlmöglichkeiten                       -->
+        <!-- ==================================================== -->
+        <label for="land">Land:</label>
+        <select id="land" name="land">
+            <option value="deutschland">Deutschland</option>
+            <option value="österreich">Österreich</option>
+            <option value="schweiz">Schweiz</option>
+        </select>
+        <br><br>
+
+        <!-- ==================================================== -->
+        <!-- 5. BUTTONS                                           -->
+        <!-- <button type="submit"> = Formular absenden          -->
+        <!-- <button type="reset"> = Formular zurücksetzen       -->
+        <!-- ==================================================== -->
+        <button type="submit">Absenden</button>
+        <button type="reset">Zurücksetzen</button>
+
+    </form>
+
+    <!-- ==================================================== -->
+    <!-- 6. MINI-AUFGABE ZUM ÜBEN                              -->
+    <!-- 1. Erstelle ein Formular mit:                         -->
+    <!--    - Textfeld Name und E-Mail (Pflichtfelder)        -->
+    <!--    - Passwortfeld                                     -->
+    <!--    - Textarea für Nachricht                            -->
+    <!--    - Dropdown-Auswahl für Land                         -->
+    <!--    - Absenden- und Zurücksetzen-Buttons               -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
 
