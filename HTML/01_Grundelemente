@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Grundelemente Übung</title>
+</head>
+<body>
+
+    <!-- ==================================================== -->
+    <!-- 1. ÜBERSCHRIFTEN                                     -->
+    <!-- HTML hat 6 Überschriften-Tags: h1 (wichtigste) bis h6 (kleinste) -->
+    <!-- Nur eine <h1> pro Seite verwenden! -->
+    <!-- ==================================================== -->
+
+    <h1>Meine Hauptüberschrift</h1> <!-- Wichtigste Überschrift -->
+    <h2>Unterüberschrift</h2>
+    <h3>Abschnittsüberschrift</h3>
+    <h4>Weitere Unterüberschrift</h4>
+    <h5>Kleinere Überschrift</h5>
+    <h6>Kleinste Überschrift</h6>
+
+    <!-- ==================================================== -->
+    <!-- 2. ABSÄTZE                                         -->
+    <!-- Absätze werden mit <p> erstellt -->
+    <!-- HTML trennt Absätze automatisch mit Abstand -->
+    <!-- ==================================================== -->
+
+    <p>Dies ist ein Absatz. Hier steht normaler Text.</p>
+    <p>Ein weiterer Absatz folgt hier. HTML trennt Absätze automatisch.</p>
+
+    <!-- ==================================================== -->
+    <!-- 3. TEXTFORMATIERUNG                                 -->
+    <!-- Fett / Wichtig: <b> oder <strong> -->
+    <!-- Kursiv / Betonung: <i> oder <em> -->
+    <!-- Markieren / Hervorheben: <mark> -->
+    <!-- ==================================================== -->
+
+    <p>Dieser Text ist <b>fett</b> geschrieben.</p>
+    <p>Dieser Text ist <strong>wichtig</strong> und wird von Suchmaschinen stärker gewichtet.</p>
+    <p>Dieser Text ist <i>kursiv</i> formatiert.</p>
+    <p>Dieser Text ist <em>betont</em> und signalisiert Wichtigkeit.</p>
+    <p>Dieser Text ist <mark>hervorgehoben</mark>.</p>
+
+    <!-- ==================================================== -->
+    <!-- 4. LISTEN                                           -->
+    <!-- Ungeordnete Listen (<ul>) erzeugen Punkte/Bullet-Points -->
+    <!-- Geordnete Listen (<ol>) erzeugen Zahlen -->
+    <!-- <li> = Listenelement -->
+    <!-- ==================================================== -->
+
+    <h2>Ungeordnete Liste</h2>
+    <ul>
+        <li>Apfel</li>
+        <li>Banane</li>
+        <li>Kirsche</li>
+    </ul>
+
+    <h2>Geordnete Liste</h2>
+    <ol>
+        <li>Erster Schritt</li>
+        <li>Zweiter Schritt</li>
+        <li>Dritter Schritt</li>
+    </ol>
+
+    <!-- ==================================================== -->
+    <!-- MINI-AUFGABE ZUM ÜBEN                               -->
+    <!-- 1. Eine HTML-Seite mit:                              -->
+    <!--    - Einer Hauptüberschrift (<h1>)                  -->
+    <!--    - Zwei Unterüberschriften (<h2>)                 -->
+    <!--    - Zwei Absätzen (<p>)                             -->
+    <!--    - Einer fett und einer kursiv formatierten Textstelle -->
+    <!--    - Einer geordneten und einer ungeordneten Liste -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
 
