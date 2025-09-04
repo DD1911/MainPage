@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Best Practices Übung</title>
+</head>
+<body>
+
+    <!-- ==================================================== -->
+    <!-- 1. SAUBERE STRUKTUR UND LESBARKEIT                 -->
+    <!-- HTML sollte logisch verschachtelt und gut eingerückt sein -->
+    <!-- Überschriftenhierarchie beachten (<h1> nur einmal) -->
+    <!-- Absätze, Listen, Sections klar trennen             -->
+    <!-- ==================================================== -->
+
+    <h1>HTML Best Practices</h1>
+
+    <section>
+        <h2>Abschnitt Beispiel</h2>
+        <p>Absätze klar trennen und logisch strukturieren.</p>
+    </section>
+
+    <!-- ==================================================== -->
+    <!-- 2. KOMMENTARE SINNVOLL EINSETZEN                     -->
+    <!-- Kommentare mit <!-- Kommentar -->                     -->
+    <!-- Nützlich für eigene Notizen, Erklärung oder Teamarbeit -->
+    <!-- ==================================================== -->
+
+    <!-- Dies ist ein Kommentar für Entwickler -->
+
+    <!-- ==================================================== -->
+    <!-- 3. BARRIEREFREIHEIT UND SEMANTIK                     -->
+    <!-- Alt-Text für Bilder                                   -->
+    <!-- Semantische Tags wie <header>, <footer>, <nav>, <section>, <article>, <aside> -->
+    <!-- ==================================================== -->
+
+    <img src="bild.jpg" alt="Beispielbild für Barrierefreiheit">
+
+    <header>
+        <h2>Kopfbereich</h2>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#section1">Abschnitt 1</a></li>
+            <li><a href="#section2">Abschnitt 2</a></li>
+        </ul>
+    </nav>
+
+    <section id="section1">
+        <h3>Abschnitt 1</h3>
+        <p>Inhalt hier...</p>
+    </section>
+
+    <footer>
+        <p>Fußbereich der Seite</p>
+    </footer>
+
+    <!-- ==================================================== -->
+    <!-- 4. MOBILE FIRST UND RESPONSIVES DESIGN               -->
+    <!-- Viewport im <head> setzen                             -->
+    <!-- Breitenangaben in % oder flexible Layouts verwenden  -->
+    <!-- ==================================================== -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ==================================================== -->
+    <!-- 5. KONSISTENTE NAMEN FÜR ID UND CLASS               -->
+    <!-- ids und class sollten sprechend und einheitlich sein -->
+    <!-- ==================================================== -->
+
+    <div id="main-container" class="content-box">
+        <p>Beispiel für konsistente ID und Klasse.</p>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- 6. TRENNUNG VON INHALT UND DESIGN                   -->
+    <!-- HTML = Struktur, CSS = Styling                       -->
+    <!-- Inline-Styles vermeiden, externe CSS-Dateien nutzen -->
+    <!-- ==================================================== -->
+
+    <p class="styled-text">Dieser Text sollte über CSS gestylt werden.</p>
+
+    <!-- ==================================================== -->
+    <!-- 7. MINI-AUFGABE ZUM ÜBEN                              -->
+    <!-- 1. Erstelle eine HTML-Seite mit:                     -->
+    <!--    - Sauberer Struktur (Header, Nav, Sections, Footer) -->
+    <!--    - Kommentare zu jedem Abschnitt                   -->
+    <!--    - Alt-Text für Bilder                              -->
+    <!--    - IDs und Klassen sinnvoll vergeben               -->
+    <!--    - Mobile-First-Meta-Tag verwenden                 -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
 
