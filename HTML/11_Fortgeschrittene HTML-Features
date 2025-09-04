@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Fortgeschrittene Features Übung</title>
+</head>
+<body>
+
+    <!-- ==================================================== -->
+    <!-- 1. FORMULARTYPEN UND VALIDIERUNG                    -->
+    <!-- Erweiterte Input-Typen: date, number, url, tel, color -->
+    <!-- HTML validiert automatisch bestimmte Eingaben       -->
+    <!-- ==================================================== -->
+
+    <h1>Fortgeschrittene Formulare</h1>
+
+    <form>
+        <label for="geburtstag">Geburtsdatum:</label>
+        <input type="date" id="geburtstag" name="geburtstag">
+        <br><br>
+
+        <label for="telefon">Telefonnummer:</label>
+        <input type="tel" id="telefon" name="telefon" placeholder="0123-456789">
+        <br><br>
+
+        <label for="website">Website:</label>
+        <input type="url" id="website" name="website" placeholder="https://example.com">
+        <br><br>
+
+        <label for="farbe">Lieblingsfarbe:</label>
+        <input type="color" id="farbe" name="farbe">
+        <br><br>
+
+        <button type="submit">Absenden</button>
+    </form>
+
+    <!-- ==================================================== -->
+    <!-- 2. META-TAGS UND SEO                                  -->
+    <!-- <meta charset="UTF-8"> (Zeichenkodierung)           -->
+    <!-- <meta name="viewport"> für responsive Design       -->
+    <!-- <meta name="description"> für Suchmaschinen        -->
+    <!-- ==================================================== -->
+
+    <head>
+        <meta name="description" content="Beispielseite für fortgeschrittene HTML-Features">
+        <meta name="keywords" content="HTML, Formulare, Meta, SEO, Webentwicklung">
+    </head>
+
+    <!-- ==================================================== -->
+    <!-- 3. DATA-ATTRIBUTE                                     -->
+    <!-- data-* Attribute für eigene Informationen oder JS   -->
+    <!-- Praktisch, um Elemente zu kennzeichnen              -->
+    <!-- ==================================================== -->
+
+    <div data-user-id="42" data-role="editor">
+        Datenattribute für ein Element
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- 4. RESPONSIVE LINKS UND REL-ATTRIBUTE               -->
+    <!-- target="_blank", rel="noopener", rel="nofollow"     -->
+    <!-- ==================================================== -->
+
+    <p>
+        <a href="https://www.example.com" target="_blank" rel="noopener nofollow">Externer Link mit Sicherheit</a>
+    </p>
+
+    <!-- ==================================================== -->
+    <!-- 5. DOWNLOAD LINKS                                     -->
+    <!-- <a href="datei.pdf" download>Herunterladen</a>      -->
+    <!-- Ermöglicht das direkte Herunterladen einer Datei    -->
+    <!-- ==================================================== -->
+
+    <p>
+        <a href="beispiel.pdf" download>Datei herunterladen</a>
+    </p>
+
+    <!-- ==================================================== -->
+    <!-- 6. MINI-AUFGABE ZUM ÜBEN                              -->
+    <!-- 1. Erstelle ein Formular mit erweiterten Input-Typen  -->
+    <!-- 2. Füge Meta-Tags für SEO hinzu                        -->
+    <!-- 3. Füge ein div mit data-* Attributen ein               -->
+    <!-- 4. Erstelle einen externen Link mit target="_blank" und rel="noopener nofollow" -->
+    <!-- 5. Füge einen Download-Link ein                           -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
 
