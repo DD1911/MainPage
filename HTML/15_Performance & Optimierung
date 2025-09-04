@@ -1,1 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO & Accessibility Übung</title>
+    <meta name="description" content="Beispielseite für SEO und Barrierefreiheit">
+</head>
+<body>
+
+    <!-- ==================================================== -->
+    <!-- 1. SEMANTISCHE ELEMENTE                              -->
+    <!-- <header>, <nav>, <main>, <section>, <article>, <aside>, <footer> -->
+    <!-- Struktur hilft Suchmaschinen und Screenreadern       -->
+    <!-- ==================================================== -->
+
+    <header>
+        <h1>Meine Webseite</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#section1">Abschnitt 1</a></li>
+            <li><a href="#section2">Abschnitt 2</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="section1">
+            <h2>Abschnitt 1</h2>
+            <p>Beispieltext für Abschnitt 1.</p>
+        </section>
+
+        <section id="section2">
+            <h2>Abschnitt 2</h2>
+            <p>Beispieltext für Abschnitt 2.</p>
+        </section>
+    </main>
+
+    <aside>
+        <p>Sidebar / zusätzliche Informationen</p>
+    </aside>
+
+    <footer>
+        <p>Fußbereich der Seite</p>
+    </footer>
+
+    <!-- ==================================================== -->
+    <!-- 2. ALT-TEXTE FÜR BILDER                               -->
+    <!-- <img src="bild.jpg" alt="Beschreibung des Bildes">   -->
+    <!-- Wichtig für SEO und Screenreader                     -->
+    <!-- ==================================================== -->
+
+    <h2>Bilder mit Alt-Text</h2>
+    <img src="bild.jpg" alt="Beispielbild für Barrierefreiheit" width="300">
+
+    <!-- ==================================================== -->
+    <!-- 3. LINKS UND ANKER                                     -->
+    <!-- Klare, beschreibende Texte für Links                  -->
+    <!-- title-Attribut optional, sollte informativ sein       -->
+    <!-- ==================================================== -->
+
+    <p>
+        <a href="https://www.example.com" title="Externe Webseite besuchen" target="_blank" rel="noopener">
+            Besuche example.com
+        </a>
+    </p>
+
+    <!-- ==================================================== -->
+    <!-- 4. TABELLEN FÜR DATEN                                  -->
+    <!-- <th> für Tabellenüberschriften                          -->
+    <!-- scope="col" oder scope="row" für bessere Verständlichkeit -->
+    <!-- ==================================================== -->
+
+    <table border="1">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Alter</th>
+            <th scope="col">Stadt</th>
+        </tr>
+        <tr>
+            <td>Anna</td>
+            <td>25</td>
+            <td>Berlin</td>
+        </tr>
+    </table>
+
+    <!-- ==================================================== -->
+    <!-- 5. ARIA-ATTRIBUTE (OPTIONAL)                           -->
+    <!-- aria-label, aria-hidden, role, etc.                   -->
+    <!-- Für Screenreader und komplexe Elemente                -->
+    <!-- ==================================================== -->
+
+    <button aria-label="Schließen des Dialogs">X</button>
+
+    <!-- ==================================================== -->
+    <!-- 6. MINI-AUFGABE ZUM ÜBEN                              -->
+    <!-- 1. Nutze semantische Tags für Header, Main, Section, Footer -->
+    <!-- 2. Füge Bilder mit aussagekräftigen Alt-Texten hinzu -->
+    <!-- 3. Erstelle Links mit beschreibendem Text           -->
+    <!-- 4. Optional: Verwende ARIA-Attribute für interaktive Elemente -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
 
