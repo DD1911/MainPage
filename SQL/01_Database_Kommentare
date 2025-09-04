@@ -28,28 +28,22 @@ SELECT USER();
 */
 SELECT DATABASE();
 
--- Inline-Kommentare (in Befehlen):
+-- Inline-Kommentare (innerhalb eines Befehls):
 SELECT /* nur zum Testen */ DATABASE();
 
 -- --------------------------------------
 -- BEST PRACTICE: PROGRAMMIERRICHTLINIEN
 -- --------------------------------------
-
--- 1. SQL-Schlüsselwörter (Terminals) werden GROSS geschrieben:
---    z. B. SELECT, FROM, WHERE, JOIN, CREATE, INSERT ...
+-- 1. SQL-Schlüsselwörter (Terminals) GROSS schreiben: SELECT, FROM, WHERE, JOIN, CREATE, INSERT ...
 -- 2. Eigene Namen (Tabellen, Spalten, Aliase) klein schreiben.
 -- 3. Kommentare nutzen, um komplexe Logik zu erklären.
 -- 4. Keine unnötigen Kommentare – Code sollte auch so lesbar bleiben.
--- 5. Bei längeren Skripten: Abschnitte klar abtrennen.
+-- 5. Längere Skripte klar in Abschnitte unterteilen.
 
 -- --------------------------------------
 -- BEISPIEL: Abfrage mit Kommentaren
 -- --------------------------------------
-
--- Abfrage: Alle Hotelnamen mit Gästen, die vor 1950 geboren wurden.
--- Schritt 1: Wir suchen alle relevanten Hotel-IDs
--- Schritt 2: Wir nutzen diese IDs in einer äußeren Abfrage
-
+-- Alle Hotelnamen mit Gästen, die vor 1950 geboren wurden.
 SELECT hotelname
 FROM hotels
 WHERE hotels.id IN (
@@ -61,26 +55,18 @@ WHERE hotels.id IN (
       AND YEAR(gaeste.geburtsdatum) < '1950'
 );
 
--- --------------------------------------
--- WEITERE BEISPIELE FÜR KOMMENTARE
--- --------------------------------------
-
+-- Hinweise:
 -- TODO: Prüfen, ob Indizes für hotels_id und gaeste_id existieren.
 -- HINWEIS: YEAR() kann Performance kosten, besser wäre ein Vergleich mit Datum.
--- FIXME: Diese Abfrage liefert aktuell auch doppelte Hotels zurück, DISTINCT nötig.
-
+-- FIXME: DISTINCT nötig, um doppelte Hotels zu vermeiden.
 
 -- ======================================
--- 1. Datenbank und Tabelle erstellen
+-- 1. Datenbank "exkurse" und Tabelle "zeiten" erstellen
 -- ======================================
-DROP DATABASE IF EXISTS exkurse;  -- Vorhandene Datenbank löschen
-CREATE DATABASE exkurse;          -- Neue Datenbank anlegen
+DROP DATABASE IF EXISTS exkurse;
+CREATE DATABASE exkurse;
 USE exkurse;
 
--- ======================================
--- 2. Tabelle "zeiten" erstellen
--- ======================================
--- Verschiedene Datentypen für Zeitangaben
 CREATE TABLE zeiten (
     id INT PRIMARY KEY,
     uhrzeit TIME,        -- Nur Uhrzeit (hh:mm:ss)
@@ -92,7 +78,7 @@ CREATE TABLE zeiten (
 SHOW COLUMNS FROM zeiten;
 
 -- ======================================
--- 3. Daten einfügen (ISO 8601 Format)
+-- 2. Daten einfügen (ISO 8601 Format)
 -- ======================================
 INSERT INTO zeiten VALUES
 (1, '13:49:33', '2025-07-15', '2025-07-15 13:49:33', '2025');
@@ -100,49 +86,82 @@ INSERT INTO zeiten VALUES
 SELECT * FROM zeiten;
 
 -- ======================================
--- 4. MySQL Funktionen für Datum & Zeit
+-- 3. MySQL Funktionen für Datum & Zeit
 -- ======================================
-SELECT CURTIME();  -- Aktuelle Uhrzeit
-SELECT CURDATE();  -- Aktuelles Datum
-SELECT NOW();      -- Aktueller Zeitpunkt (Datum + Uhrzeit)
+SELECT CURTIME();  -- aktuelle Uhrzeit
+SELECT CURDATE();  -- aktuelles Datum
+SELECT NOW();      -- aktueller Zeitpunkt (Datum + Uhrzeit)
 
--- YEAR() - Jahr aus Datum oder Zeitstempel extrahieren
 SELECT YEAR('2025-07-15');           -- 2025
 SELECT YEAR('2025-07-15 14:33:44');  -- 2025
-SELECT YEAR(NOW());                  -- z. B. 2025
+SELECT YEAR(NOW());                  -- aktuelles Jahr
 
 -- Einfügen aktueller Zeitangaben
 INSERT INTO zeiten VALUES (2, CURTIME(), CURDATE(), NOW(), YEAR(NOW()));
 SELECT * FROM zeiten;
 
 -- ======================================
--- 5. Wochentage
+-- 4. Wochentage und Datumsberechnungen
 -- ======================================
--- WEEKDAY(): Montag=0, Sonntag=6
-SELECT WEEKDAY(NOW());  -- z. B. 1 (Dienstag)
+SELECT WEEKDAY(NOW());  -- Montag=0, Sonntag=6
 
--- DATEDIFF(datum1, datum2) - Differenz in Tagen
-SELECT DATEDIFF('2000-03-01', '2000-02-28');   -- 2
-SELECT DATEDIFF('2001-03-01', '2001-02-28');   -- 1
-SELECT DATEDIFF(CURDATE(), '1970-12-03');      -- z. B. 19948
+SELECT DATEDIFF('2000-03-01', '2000-02-28');   -- 2 Tage
+SELECT DATEDIFF('2001-03-01', '2001-02-28');   -- 1 Tag
+SELECT DATEDIFF(CURDATE(), '1970-12-03');      -- Differenz zum aktuellen Datum
 
--- ADDDATE(date, anzahl) - Datum um n Tage erhöhen
-SELECT ADDDATE('1970-12-03', 10000);           -- 1998-04-20
-SELECT ADDDATE('1970-12-03', 20000);           -- 2025-09-05
+SELECT ADDDATE('1970-12-03', 10000);           -- 10000 Tage addieren
+SELECT ADDDATE('1970-12-03', 20000);           -- 20000 Tage addieren
 
--- WEEKDAY() und DAYNAME() kombinieren
-SELECT WEEKDAY(ADDDATE('1970-12-03', 20000));       -- 4 (Freitag)
-SELECT DAYNAME(ADDDATE('1970-12-03', 20000));       -- Friday
+SELECT WEEKDAY(ADDDATE('1970-12-03', 20000));  -- Wochentag als Zahl
+SELECT DAYNAME(ADDDATE('1970-12-03', 20000));  -- Wochentag als Name
 
--- Mehrere Werte in SELECT
 SELECT WEEKDAY(ADDDATE('1970-12-03', 20000)),
-       DAYNAME(ADDDATE('1970-12-03', 20000));
+       DAYNAME(ADDDATE('1970-12-03', 20000));  -- mehrere Werte
 
 -- ======================================
--- 6. CONCAT() - Zeichenketten verbinden
+-- 5. CONCAT() – Zeichenketten verbinden
 -- ======================================
-SELECT CONCAT(4, ' - ', 'Friday');  -- Ergebnis: '4 - Friday'
+SELECT CONCAT(4, ' - ', 'Friday');  
 SELECT CONCAT(WEEKDAY(ADDDATE('1970-12-03', 20000)), ' - ', DAYNAME(ADDDATE('1970-12-03', 20000)));
 
--- Mit Alias für bessere Lesbarkeit
-SELECT CONCAT(WEEKDAY(ADDDATE('1970-12-03', 20000)), ' - ', DAYNAME(ADDDATE('1970-12-03', 20000))) AS 'Wochentag';
+SELECT CONCAT(
+    WEEKDAY(ADDDATE('1970-12-03', 20000)), 
+    ' - ', 
+    DAYNAME(ADDDATE('1970-12-03', 20000))
+) AS 'Wochentag';
+
+-- ======================================
+-- 6. Tabelle "t1" und NULL-Werte
+-- ======================================
+CREATE TABLE t1 (
+    id INT PRIMARY KEY,
+    wert INT       -- Spalte, die NULL enthalten kann
+);
+
+SHOW COLUMNS FROM t1;
+
+INSERT INTO t1 VALUES
+(1, 42),
+(2, NULL);
+
+SELECT * FROM t1;
+
+-- ======================================
+-- 7. Vergleichsoperatoren und NULL
+-- ======================================
+SELECT TRUE = TRUE;   -- 1 (True)
+SELECT 23 = 42;       -- 0 (False)
+
+SELECT NULL = NULL;   -- NULL
+SELECT 17 = NULL;     -- NULL
+
+SELECT * FROM t1 WHERE wert = NULL;       -- leer
+SELECT * FROM t1 WHERE wert != NULL;      -- leer
+SELECT * FROM t1 WHERE wert = 42;         -- id 1
+
+-- ======================================
+-- 8. IS NULL / IS NOT NULL
+-- ======================================
+SELECT * FROM t1 WHERE wert IS NULL;      -- id 2
+SELECT * FROM t1 WHERE wert IS NOT NULL;  -- id 1
+SELECT * FROM t1 WHERE NOT wert IS NULL;  -- id 1 (identisch)
