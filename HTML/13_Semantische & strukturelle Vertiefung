@@ -1,1 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML APIs & Interaktivität Übung</title>
+</head>
+<body>
+
+    <!-- ==================================================== -->
+    <!-- 1. DRAG & DROP ELEMENTE                               -->
+    <!-- Elemente können gezogen und abgelegt werden          -->
+    <!-- draggable="true" aktiviert das Ziehen               -->
+    <!-- dropzone oder EventListener für Zielbereich          -->
+    <!-- ==================================================== -->
+
+    <h1>Drag & Drop Beispiel</h1>
+
+    <div id="drag1" draggable="true" style="width:100px;height:100px;background:red;margin-bottom:10px;">
+        Zieh mich
+    </div>
+
+    <div id="dropzone" style="width:200px;height:150px;border:2px dashed #000;">
+        Hier ablegen
+    </div>
+
+    <script>
+        const dragItem = document.getElementById("drag1");
+        const dropZone = document.getElementById("dropzone");
+
+        dragItem.addEventListener("dragstart", (e) => {
+            e.dataTransfer.setData("text", e.target.id);
+        });
+
+        dropZone.addEventListener("dragover", (e) => e.preventDefault());
+        dropZone.addEventListener("drop", (e) => {
+            e.preventDefault();
+            const data = e.dataTransfer.getData("text");
+            const draggedElement = document.getElementById(data);
+            dropZone.appendChild(draggedElement);
+        });
+    </script>
+
+    <!-- ==================================================== -->
+    <!-- 2. GEOLOCATION API                                     -->
+    <!-- navigator.geolocation.getCurrentPosition()            -->
+    <!-- Ermöglicht Standortabfrage (nur mit Zustimmung)       -->
+    <!-- ==================================================== -->
+
+    <h2>Geolocation Beispiel</h2>
+    <button id="getLocation">Standort abrufen</button>
+    <p id="location"></p>
+
+    <script>
+        const locationBtn = document.getElementById("getLocation");
+        const locationP = document.getElementById("location");
+
+        locationBtn.addEventListener("click", () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    locationP.textContent = `Breite: ${position.coords.latitude}, Länge: ${position.coords.longitude}`;
+                });
+            } else {
+                locationP.textContent = "Geolocation wird von diesem Browser nicht unterstützt.";
+            }
+        });
+    </script>
+
+    <!-- ==================================================== -->
+    <!-- 3. LOCALSTORAGE UND SESSIONSTORAGE                   -->
+    <!-- Daten lokal im Browser speichern                     -->
+    <!-- localStorage = dauerhaft                              -->
+    <!-- sessionStorage = nur für aktuelle Sitzung            -->
+    <!-- ==================================================== -->
+
+    <h2>LocalStorage Beispiel</h2>
+    <input type="text" id="username" placeholder="Name eingeben">
+    <button id="saveName">Speichern</button>
+    <p id="savedName"></p>
+
+    <script>
+        const inputName = document.getElementById("username");
+        const saveBtn = document.getElementById("saveName");
+        const displayName = document.getElementById("savedName");
+
+        saveBtn.addEventListener("click", () => {
+            localStorage.setItem("username", inputName.value);
+            displayName.textContent = `Gespeicherter Name: ${inputName.value}`;
+        });
+
+        // Beim Laden ausgeben, falls vorhanden
+        const storedName = localStorage.getItem("username");
+        if(storedName){
+            displayName.textContent = `Gespeicherter Name: ${storedName}`;
+        }
+    </script>
+
+    <!-- ==================================================== -->
+    <!-- 4. MINI-AUFGABE ZUM ÜBEN                              -->
+    <!-- 1. Erstelle ein Drag & Drop Element                  -->
+    <!-- 2. Implementiere Geolocation Abfrage                 -->
+    <!-- 3. Speichere ein Textfeld im localStorage           -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
 
