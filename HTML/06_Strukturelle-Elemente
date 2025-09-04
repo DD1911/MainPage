@@ -1,1 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Strukturelle Elemente Übung</title>
+</head>
+<body>
 
+    <!-- ==================================================== -->
+    <!-- 1. BLOCK- VS INLINE-ELEMENTE                        -->
+    <!-- Block-Elemente nehmen die gesamte Breite ein      -->
+    <!-- Beispiele: <div>, <p>, <h1>–<h6>, <section>       -->
+    <!-- Inline-Elemente nur so viel Breite wie nötig       -->
+    <!-- Beispiele: <span>, <a>, <b>, <i>                  -->
+    <!-- ==================================================== -->
+
+    <h1>Block- und Inline-Elemente</h1>
+
+    <div style="border: 1px solid black; padding: 10px;">
+        Dies ist ein Block-Element (<div>). Es nimmt die gesamte Breite ein.
+    </div>
+
+    <p>Dies ist ein Absatz (<p>), ebenfalls ein Block-Element.</p>
+
+    <p>
+        Dies ist ein <span style="color:red;">Inline-Element</span> innerhalb eines Absatzes.
+    </p>
+
+    <!-- ==================================================== -->
+    <!-- 2. SEMANTISCHE ELEMENTE                               -->
+    <!-- HTML5 bietet strukturierende, semantische Tags      -->
+    <!-- <header> = Kopfbereich der Seite                    -->
+    <!-- <footer> = Fußbereich der Seite                     -->
+    <!-- <nav> = Navigation                                  -->
+    <!-- <section> = eigenständiger Abschnitt               -->
+    <!-- <article> = Artikel / Inhaltseinheit               -->
+    <!-- <aside> = Nebeninformationen / Sidebar            -->
+    <!-- ==================================================== -->
+
+    <header style="background-color: #f0f0f0; padding: 10px;">
+        <h2>Kopfbereich der Seite (Header)</h2>
+    </header>
+
+    <nav style="background-color: #d0f0d0; padding: 10px;">
+        <ul>
+            <li><a href="#section1">Abschnitt 1</a></li>
+            <li><a href="#section2">Abschnitt 2</a></li>
+        </ul>
+    </nav>
+
+    <section id="section1" style="background-color: #f9f9f9; padding: 10px; margin-top: 10px;">
+        <h3>Abschnitt 1</h3>
+        <p>Dies ist ein eigenständiger Abschnitt (<section>).</p>
+    </section>
+
+    <article style="background-color: #e9e9ff; padding: 10px; margin-top: 10px;">
+        <h3>Artikel</h3>
+        <p>Dies ist ein Artikel (<article>), eine in sich geschlossene Inhaltseinheit.</p>
+    </article>
+
+    <aside style="background-color: #fff0f0; padding: 10px; margin-top: 10px;">
+        <h4>Sidebar / Nebeninformationen</h4>
+        <p>Dies ist ein <aside> für zusätzliche Infos.</p>
+    </aside>
+
+    <footer style="background-color: #f0f0f0; padding: 10px; margin-top: 10px;">
+        <p>Fußbereich der Seite (<footer>)</p>
+    </footer>
+
+    <!-- ==================================================== -->
+    <!-- 3. DIVISIONEN UND CONTAINER                           -->
+    <!-- <div> = allgemeiner Container für Layout            -->
+    <!-- Kann mit CSS für Design und Struktur verwendet werden -->
+    <!-- ==================================================== -->
+
+    <div style="border: 1px dashed gray; padding: 10px; margin-top: 10px;">
+        <p>Dies ist ein <div> als Container für Inhalte.</p>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- 4. MINI-AUFGABE ZUM ÜBEN                              -->
+    <!-- 1. Erstelle eine Seite mit:                           -->
+    <!--    - Header, Footer                                   -->
+    <!--    - Navigation mit 2 Links                            -->
+    <!--    - 2 Sections mit Inhalt                             -->
+    <!--    - 1 Artikel in einem Section                        -->
+    <!--    - 1 Aside als Sidebar                                -->
+    <!--    - 1 div-Container für zusätzlichen Inhalt           -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
