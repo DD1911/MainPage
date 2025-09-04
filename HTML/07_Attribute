@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Attribute Übung</title>
+</head>
+<body>
+
+    <!-- ==================================================== -->
+    <!-- 1. ALLGEMEINE ATTRIBUTE                               -->
+    <!-- id="..." = eindeutige Kennung für ein Element       -->
+    <!-- class="..." = Gruppe von Elementen für Styling/JS  -->
+    <!-- style="..." = Inline-CSS                             -->
+    <!-- title="..." = Tooltip beim Überfahren mit Maus     -->
+    <!-- ==================================================== -->
+
+    <h1 id="hauptueberschrift" class="ueberschrift" title="Dies ist die Hauptüberschrift">
+        HTML Attribute Beispiel
+    </h1>
+
+    <p style="color:blue; font-weight:bold;" title="Blauer Text mit fett">
+        Dies ist ein Absatz mit Inline-Style und Tooltip.
+    </p>
+
+    <!-- ==================================================== -->
+    <!-- 2. SPEZIFISCHE ATTRIBUTE FÜR LINKS UND BILDER       -->
+    <!-- <a href="URL" target="_blank" rel="noopener">      -->
+    <!-- target="_blank" öffnet Link in neuem Tab          -->
+    <!-- rel="noopener" = Sicherheitsmaßnahme              -->
+    <!-- <img src="bild.jpg" alt="..." width="..." height="..."> -->
+    <!-- ==================================================== -->
+
+    <a href="https://www.example.com" target="_blank" rel="noopener" title="Externer Link zu example.com">
+        Externer Link mit Attributen
+    </a>
+
+    <p>
+        <img src="bild.jpg" alt="Beispielbild" width="300" height="200" title="Bild mit Attributen">
+    </p>
+
+    <!-- ==================================================== -->
+    <!-- 3. DATENATTRIBUTE                                     -->
+    <!-- data-* = eigene Attribute für JavaScript oder Infos -->
+    <!-- Beispiel: data-user="123"                            -->
+    <!-- ==================================================== -->
+
+    <div id="user-info" data-user="123" data-role="admin">
+        Benutzerinformationen mit Datenattributen
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- 4. MINI-AUFGABE ZUM ÜBEN                              -->
+    <!-- 1. Erstelle einen Absatz mit:                         -->
+    <!--    - id, class, style, title                           -->
+    <!-- 2. Füge einen Link ein mit href, target, rel, title    -->
+    <!-- 3. Füge ein Bild ein mit src, alt, width, height, title -->
+    <!-- 4. Füge ein div mit data-* Attributen ein              -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
 
