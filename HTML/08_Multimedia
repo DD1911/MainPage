@@ -1,1 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Multimedia & Interaktive Inhalte Übung</title>
+</head>
+<body>
+
+    <!-- ==================================================== -->
+    <!-- 1. AUDIOELEMENTE                                     -->
+    <!-- <audio> wird verwendet, um Audio-Dateien abzuspielen -->
+    <!-- controls = Wiedergabe-/Pause-Buttons anzeigen        -->
+    <!-- source src="..." type="..."                          -->
+    <!-- ==================================================== -->
+
+    <h1>Multimedia & Interaktive Inhalte</h1>
+
+    <h2>Audio-Beispiel</h2>
+    <audio controls>
+        <source src="audio.mp3" type="audio/mpeg">
+        Dein Browser unterstützt das Audio-Element nicht.
+    </audio>
+
+    <!-- ==================================================== -->
+    <!-- 2. VIDEOELEMENTE                                     -->
+    <!-- <video> wird verwendet, um Video-Dateien abzuspielen -->
+    <!-- controls, width, height                              -->
+    <!-- ==================================================== -->
+
+    <h2>Video-Beispiel</h2>
+    <video controls width="400" height="300">
+        <source src="video.mp4" type="video/mp4">
+        Dein Browser unterstützt das Video-Element nicht.
+    </video>
+
+    <!-- ==================================================== -->
+    <!-- 3. IFRAME                                             -->
+    <!-- <iframe> = Einbetten externer Inhalte (z.B. Maps, YouTube) -->
+    <!-- width, height, src, title                            -->
+    <!-- ==================================================== -->
+
+    <h2>Iframe-Beispiel</h2>
+    <iframe src="https://www.example.com" width="400" height="300" title="Beispiel-iframe"></iframe>
+
+    <!-- ==================================================== -->
+    <!-- 4. CANVAS                                            -->
+    <!-- <canvas> = Zeichenfläche für Grafiken oder Animationen -->
+    <!-- Breite & Höhe definieren                              -->
+    <!-- Mit JavaScript können Inhalte gezeichnet werden       -->
+    <!-- ==================================================== -->
+
+    <h2>Canvas-Beispiel</h2>
+    <canvas id="meinCanvas" width="300" height="150" style="border:1px solid #000000;">
+        Dein Browser unterstützt das Canvas-Element nicht.
+    </canvas>
+
+    <script>
+        // Einfaches Beispiel: rotes Rechteck zeichnen
+        const canvas = document.getElementById("meinCanvas");
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "red";
+        ctx.fillRect(20, 20, 100, 50);
+    </script>
+
+    <!-- ==================================================== -->
+    <!-- 5. DETAILS & SUMMARY                                  -->
+    <!-- <details> = aufklappbarer Bereich                   -->
+    <!-- <summary> = Überschrift des aufklappbaren Bereichs  -->
+    <!-- ==================================================== -->
+
+    <h2>Details & Summary Beispiel</h2>
+    <details>
+        <summary>Klicke hier, um mehr zu sehen</summary>
+        <p>Dies ist ein aufklappbarer Bereich mit zusätzlichen Informationen.</p>
+    </details>
+
+    <!-- ==================================================== -->
+    <!-- 6. MINI-AUFGABE ZUM ÜBEN                              -->
+    <!-- 1. Füge ein Audio-Element mit controls ein           -->
+    <!-- 2. Füge ein Video-Element mit controls ein           -->
+    <!-- 3. Füge ein Iframe ein, z.B. für eine Webseite       -->
+    <!-- 4. Füge ein Canvas-Element ein und zeichne ein Rechteck -->
+    <!-- 5. Füge ein Details/Summary-Element ein             -->
+    <!-- ==================================================== -->
+
+</body>
+</html>
 
