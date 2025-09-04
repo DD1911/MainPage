@@ -1,0 +1,128 @@
+-- ======================================
+-- MEINE DATENBANK "ERDKUNDE"
+-- ======================================
+
+-- Ich lösche die Datenbank, falls sie schon existiert.
+-- Das ist praktisch, damit ich das Skript immer wieder von vorne ausführen kann,
+-- ohne dass ich Fehlermeldungen bekomme.
+DROP DATABASE IF EXISTS erdkunde;
+
+-- Jetzt lege ich die Datenbank neu an.
+CREATE DATABASE erdkunde;
+
+-- Zur Kontrolle schaue ich mir an, welche Datenbanken es aktuell gibt.
+SHOW DATABASES;
+
+-- Ich wechsle in meine neue Datenbank, sonst würden die Tabellen woanders angelegt werden.
+USE erdkunde;
+
+-- ======================================
+-- TABELLE "laender"
+-- ======================================
+-- Ich brauche eine Tabelle für Länder.
+-- Sie bekommt eine ID, einen Namen und die Einwohnerzahl.
+CREATE TABLE laender (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    -- id ist mein Primärschlüssel = eindeutige Nummer pro Land
+    -- AUTO_INCREMENT bedeutet, dass MySQL die Zahl automatisch hochzählt
+    name VARCHAR(255) NOT NULL,
+    -- name = Name des Landes, darf nicht leer sein (NOT NULL)
+    einwohnerzahl INT
+    -- Anzahl der Einwohner (ganzzahliger Wert)
+);
+
+-- Mal schauen, wie die Tabelle aufgebaut ist:
+SHOW COLUMNS FROM laender;
+
+-- Ich trage ein paar Länder mit Einwohnerzahlen ein.
+INSERT INTO laender (name, einwohnerzahl)
+VALUES
+    ('Deutschland', 81796000),
+    ('USA', 311484627),
+    ('Frankreich', 65447374),
+    ('Großbritannien', 61792000),
+    ('Italien', 60626442),
+    ('Spanien', 47190493);
+
+-- Kontrolle: Hat das funktioniert?
+SELECT * FROM laender;
+
+-- ======================================
+-- TABELLE "staedte"
+-- ======================================
+-- Als nächstes brauche ich eine Tabelle für Städte.
+-- Jede Stadt gehört zu einem Land (1:n-Beziehung).
+CREATE TABLE staedte (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    einwohnerzahl INT,
+    laender_id INT,
+    -- laender_id ist mein Fremdschlüssel und zeigt auf die Tabelle laender
+    FOREIGN KEY (laender_id) REFERENCES laender(id)
+);
+
+-- Kontrolle: Aufbau der Tabelle ansehen
+SHOW COLUMNS FROM staedte;
+
+-- Ich trage ein paar Städte ein.
+-- Wichtig: Jede Stadt bekommt die passende laender_id.
+-- Beispiel: Berlin gehört zu Deutschland -> Deutschland hat id = 1, also bekommt Berlin laender_id = 1.
+INSERT INTO staedte (name, einwohnerzahl, laender_id)
+VALUES
+    ('Berlin', 3496082, 1),
+    ('Washington, D.C.', 601723, 2),
+    ('Paris', 2234105, 3),
+    ('London', 7825200, 4),
+    ('Rom', 2761477, 5),
+    ('Madrid', 3265038, 6),
+    ('Hamburg', 1798455, 1),
+    ('New York', 8175133, 2),
+    ('Marseille', 850602, 3),
+    ('Birmingham', 1036878, 4),
+    ('Mailand', 1324110, 5),
+    ('Barcelona', 1615448, 6),
+    ('München', 1353186, 1),
+    ('Los Angeles', 3831868, 2),
+    ('Lyon', 479803, 3),
+    ('Glasgow', 592820, 4),
+    ('Neapel', 959574, 5),
+    ('Valencia', 798033, 6);
+
+-- Kontrolle: Alle Städte anzeigen
+SELECT * FROM staedte;
+
+-- ======================================
+-- ERKLÄRUNG DER BEZIEHUNG
+-- ======================================
+-- So habe ich die 1:n-Beziehung aufgebaut:
+--   - Eine Stadt gehört GENAU zu einem Land (z. B. Berlin -> Deutschland).
+--   - Ein Land kann VIELE Städte enthalten (z. B. Deutschland -> Berlin, Hamburg, München).
+-- Das Ganze funktioniert über den Fremdschlüssel laender_id in der Tabelle staedte.
+
+-- ======================================
+-- BEISPIELE (meine Testabfragen)
+-- ======================================
+
+-- 1. Alle Städte mit dem passenden Land anzeigen
+SELECT s.name AS stadt, s.einwohnerzahl, l.name AS land
+FROM staedte s
+JOIN laender l ON s.laender_id = l.id;
+
+-- 2. Einwohner aller Städte pro Land summieren
+SELECT l.name AS land, SUM(s.einwohnerzahl) AS gesamt_einwohner_staedte
+FROM laender l
+JOIN staedte s ON s.laender_id = l.id
+GROUP BY l.name;
+
+-- 3. Top-3 Städte nach Einwohnerzahl über alle Länder
+SELECT name, einwohnerzahl
+FROM staedte
+ORDER BY einwohnerzahl DESC
+LIMIT 3;
+
+-- 4. Spezielles Beispiel: Alle Städte in Deutschland anzeigen
+-- Ich verknüpfe staedte mit laender und filtere nach dem Land "Deutschland".
+SELECT s.name AS deutsche_stadt, s.einwohnerzahl
+FROM staedte s
+JOIN laender l ON s.laender_id = l.id
+WHERE l.name = 'Deutschland';
