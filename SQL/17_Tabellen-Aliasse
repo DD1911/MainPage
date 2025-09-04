@@ -1,0 +1,40 @@
+USE erdkunde;
+
+-- ======================================
+-- 1. Tabellen-Aliasse (Stellvertreter)
+-- ======================================
+-- Aliasse werden im FROM (oder JOIN) hinter den Tabellennamen gesetzt.
+-- Ab dann muss der Alias überall genutzt werden, z. B. in SELECT, WHERE, ORDER BY.
+
+-- Übliche Praxis:
+-- s → staedte
+-- l → laender
+
+-- ======================================
+-- 2. Einfache JOIN-Abfrage mit Aliassen
+-- ======================================
+SELECT *
+FROM staedte s
+INNER JOIN laender l
+ON s.laender_id = l.id;
+-- s und l sind Aliasse für die Tabellen
+
+-- ======================================
+-- 3. Auswahl bestimmter Spalten mit Aliassen
+-- ======================================
+SELECT s.name AS 'Stadt',
+       s.einwohnerzahl AS 'Einwohnerzahl'
+FROM staedte s
+INNER JOIN laender l
+ON s.laender_id = l.id;
+
+-- ======================================
+-- 4. Mit WHERE-Bedingung und Sortierung
+-- ======================================
+SELECT s.name AS 'Stadt',
+       s.einwohnerzahl AS 'Einwohnerzahl'
+FROM staedte s
+INNER JOIN laender l
+ON s.laender_id = l.id
+WHERE s.name LIKE '%n%'   -- Filter: Städte mit "n" im Namen
+ORDER BY l.id;             -- Sortierung nach Länder-ID
