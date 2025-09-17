@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8"> <!-- Zeichensatz UTF-8 (unterstützt Umlaute wie ä, ö, ü, ß) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Wichtig für mobile Geräte (responsive Design) -->
+    <meta name="description" content="Meine erste HTML-Seite mit CSS"> <!-- Kurzbeschreibung für Suchmaschinen -->
+    <title>Meine erste HTML-Seite</title> <!-- Titel, der im Browser-Tab angezeigt wird -->
+
+    <!-- ===============================
+         CSS GRUNDLAGEN (Gestaltung)
+         CSS = Cascading Style Sheets
+         → HTML beschreibt den INHALT,
+           CSS beschreibt das AUSSEHEN.
+    ================================ -->
+    <style>
+        /* -------------------------------
+           Allgemeine Einstellungen für den gesamten Body
+        ------------------------------- */
+        body {
+            background-color: #f0f8ff; /* Hintergrundfarbe der Seite (hellblau) */
+            font-family: Arial, sans-serif; /* Schriftart für die ganze Seite */
+            margin: 20px; /* äußerer Abstand zum Browserfenster */
+        }
+
+        /* -------------------------------
+           Gestaltung von H1 (größte Überschrift)
+        ------------------------------- */
+        h1 {
+            color: darkblue;              /* Schriftfarbe */
+            text-align: center;           /* Text zentrieren */
+            border: 2px solid black;      /* Rahmen: 2px dick, durchgehend, schwarz */
+            padding: 10px;                /* Innenabstand zwischen Text und Rahmen */
+            margin-bottom: 20px;          /* Abstand nach unten zum nächsten Element */
+            background-color: #e6e6fa;    /* Hintergrundfarbe (lavendel) */
+        }
+
+        /* -------------------------------
+           Gestaltung von H2 (Unterüberschriften)
+        ------------------------------- */
+        h2 {
+            color: darkred;
+            border-bottom: 1px solid gray; /* dünne Linie unter der Überschrift */
+            padding-bottom: 5px;           /* kleiner Innenabstand nach unten */
+        }
+
+        /* -------------------------------
+           Absätze (p)
+        ------------------------------- */
+        p {
+            color: #333;            /* dunkelgraue Schriftfarbe (besser lesbar als schwarz) */
+            line-height: 1.6;       /* Zeilenhöhe: größerer Abstand zwischen den Zeilen */
+            margin: 10px 0;         /* äußerer Abstand: 10px oben/unten, 0px links/rechts */
+        }
+
+        /* -------------------------------
+           Unsortierte Listen (ul)
+        ------------------------------- */
+        ul {
+            border: 1px solid #666;       /* Rahmen um die Liste */
+            padding: 10px;                /* Abstand innerhalb der Liste */
+            background-color: #fffacd;    /* hellgelber Hintergrund */
+        }
+
+        /* -------------------------------
+           Tabellen
+        ------------------------------- */
+        table {
+            border-collapse: collapse; /* sorgt dafür, dass Tabellenrahmen nicht doppelt erscheinen */
+            width: 60%;                /* Tabelle nimmt 60% der Breite ein */
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid black;  /* Rahmen um jede Zelle */
+            padding: 8px;             /* Innenabstand innerhalb der Zellen */
+            text-align: center;       /* Text in der Mitte ausrichten */
+        }
+
+        th {
+            background-color: #4682b4; /* blaue Kopfzeile */
+            color: white;              /* weiße Schrift für Kontrast */
+        }
+
+        /* -------------------------------
+           Formularfelder
+        ------------------------------- */
+        input, textarea {
+            border: 1px solid #999;   /* dünner grauer Rahmen */
+            padding: 5px;             /* Innenabstand */
+            margin: 5px 0;            /* Abstand nach oben/unten */
+            width: 250px;             /* einheitliche Breite */
+        }
+
+        textarea {
+            height: 80px;             /* Höhe für mehr Platz */
+        }
+
+        input[type="submit"] {
+            background-color: darkgreen; /* Hintergrundfarbe (grün) */
+            color: white;                /* Schriftfarbe (weiß) */
+            border: none;                /* kein sichtbarer Rahmen */
+            padding: 10px;
+            cursor: pointer;             /* Mauszeiger wird zur Hand */
+        }
+
+        /* Hover-Effekt: wenn man mit der Maus drüberfährt */
+        input[type="submit"]:hover {
+            background-color: limegreen;
+        }
+
+        /* -------------------------------
+           Bilder
+        ------------------------------- */
+        img {
+            border: 3px solid #000;   /* schwarzer Rahmen */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===============================
+     HTML GRUNDLAGEN
+================================ -->
+
+<!-- HTML = Struktur (Überschrift, Text, Tabelle, Formular)
+     CSS  = Gestaltung (Farbe, Rand, Abstände, Hintergrund) -->
+
+<h1>H1 - Hauptüberschrift mit Rand und Hintergrund</h1>
+
+<!-- Absatz mit normalem Text -->
+<p>Das ist ein Absatz. Er hat jetzt dunkle Schriftfarbe, mehr Zeilenhöhe und Abstand nach oben/unten.</p>
+
+<!-- ===============================
+     LISTE
+================================ -->
+<h2>Liste mit Rahmen und Hintergrund</h2>
+<ul>
+    <li>Erster Punkt</li>
+    <li>Zweiter Punkt</li>
+    <li>Dritter Punkt</li>
+</ul>
+
+<!-- ===============================
+     TABELLE
+================================ -->
+<h2>Tabelle mit Rahmen und Farbe</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Alter</th>
+    </tr>
+    <tr>
+        <td>Daniel</td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td>Roman</td>
+        <td>25</td>
+    </tr>
+</table>
+
+<!-- ===============================
+     FORMULAR
+================================ -->
+<h2>Formular mit Eingabefeldern</h2>
+<form action="server.php" method="post">
+    <!-- Eingabefeld für Name -->
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br><br>
+
+    <!-- Eingabefeld für E-Mail -->
+    <label for="email">E-Mail:</label><br>
+    <input type="email" id="email" name="email"><br><br>
+
+    <!-- Textfeld für längere Nachricht -->
+    <label for="nachricht">Nachricht:</label><br>
+    <textarea id="nachricht" name="nachricht"></textarea><br><br>
+
+    <!-- Button zum Absenden -->
+    <input type="submit" value="Absenden">
+</form>
+
+<!-- ===============================
+     BILD MIT CSS-Rahmen & Größe
+================================ -->
+<h2>Bild mit Rahmen</h2>
+
+<!-- Das Bild selbst -->
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Porsche_Taycan_Turbo_S_IMG_3471.jpg"
+     alt="Porsche Taycan"
+     class="rahmen-bild">
+
+<!-- ===============================
+     CSS-Bereich (im <style>-Tag)
+================================ -->
+<style>
+    /* CSS-Klasse für Bilder mit Rahmen */
+    .rahmen-bild {
+        width: 150px;          /* Bildbreite auf 150 Pixel verkleinern */
+        height: auto;          /* Höhe passt sich automatisch an → kein Verzerren */
+        border: 3px solid #d78d8d; /* Rahmen: 3px dick, durchgehend, rot */
+        padding: 5px;          /* Abstand zwischen Bild und Rahmen (innen) */
+        margin: 10px;          /* Abstand zum nächsten Element (außen) */
+    }
+</style>
+
+<!-- ===============================
+     BEST PRACTICES
+================================ -->
+
+<!--
+    ✔ HTML = Struktur, CSS = Design trennen
+    ✔ Immer UTF-8 für Sonderzeichen
+    ✔ Überschriften-Hierarchie einhalten (nur 1x <h1>, dann <h2>, <h3> usw.)
+    ✔ CSS nutzen für Gestaltung (nicht alte Attribute wie <font>!)
+    ✔ Bilder mit "alt"-Text beschreiben (Barrierefreiheit & SEO)
+    ✔ Mit margin und padding gezielt Abstände steuern
+    ✔ border, background-color, color für Gestaltung verwenden
+-->
+
+</body>
+</html>

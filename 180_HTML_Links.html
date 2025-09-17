@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML - Links</title>
+    <style>
+        /* ================================
+           Basis-Style für alle Links
+           ================================ */
+        a {
+            text-decoration: none;  /* entfernt die Standard-Unterstreichung */
+            color: blue;            /* Linkfarbe */
+        }
+
+        /* Hover-Effekt (wenn man mit der Maus drüber geht) */
+        a:hover {
+            text-decoration: underline;
+            color: darkred;
+        }
+
+        /* Besuchte Links */
+        a:visited {
+            color: purple;
+        }
+
+        /* Aktiver Link (während des Klickens) */
+        a:active {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+
+<h1>HTML - Links (Hyperlinks)</h1>
+
+<!--
+    1) Externe Links:
+       - Verweisen auf eine externe Webseite.
+       - Attribut target="_blank" öffnet den Link in einem neuen Tab.
+-->
+<p>
+    <a href="https://www.gfn.de" target="_blank">GFN (externer Link)</a>
+</p>
+
+<!--
+    2) Interne Links:
+       - Verweisen auf eine andere HTML-Seite im gleichen Projekt/Ordner.
+       - Praktisch für Navigation in einer Webseite.
+-->
+<p>
+    <a href="seite2.html">Gehe zu Seite 2 (interner Link)</a>
+</p>
+
+<!--
+    3) Ankerlinks:
+       - Verweisen auf eine bestimmte Stelle innerhalb derselben Seite.
+       - Dazu benutzt man id="" am Ziel-Element.
+-->
+<p>
+    <a href="#kapitel2">Springe zu Kapitel 2 (Ankerlink)</a>
+</p>
+
+<!--
+    4) E-Mail-Link:
+       - Öffnet das Standard-Mailprogramm.
+       - "mailto:" + Adresse
+       - Man kann sogar Betreff und Inhalt vorbelegen.
+-->
+<p>
+    <a href="mailto:info@example.com?subject=Anfrage&body=Hallo, ich habe eine Frage.">
+        Schreib mir eine E-Mail
+    </a>
+</p>
+
+<!--
+    5) Download-Link:
+       - Mit dem download-Attribut kann eine Datei heruntergeladen werden.
+       - Funktioniert z. B. bei PDFs, Bildern oder ZIP-Dateien.
+-->
+<p>
+    <a href="beispiel.pdf" download="Mein_Dokument.pdf">PDF herunterladen</a>
+</p>
+
+<!-- ================================
+     Lange Beispieltexte für Anker-Links
+     ================================ -->
+<h2 id="kapitel1">Kapitel 1</h2>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et magna nec
+    risus fermentum ullamcorper. <br>
+    <a href="#top">Nach oben</a>
+</p>
+
+<h2 id="kapitel2">Kapitel 2</h2>
+<p>
+    Hierher springt der Ankerlink von oben. <br>
+    <a href="#kapitel1">Zurück zu Kapitel 1</a>
+</p>
+
+<!--
+    Hinweis:
+    - Links können auf ALLES verweisen, was über eine URL erreichbar ist:
+      - Webseiten (http/https)
+      - Dateien (PDF, JPG, ZIP, etc.)
+      - E-Mail-Adressen (mailto)
+      - Telefonnummern (tel:+49...)
+    - Mit CSS lassen sich Links optisch anpassen.
+    - Mit JavaScript können Links auch interaktiv verändert oder ersetzt werden.
+-->
+
+</body>
+</html>

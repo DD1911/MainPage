@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML div</title>
+    <style>
+        /* ================================
+           Basis-Style für alle <div>-Elemente
+           ================================ */
+        div {
+            border: 2px dotted;         /* gestrichelter Rahmen (dotted = gepunktet) */
+            height: 200px;              /* feste Höhe des div */
+            width: 600px;               /* feste Breite des div */
+            margin: 20px;               /* äußerer Abstand (außen) zu anderen Elementen */
+            background-color: #0000FF;  /* Hintergrundfarbe Blau */
+            padding: 30px;              /* innerer Abstand (innen) zwischen Rahmen und Inhalt */
+        }
+
+        /* ================================
+           Style für ein div mit class="rand"
+           (spezielles Styling für ausgewählte divs)
+           ================================ */
+        div.rand {
+            border-style: solid;                 /* durchgehende Linie statt dotted */
+            border-width: 10px 20px 30px 40px;   /* unterschiedliche Dicke: oben | rechts | unten | links */
+            margin-left: 15px;                   /* linker Außenabstand */
+            margin-top: 20px;                    /* oberer Außenabstand */
+
+            padding-top: -50px;                  /* beim Pading sind keine negativen Werte erlaubt*/
+        }
+    </style>
+</head>
+<body>
+<h1>Das HTML-Element div</h1>
+
+<!--
+    div = "division" (Bereich/Abteilung).
+    - Ein div ist ein Blockelement → es beginnt immer in einer neuen Zeile.
+    - Standard: so breit wie der gesamte verfügbare Platz.
+    - Höhe passt sich dem Inhalt an (außer man setzt height fest).
+-->
+
+<div>
+    <p>
+        Das <b>div</b>-Element steht für <i>Division</i> (= Bereich). <br>
+        Es wird genutzt, um Inhalte in Blöcke einzuteilen. <br>
+        Ein div ist standardmäßig so breit wie das Browserfenster
+        und so hoch wie sein Inhalt. <br>
+        Mit CSS kann man Größe, Rahmen, Abstände und Farben anpassen.
+    </p>
+</div>
+
+<!--
+    Zweites div: ohne besondere Klasse.
+    Bekommt dieselben Basis-Styles wie oben definiert.
+-->
+<div>
+    Ich bin im zweiten div.
+</div>
+
+<!--
+    Drittes div: mit class="rand".
+    → Zusätzliche CSS-Regeln greifen, z. B. dickere Rahmen.
+    border-width: 10px 20px 30px 40px
+      - 10px oben
+      - 20px rechts
+      - 30px unten
+      - 40px links
+    Reihenfolge = Uhrzeigersinn (oben → rechts → unten → links)
+-->
+<div class="rand">
+    Die Ränder können unterschiedlich dick sein. <br>
+    Die erste Angabe steht für <b>oben</b>, <br>
+    danach geht es im Uhrzeigersinn weiter (rechts, unten, links).
+</div>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <title>HTML - Tabellen (Beispiel mit thead/tbody/tfoot)</title>
+    <style>
+        /* ========= Basis-Table-Styling ========= */
+        .table-wrap {
+            /* Ermöglicht horizontales Scrollen auf kleinen Bildschirmen */
+            overflow-x: auto;
+        }
+
+        table {
+            border-collapse: collapse; /* entfernt doppelte Zellränder */
+            width: 100%;               /* Tabelle nutzt verfügbare Breite */
+            min-width: 480px;         /* verhindert zu enge Darstellung */
+            margin-bottom: 1rem;
+            border: 1px solid teal;   /* Kurzschreibweise für Rahmen */
+        }
+
+        /* Gilt für Kopf- und Datenzellen */
+        th, td {
+            border: 1px solid #910707;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Kopfzeile optisch hervorheben */
+        thead th {
+            background: #f4f7fb;
+            font-weight: 700;
+        }
+
+        /* Fußzeile dezent hervorheben (z.B. Summen/Legende) */
+        tfoot td {
+            background: #fafafa;
+            font-style: italic;
+        }
+
+        /* Optional: erste Spalte linksbündig, weil dort oft Beschriftungen stehen */
+        tbody th[scope="row"] {
+            text-align: left;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+<h1>HTML - Tabellen (mit thead / tbody / tfoot)</h1>
+
+<!--
+    Warum thead / tbody / tfoot?
+    - thead: definiert die Kopfzeile(n) — gut für Semantik und Styling.
+    - tbody: enthält die eigentlichen Datenzeilen.
+    - tfoot: für Zusammenfassungen, Summen oder Legenden; kann
+             vor dem tbody im Quelltext stehen, damit der Browser
+             die Fußzeile bereits rendert (progressives Rendering).
+    Vorteile:
+    - bessere Semantik & Zugänglichkeit (Screenreader verstehen die Struktur)
+    - einfacher gezielt mit CSS/JS anzusteuern (z.B. tbody tr:nth-child())
+    - sinnvoll für große Tabellen / Sortierung / Paging
+-->
+
+<div class="table-wrap">
+    <table aria-describedby="table-desc">
+        <!-- caption: kurze Beschreibung der Tabelle (für Screenreader & UX) -->
+        <caption id="table-caption">Dezimal / Binär / Hexadezimal — Werte </caption>
+
+        <!-- Kopfbereich: Spaltenüberschriften -->
+        <thead>
+        <tr>
+            <!-- scope="col" gibt an, dass diese th Spaltenüberschriften sind -->
+            <th scope="col">DEZ</th>
+            <th scope="col">BIN</th>
+            <th scope="col">HEX</th>
+        </tr>
+        </thead>
+
+        <!-- Datenbereich: hier liegen die eigentlichen Einträge -->
+        <tbody>
+        <!-- scope="row" markiert die erste Zelle pro Zeile als Zeilenüberschrift -->
+        <tr><th scope="row">00</th><td>0000</td><td>0</td></tr>
+        <tr><th scope="row">01</th><td>0001</td><td>1</td></tr>
+        <tr><th scope="row">02</th><td>0010</td><td>2</td></tr>
+        <tr><th scope="row">03</th><td>0011</td><td>3</td></tr>
+        <tr><th scope="row">04</th><td>0100</td><td>4</td></tr>
+        <tr><th scope="row">05</th><td>0101</td><td>5</td></tr>
+        <tr><th scope="row">06</th><td>0110</td><td>6</td></tr>
+        <tr><th scope="row">07</th><td>0111</td><td>7</td></tr>
+        <tr><th scope="row">08</th><td>1000</td><td>8</td></tr>
+        <tr><th scope="row">09</th><td>1001</td><td>9</td></tr>
+        <tr><th scope="row">10</th><td>1010</td><td>A</td></tr>
+        <tr><th scope="row">11</th><td>1011</td><td>B</td></tr>
+        <tr><th scope="row">12</th><td>1100</td><td>C</td></tr>
+        <tr><th scope="row">13</th><td>1101</td><td>D</td></tr>
+        <tr><th scope="row">14</th><td>1110</td><td>E</td></tr>
+        <tr><th scope="row">15</th><td>1111</td><td>F</td></tr>
+        </tbody>
+
+        <!-- Fußbereich: z.B. Legende, Summen, Erklärungen -->
+        <tfoot>
+        <tr>
+            <!-- colspan fasst Zellen zusammen; hier Platz für eine kleine Erklärung -->
+            <td colspan="3">Hinweis: Die HEX-Spalte zeigt Großbuchstaben für Werte ≥10 (A–F).</td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+
+<!-- Detaillierte Erklärung / Hinweise zur "echten" Nutzung -->
+<!--
+  1) Semantik:
+     - Verwende thead/tbody/tfoot um Struktur zu geben.
+     - Setze scope="col" für Kopfzellen und scope="row" für Zeilenköpfe.
+     - caption beschreibt kurz die Tabelle (wichtig für Screenreader).
+
+  2) Styling & Responsiveness:
+     - Wrappe die Tabelle in ein Element (.table-wrap) und setze overflow-x:auto,
+       damit auf kleinen Bildschirmen eine horizontale Scrollbar erscheint.
+     - Benutze min-width, wenn die Tabelle eine Mindestbreite zum Lesen benötigt.
+
+  3) Accessibility (Barrierefreiheit):
+     - caption + scope verbessern die Verständlichkeit für Screenreader.
+     - Für komplexere Tabellen kann aria-describedby genutzt werden (hier beispielhaft).
+     - Vermeide rein visuelle Hinweise (Farbe) ohne zusätzlichen Text.
+
+  4) JavaScript / dynamische Tabellen:
+     - tbody ist praktisch, um Zeilen dynamisch hinzuzufügen/zu entfernen:
+         document.querySelector('tbody').appendChild(newRow);
+     - Für Sorting/Filtering: trenne Datenlogik (JS) von Darstellung (CSS).
+
+  5) Performance / große Datenmengen:
+     - Bei sehr großen Tabellen: Paging, Virtual Scrolling oder serverseitiges
+       Laden in Betracht ziehen statt alles in einem DOM zu rendern.
+
+  6) Weitere Hilfsmittel:
+     - <colgroup> / <col> zur Spaltendefinition (z.B. feste Breiten)
+     - <summary> ist veraltet; nutze caption/aria-Attribute für Beschreibungen.
+-->
+
+</body>
+</html>
