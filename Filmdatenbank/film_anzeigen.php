@@ -3,44 +3,37 @@
 // 1. Datenbankverbindung
 // ==========================
 
-// Mit require_once wird die Datei "lib/Datenbank_verbindung.php" eingebunden.
-// Vorteil von require_once: Sie wird nur einmal geladen (kein doppeltes Einbinden möglich).
-// In dieser Datei befindet sich die zentrale PDO-Verbindung zur Datenbank ($db-Objekt).
-// Dadurch bleibt der Code sauber und wartbar, weil die Verbindung an einer Stelle zentral gepflegt wird.
-require_once 'lib/Datenbank_verbindung.php';
+// require_once stellt sicher, dass die Datei nur einmal eingebunden wird
+// Die Datei enthält das $db PDO-Objekt, das wir für Datenbankabfragen nutzen
+require_once __DIR__ . '/lib/Datenbank_verbindung.php';
 
 // ==========================
 // 2. ID aus URL prüfen
 // ==========================
 
-// Über die URL kann ein Benutzer die ID eines Films übergeben, z. B. film_anzeigen.php?id=3.
-// $_GET['id'] liest diesen Wert aus der URL.
-// Der Null-Koaleszenz-Operator (??) sorgt dafür, dass $id = null gesetzt wird,
-// falls kein Wert übergeben wurde (z. B. Aufruf ohne "?id=...").
+// $_GET['id'] liest die Film-ID aus der URL, z. B. film_anzeigen.php?id=3
+// Null-Koaleszenz-Operator ?? sorgt dafür, dass $id null ist, falls kein Parameter übergeben wird
 $id = $_GET['id'] ?? null;
 
 // ==========================
 // 3. Film aus der Datenbank laden
 // ==========================
 
-// Prüfen, ob eine ID vorhanden ist UND ob sie nur aus Ziffern besteht.
-// ctype_digit() stellt sicher, dass wirklich nur eine positive Ganzzahl übergeben wurde
-// → Schutz vor SQL-Injection (bösartige Eingaben wie "1 OR 1=1" würden hier abgefangen).
+// Prüfen, ob eine ID übergeben wurde und nur aus Ziffern besteht
+// ctype_digit() verhindert unsichere Eingaben wie "1 OR 1=1"
 if ($id !== null && ctype_digit($id)) {
-    // Eine vorbereitete SQL-Anweisung (Prepared Statement) verwenden.
-    // Vorteil: Platzhalter (:id) verhindern SQL-Injection, weil PDO die Werte automatisch "escaped".
+
+    // Prepared Statement schützt vor SQL-Injection
     $stmt = $db->prepare('SELECT * FROM filme WHERE id = :id;');
 
-    // Das Prepared Statement wird mit einem Wert für den Platzhalter ":id" ausgeführt.
-    // $id ist hier ein sicher geprüfter Integer.
+    // Ausführen des Statements mit sicherem Integer-Wert
     $stmt->execute([':id' => $id]);
 
-    // fetch() holt genau einen Datensatz als assoziatives Array zurück.
-    // Beispiel: ['id' => 3, 'titel' => 'Inception', 'genre' => 'Science Fiction', ...]
-    $film = $stmt->fetch();
+    // fetch() holt genau einen Datensatz als assoziatives Array
+    $film = $stmt->fetch(PDO::FETCH_ASSOC);
+
 } else {
-    // Falls keine gültige ID übergeben wurde (z. B. "?id=abc" oder gar kein Parameter),
-    // wird $film = null gesetzt, damit später kein Film angezeigt wird.
+    // Keine gültige ID → Film existiert nicht
     $film = null;
 }
 
@@ -48,20 +41,19 @@ if ($id !== null && ctype_digit($id)) {
 // 4. Coverbild prüfen
 // ==========================
 
-// Wir wollen das Coverbild nur dann anzeigen, wenn:
-// a) der Film-Datensatz überhaupt ein "cover"-Feld hat,
-// b) der Wert im Feld nicht leer ist,
-// c) und die Datei im Verzeichnis "Cover/" tatsächlich existiert.
+// Wir wollen das Cover nur anzeigen, wenn:
+// 1) Der Film existiert
+// 2) Das Feld 'cover' nicht leer ist
+// 3) Die Datei tatsächlich im Ordner "Cover/" existiert
 $coverPath = null;
 if ($film && !empty($film['cover'])) {
-    // __DIR__ = aktuelles Verzeichnis, in dem dieses PHP-Skript liegt.
-    // Wir bauen den vollständigen Dateipfad zusammen, um sicherzugehen,
-    // dass die Datei existiert.
+
+    // __DIR__ liefert den absoluten Pfad zum aktuellen Skript
     $tmpPath = __DIR__ . '/Cover/' . $film['cover'];
 
-    // file_exists() prüft, ob die Datei physisch auf der Festplatte liegt.
+    // file_exists prüft, ob die Datei physisch vorhanden ist
     if (file_exists($tmpPath)) {
-        // Falls die Datei da ist, speichern wir den relativen Pfad (für HTML-Ausgabe).
+        // Relativer Pfad für die HTML-Ausgabe
         $coverPath = 'Cover/' . $film['cover'];
     }
 }
@@ -72,68 +64,82 @@ if ($film && !empty($film['cover'])) {
     <meta charset="UTF-8">
     <title>Film anzeigen</title>
 
-    <!-- style2.css enthält allgemeine Layout-Regeln (Farben, Schriften usw.) -->
+    <!-- Cyberpunk-Style CSS -->
     <link rel="stylesheet" href="style2.css">
 
-    <!-- Hier fügen wir zusätzliche CSS-Regeln hinzu,
-         die nur für diese Seite gelten (z. B. Container für Cover + Infos). -->
+    <!-- Inline-CSS für Layout Container und Cover/Info -->
     <style>
-        /* Container für Cover + Infos nebeneinander */
+        /* ==========================
+           Hauptcontainer: Cover + Infos nebeneinander
+        ========================== */
         .container {
-            display: flex;               /* Flexbox → Elemente nebeneinander darstellen */
-            max-width: 1000px;           /* Maximale Breite → Inhalt bleibt lesbar */
-            margin-top: 20px;            /* Abstand nach oben */
-            border: 2px solid #2b83c5;   /* Rahmenfarbe */
-            border-radius: 15px;         /* Abgerundete Ecken */
-            overflow: hidden;            /* Inhalt schneidet nicht aus dem Container */
-            background-color: #151010;      /* Hintergrund schwarz */
+            display: flex;                     /* Flexbox für nebeneinander */
+            max-width: 1000px;                 /* Maximalbreite für Lesbarkeit */
+            margin: 20px auto;                 /* Zentrieren mit Abstand oben/unten */
+            border-radius: 20px;               /* Abgerundete Ecken */
+            overflow: hidden;                  /* Inhalte bleiben innerhalb des Containers */
+            background: rgba(15,15,25,0.9);   /* Dunkler Cyberpunk-Hintergrund */
+            box-shadow: 0 0 25px rgba(0,255,255,0.4), 0 0 50px rgba(255,0,255,0.2); /* Neon-Glow */
+            backdrop-filter: blur(12px);       /* Blur-Effekt für futuristisches Design */
+            animation: glowPulse 6s infinite alternate; /* Pulsierender Glow */
         }
 
-        /* Linke Box für das Filmcover */
+        /* ==========================
+           Linke Box: Cover
+        ========================== */
         .cover-box {
-            flex: 0 0 400px;             /* Feste Breite von 400px */
-            display: flex;               /* Flexbox, damit Bild gestreckt wird */
-            align-items: stretch;        /* Bild füllt die Box */
+            flex: 0 0 400px;                   /* feste Breite */
+            display: flex;                     /* Flexbox für Bildfüllung */
+            align-items: stretch;              /* Bild streckt sich über die gesamte Höhe */
         }
 
-        /* Bild im Cover-Bereich */
         .cover-box img {
-            width: 100%;                 /* Bild füllt die ganze Breite */
-            height: 100%;                /* Bild füllt die ganze Höhe */
-            object-fit: cover;           /* Bild wird zugeschnitten, damit Seitenverhältnis bleibt */
-            display: block;              /* Keine zusätzlichen Abstände */
+            width: 100%;                        /* volle Breite */
+            height: 100%;                       /* volle Höhe */
+            object-fit: cover;                  /* Bild wird zugeschnitten, Seitenverhältnis bleibt */
+            border-radius: 12px;                /* leicht abgerundete Ecken */
+            border: 2px solid rgba(255,255,255,0.2); /* subtiler Rahmen */
         }
 
-        /* Rechte Box für die Filminformationen */
+        /* ==========================
+           Rechte Box: Filminformationen
+        ========================== */
         .info-box {
-            flex: 1;                     /* Restliche Breite füllen */
-            padding: 20px;               /* Innenabstand */
+            flex: 1;                            /* Restliche Breite einnehmen */
+            padding: 20px;                      /* Innenabstand */
             display: flex;
-            flex-direction: column;      /* Infos untereinander anzeigen */
+            flex-direction: column;             /* Zeilen untereinander */
         }
 
-        /* Jede Info-Zeile (z. B. "Titel: Inception") */
         .info-box .info-row {
-            display: flex;               /* Label links, Wert rechts */
-            padding: 10px 0;             /* Abstand oben/unten */
-            border-bottom: 1px solid #f6f8fa; /* Trennlinie */
+            display: flex;                      /* Label links, Wert rechts */
+            padding: 10px 0;                    /* Abstand oben/unten */
+            border-bottom: 1px solid rgba(255,255,255,0.2); /* Trennlinie */
         }
 
-        /* Letzte Info-Zeile ohne Trennlinie */
         .info-box .info-row:last-child {
-            border-bottom: none;
+            border-bottom: none;                /* letzte Zeile ohne Trennlinie */
         }
 
-        /* Label-Bereich (linke Spalte) */
+        /* Label-Stil */
         .info-box .label {
-            font-weight: bold;           /* Fettgedruckt */
-            width: 150px;                /* Feste Breite */
+            font-weight: bold;                   /* fett */
+            width: 150px;                        /* feste Breite */
         }
 
-        /* FSK-Label soll immer großgeschrieben sein */
+        /* FSK Label immer großgeschrieben */
         .info-box .label.fsk-label {
-            font-weight: bold;
             text-transform: uppercase;
+        }
+
+        /* Pulsierender Glow für Container */
+        @keyframes glowPulse {
+            from {
+                box-shadow: 0 0 15px rgba(0,255,255,0.3), 0 0 30px rgba(255,0,255,0.15);
+            }
+            to {
+                box-shadow: 0 0 25px rgba(0,255,255,0.6), 0 0 50px rgba(255,0,255,0.3);
+            }
         }
     </style>
 </head>
@@ -141,83 +147,76 @@ if ($film && !empty($film['cover'])) {
 <h1>Film anzeigen</h1>
 
 <?php if ($film): ?>
-    <!-- Hauptcontainer für Cover + Infos -->
     <div class="container">
 
         <!-- ==========================
              Linke Seite: Filmcover
-             ========================== -->
+        ========================== -->
         <div class="cover-box">
             <?php if ($coverPath): ?>
-                <!-- Das Coverbild wird nur angezeigt, wenn eine Datei gefunden wurde -->
+                <!-- Bild nur anzeigen, wenn existiert -->
                 <img src="<?= htmlspecialchars($coverPath) ?>" alt="Filmcover">
             <?php endif; ?>
         </div>
 
         <!-- ==========================
              Rechte Seite: Filmdetails
-             ========================== -->
+        ========================== -->
         <div class="info-box">
             <?php foreach ($film as $spalte => $wert): ?>
+
                 <?php
                 // ==========================
                 // 1. Spalten herausfiltern
                 // ==========================
-                // Wir wollen bestimmte Spalten nicht anzeigen:
-                // - "cover": weil das Bild schon links separat angezeigt wird
-                // - "id": soll im Hintergrund erhalten bleiben, aber nicht sichtbar ausgegeben werden
-                if ($spalte === 'cover') continue;
-                if ($spalte === 'id') continue;
+                // 'cover' und 'id' werden nicht in der Info-Box angezeigt
+                if ($spalte === 'cover' || $spalte === 'id') continue;
 
                 // ==========================
-                // 2. Label (Spaltennamen) formatieren
+                // 2. Label formatieren
                 // ==========================
                 $labelClass = '';
                 if ($spalte === 'fsk') {
-                    // "FSK" → komplett groß
-                    $labelClass = 'fsk-label';
+                    $labelClass = 'fsk-label';          // FSK komplett groß
                     $displayLabel = strtoupper($spalte);
                 } elseif ($spalte === 'laenge') {
-                    // "laenge" → schöner als "Länge" darstellen
-                    $displayLabel = 'Länge';
+                    $displayLabel = 'Länge';            // besser lesbar
                 } else {
-                    // Alle anderen Spalten → nur erster Buchstabe groß
-                    $displayLabel = ucfirst($spalte);
+                    $displayLabel = ucfirst($spalte);   // erster Buchstabe groß
                 }
 
                 // ==========================
                 // 3. Werte formatieren
                 // ==========================
                 if ($spalte === 'einspielergebnis') {
-                    // Zahl schön formatieren: 1234.5 → "1.234,50 Mio €"
+                    // Formatierung mit Punkt und Komma: 1234.5 → "1.234,50 Mio €"
                     $wert = number_format($wert, 2, ',', '.') . ' Mio €';
                 } elseif ($spalte === 'laenge') {
-                    // Länge in Minuten anzeigen
                     $wert = $wert . ' Minuten';
                 }
                 ?>
+
                 <!-- ==========================
                      Ausgabe einer einzelnen Zeile
-                     Label links, Wert rechts
-                     ========================== -->
+                ========================== -->
                 <div class="info-row">
                     <span class="label <?= $labelClass ?>"><?= htmlspecialchars($displayLabel) ?>:</span>
                     <span><?= htmlspecialchars($wert) ?></span>
                 </div>
+
             <?php endforeach; ?>
         </div>
 
     </div>
 
-    <!-- Zurück-Link zur Übersicht aller Filme -->
+    <!-- Zurück-Link -->
     <p><a href="filme_uebersicht.php">Zurück zur Übersicht</a></p>
 
 <?php else: ?>
-    <!-- Falls keine gültige ID oder kein Film gefunden -->
+    <!-- Falls kein Film gefunden -->
     <p>Kein Film mit dieser ID vorhanden.</p>
     <p><a href="filme_uebersicht.php">Zurück zur Übersicht</a></p>
 <?php endif; ?>
 
 </body>
 </html>
-
