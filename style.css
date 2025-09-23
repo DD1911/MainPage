@@ -1,0 +1,275 @@
+/* ==========================
+   Hintergrund der Seite auf schwarz
+========================== */
+body {
+    background-color: #000000; /* Schwarz */
+    color: #e0e0e0;           /* Standardtextfarbe hellgrau, damit es lesbar bleibt */
+    font-family: 'Segoe UI', Roboto, sans-serif; /* Schriftart der Seite */
+    margin: 0;                 /* Entfernt Standardabstand */
+    padding: 0;                /* Entfernt Standardpadding */
+}
+
+/* ==========================
+   Überschrift zentrieren und Neon-Design
+========================== */
+/* ==========================
+   Neon-Überschrift mit Animation
+========================== */
+h1.title {
+    text-align: center; /* Zentriert die Überschrift horizontal */
+    font-family: 'Segoe UI', Roboto, sans-serif; /* Moderne, klare Schriftart */
+    font-size: 48px; /* Große Schriftgröße für auffälligen Effekt */
+    color: #00e5ff; /* Grundfarbe Neon-Türkis */
+    text-transform: capitalize; /* Alle Buchstaben groß */
+    letter-spacing: 4px; /* Abstand zwischen Buchstaben für futuristischen Look */
+    font-weight: 900; /* Sehr fett für starken Glow */
+    text-shadow:
+            0 0 5px #00e5ff,   /* kleiner Neon-Glow */
+            0 0 10px #00e5ff,  /* mittlerer Neon-Glow */
+            0 0 20px #ff00ff,  /* zusätzlicher farbiger Glow */
+            0 0 30px #ff00ff;  /* starker Glow */
+    margin: 30px 0; /* Abstand oben und unten */
+    animation: neonPulse 3s infinite alternate; /* Pulsierende Animation */
+}
+
+/* ==========================
+   Keyframes für Neon-Puls
+========================== */
+@keyframes neonPulse {
+    0% {
+        text-shadow:
+                0 0 5px #00e5ff,
+                0 0 10px #00e5ff,
+                0 0 20px #ff00ff,
+                0 0 30px #ff00ff;
+    }
+    50% {
+        text-shadow:
+                0 0 15px #00e5ff,
+                0 0 25px #00e5ff,
+                0 0 35px #ff00ff,
+                0 0 50px #ff00ff;
+    }
+    100% {
+        text-shadow:
+                0 0 5px #00e5ff,
+                0 0 10px #00e5ff,
+                0 0 20px #ff00ff,
+                0 0 30px #ff00ff;
+    }
+}
+
+
+/* ==========================
+   Animation für Neon-Glow Überschrift
+========================== */
+@keyframes titleGlow {
+    0% {
+        text-shadow: 0 0 5px #00e5ff, 0 0 10px #00e5ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+    }
+    50% {
+        text-shadow: 0 0 10px #00e5ff, 0 0 20px #00e5ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+    }
+    100% {
+        text-shadow: 0 0 5px #00e5ff, 0 0 10px #00e5ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+    }
+}
+
+/* ==========================
+   Neon-Puls Animation für Tabelle / Formulare
+========================== */
+@keyframes glowPulse {
+    from {
+        box-shadow: 0 0 20px rgba(0,255,255,0.3), 0 0 40px rgba(255,0,255,0.15);
+    }
+    to {
+        box-shadow: 0 0 40px rgba(0,255,255,0.7), 0 0 80px rgba(255,0,255,0.4);
+    }
+}
+
+/* ==========================
+   Tabelle (Cyberpunk Neon Style)
+========================== */
+table {
+    border-collapse: separate; /* Zellen bleiben getrennt */
+    border-spacing: 0; /* Kein zusätzlicher Abstand */
+    width: 850px; /* Gesamtbreite */
+    margin: 50px auto; /* Zentriert und Abstand oben/unten */
+    font-family: 'Segoe UI', Roboto, sans-serif; /* Schriftart */
+    font-size: 15px; /* Schriftgröße */
+    color: #e0e0e0; /* Textfarbe hellgrau */
+    background: rgba(15,15,25,0.85); /* Dunkler, leicht transparenter Hintergrund */
+    border-radius: 20px; /* Abgerundete Ecken */
+    overflow: hidden; /* Inhalt bleibt innerhalb der Tabelle */
+    box-shadow: 0 0 25px rgba(0,255,255,0.4), 0 0 50px rgba(255,0,255,0.2); /* Neon Glow außen */
+    backdrop-filter: blur(12px); /* Glas/Blur Effekt */
+    animation: glowPulse 6s infinite alternate; /* Pulsierender Neon-Glow */
+}
+
+th, td {
+    border: none; /* Keine sichtbaren Ränder */
+    padding: 16px 22px; /* Innenabstand */
+    text-align: left; /* Text linksbündig */
+    position: relative; /* Bezugspunkt für Hover/Glow */
+    transition: all 0.4s ease; /* Sanfte Animation bei Hover */
+}
+
+th {
+    background: linear-gradient(135deg, #ff007f, #7f00ff, #00e5ff); /* Farbverlauf */
+    color: #fff; /* Weißer Text */
+    font-weight: 700; /* Fett */
+    letter-spacing: 2px; /* Buchstabenabstand */
+    text-transform: uppercase; /* Großbuchstaben */
+    box-shadow: inset 0 -3px 10px rgba(0,0,0,0.5); /* Innerer Schatten */
+    border-bottom: 2px solid rgba(255,255,255,0.2); /* Dünne Linie unten */
+}
+
+/* Zebra-Effekt für gerade Zeilen */
+tr:nth-child(even) {
+    background: rgba(255,255,255,0.02);
+}
+
+/* Hover-Effekt für Tabellenzeilen */
+tr:hover td {
+    background: #00e5ff; /* Neon-Türkis Hintergrund */
+    color: #000; /* Schwarzer Text für besseren Kontrast */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5); /* Schatten um Zeile */
+    cursor: pointer; /* Mauszeiger Hand */
+}
+
+th.fsk-header {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(255,255,255,0.6); /* Leuchtender Text */
+}
+
+img {
+    height: 90px;
+    border-radius: 12px;
+    border: 2px solid rgba(255,255,255,0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+img:hover {
+    transform: scale(1.15) rotate(3deg); /* Vergrößerung und Rotation */
+    box-shadow: 0 0 20px rgba(0,255,255,0.7), 0 0 40px rgba(0,255,255,0.7); /* Glow */
+}
+
+/* ==========================
+   Filter-Formular Neon-Look
+========================== */
+form.filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 30px auto;
+    padding: 15px 25px;
+    background: rgba(15,15,25,0.85); /* Dunkler, transparenter Hintergrund */
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,255,255,0.3), 0 0 30px rgba(255,0,255,0.2); /* Neon Glow */
+    backdrop-filter: blur(10px);
+    width: fit-content; /* Passt sich dem Inhalt an */
+    animation: glowPulse 6s infinite alternate; /* Pulsierender Glow */
+}
+
+form.filter label {
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+form.filter select, form.filter input, form.filter button {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0,255,255,0.5); /* Glow um Elemente */
+}
+
+/* Spezielle Farben für Select */
+form.filter select {
+    background: linear-gradient(135deg, #00e5ff, #7f00ff);
+    color: #100e0e;
+}
+
+/* Spezielle Farben für Buttons */
+form.filter button {
+    background: linear-gradient(135deg, #ff007f, #ff2e63);
+    color: #151414;
+    box-shadow: 0 0 15px rgba(255,0,127,0.6);
+}
+
+form.filter select:hover, form.filter button:hover {
+    transform: scale(1.05); /* leicht vergrößern beim Hover */
+    box-shadow: 0 0 25px rgba(0,255,255,0.8); /* stärkerer Glow beim Hover */
+}
+
+/* ==========================
+   Action-Leiste für Hinzufügen/Löschen von Filmen
+   (gleiche Optik wie Filterformular)
+========================== */
+form.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px auto; /* Abstand oben/unten */
+    padding: 15px 25px; /* Innenabstand */
+    background: rgba(15,15,25,0.85);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,255,255,0.3), 0 0 30px rgba(255,0,255,0.2);
+    backdrop-filter: blur(10px);
+    width: fit-content;
+    animation: glowPulse 6s infinite alternate;
+}
+
+form.actions input, form.actions button {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0,255,255,0.5);
+}
+
+form.actions input {
+    background: linear-gradient(135deg, #00e5ff, #7f00ff);
+    color: #100e0e;
+}
+
+form.actions button {
+    background: linear-gradient(135deg, #ff007f, #ff2e63);
+    color: #151414;
+    box-shadow: 0 0 15px rgba(255,0,127,0.6);
+}
+
+form.actions input:hover, form.actions button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0,255,255,0.8);
+}
+
+/* ==========================
+   Erklärung wichtiger Begriffe
+==========================
+- padding: Innenabstand zwischen Inhalt und Rand
+- margin: Abstand außerhalb des Elements
+- border-radius: Abrundung der Ecken
+- background: Hintergrundfarbe oder Gradient
+- color: Textfarbe
+- box-shadow: Schatten / Glow
+- transition: Animation bei Hover
+- animation: Dauerhafte Animation (Glow)
+- backdrop-filter: Hintergrundfilter (z.B. blur)
+*/
